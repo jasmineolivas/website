@@ -185,7 +185,11 @@ function addToCart(productId) {
   cart[productId] = (cart[productId] || 0) + 1;
   localStorage.setItem('cart', JSON.stringify(cart));
   renderCart();
+
+  // 🔓 Open the drawer when an item is added
+  document.getElementById('cartDrawer').classList.add('open');
 }
+
 
 function renderCart() {
   const cart = JSON.parse(localStorage.getItem('cart')) || {};
