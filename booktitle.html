@@ -19,6 +19,14 @@
       margin: 0;
       padding: 0;
     }
+    .site-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 200px; /* optional: keep it compact */
+  object-fit: cover;
+}
+
 
     h1 {
       font-family: 'Cinzel', serif;
@@ -147,11 +155,17 @@
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="booktitle.html">Book</a>
-    <a href="cart.html" id="cart">Cart</a>
-  </nav>
+  <a href="index.html" class="site-banner">
+  <img src="images/githubwebsitebanner03.jpg" alt="Banner" />
+</a>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="booktitle.html">Book</a>
+  <a href="about.html">About Me</a>
+  <a href="cart.html" id="cart">Cart</a>
+</nav>
+
 
   <h1>Book Title</h1>
 
