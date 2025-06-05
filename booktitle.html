@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Title</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #fff;
+      color: #171516;
+    }
+    header {
+      background-color: #171516;
+      color: #F1E2BB;
+      text-align: center;
+      padding: 1em;
+      font-family: 'Cinzel', serif;
+    }
+    nav a {
+      color: #F1E2BB;
+      margin: 0 1em;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    #cart-count::after {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin-left: 5px;
+      background-color: #D98F59;
+      border-radius: 50%;
+      visibility: hidden;
+    }
+    #cart-count.active::after {
+      visibility: visible;
+    }
+    .product {
+      max-width: 600px;
+      margin: 2em auto;
+      padding: 1em;
+      text-align: center;
+    }
+    .product img {
+      max-width: 100%;
+    }
+    .add-to-cart-btn {
+      background-color: #D98F59;
+      color: white;
+      border: none;
+      padding: 0.75em 1.5em;
+      font-size: 1em;
+      cursor: pointer;
+      font-family: 'Cinzel', serif;
+    }
+    .cart-drawer {
+      position: fixed;
+      right: -400px;
+      top: 0;
+      width: 300px;
+      height: 100vh;
+      background: white;
+      box-shadow: -3px 0 10px rgba(0,0,0,0.3);
+      transition: right 0.3s ease;
+      padding: 1em;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+    .cart-drawer.open {
+      right: 0;
+    }
+    .cart-item {
+      margin: 1em 0;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 1em;
+    }
+    .qty-controls button {
+      background: #D98F59;
+      color: white;
+      border: none;
+      padding: 0.3em 0.8em;
+      margin: 0 0.3em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="book.html">Book</a>
+      <a href="cart.html" id="cart-count">Cart</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="product">
+      <h1>Book Title</h1>
+      <img src="images/booktitle.jpg" alt="Book Cover">
+      <p>$19.99</p>
+      <button class="add-to-cart-btn" onclick="addToCart('booktitle')">Add to Cart</button>
+    </div>
+  </main>
+
+  <div class="cart-drawer" id="cart-drawer">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <button onclick="location.href='cart.html'">Go to Cart</button>
+  </div>
+
+  <script>
+    const productData = {
+      booktitle: {
+        name: "Book Title",
+        price: 19.99,
+        image: "images/booktitle.jpg"
+      }
+    };
+
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart')) || {};
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function addToCart(id) {
+      const cart = getCart();
+      if (!cart[id]) cart[id] = { quantity: 0 };
+      cart[id].quantity += 1;
+      saveCart(cart);
+      renderCartDrawer();
+      toggleCartDot();
+    }
+
+    function renderCartDrawer() {
+      const cart = getCart();
+      const drawer = document.getElementById('cart-drawer');
+      const container = document.getElementById('cart-items');
+      container.innerHTML = '';
+      for (let id in cart) {
+        const product = productData[id];
+        if (!product) continue;
+        container.innerHTML += `
+          <div class="cart-item">
+            <strong>${product.name}</strong><br>
+            Quantity: ${cart[id].quantity}<br>
+            <div class="qty-controls">
+              <button onclick="changeQty('${id}', -1)">-</button>
+              <button onclick="changeQty('${id}', 1)">+</button>
+            </div>
+          </div>
+        `;
+      }
+      drawer.classList.add('open');
+    }
+
+    function changeQty(id, delta) {
+      const cart = getCart();
+      if (!cart[id]) return;
+      cart[id].quantity += delta;
+      if (cart[id].quantity <= 0) delete cart[id];
+      saveCart(cart);
+      renderCartDrawer();
+      toggleCartDot();
+    }
+
+    function toggleCartDot() {
+      const cart = getCart();
+      const count = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+      const cartLink = document.getElementById('cart-count');
+      if (count > 0) cartLink.classList.add('active');
+      else cartLink.classList.remove('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', toggleCartDot);
+  </script>
+</body>
+</html>
