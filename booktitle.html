@@ -51,10 +51,6 @@
       top: 0;
       right: -10px;
     }
-    .hidden-dot::after {
-  display: none;
-}
-
 
     .product-layout {
       display: flex;
@@ -82,7 +78,7 @@
       text-align: left;
     }
 
-.add-to-cart-btn {
+    .add-to-cart {
       background-color: var(--accent);
       color: white;
       border: none;
@@ -92,23 +88,7 @@
       font-family: 'Roboto', sans-serif;
       margin-top: 1rem;
     }
-.cart-item img {
-  width: 50px;
-  height: auto;
-  margin-right: 1rem;
-  vertical-align: middle;
-  border-radius: 4px;
-}
-.cart-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-.cart-item div {
-  flex: 1;
-}
 
-    
     .amazon-section {
       max-width: 800px;
       margin: 2rem auto;
@@ -129,23 +109,22 @@
     }
 
     /* Cart drawer */
-.cart-drawer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 100vh;
-  background: white;
-  box-shadow: -2px 0 6px rgba(0,0,0,0.1);
-  padding: 1rem;
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
-  z-index: 999;
-}
-.cart-drawer.open {
-  transform: translateX(0);
-}
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 300px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+      padding: 1rem;
+      transition: right 0.3s ease;
+      z-index: 999;
+    }
 
+    .cart-drawer.open {
+      right: 0;
+    }
 
     .cart-close {
       cursor: pointer;
@@ -182,8 +161,7 @@
     </div>
     <div class="product-info">
       <p><strong>Description:</strong> A captivating fantasy novel that takes you on a journey of self-discovery and shadows.</p>
-<button class="add-to-cart-btn" onclick="addToCart('booktitle')">Add to Cart</button>
-
+      <button class="add-to-cart" onclick="addToCart('booktitle')">Add to Cart</button>
     </div>
   </div>
 
@@ -194,105 +172,54 @@
     <a href="https://www.amazon.com/dp/examplepaperback" target="_blank">Paperback</a>
   </div>
 
-<div id="cartDrawer" class="cart-drawer">
-  <button class="cart-close" onclick="closeCart()">×</button>
-  <h2>Your Cart</h2>
-<div class="cart-items"></div>
-  <a href="cart.html" style="display: inline-block; margin-top: 1rem; background: #D98F59; color: white; padding: 0.5rem 1rem; text-decoration: none;">Go to Cart</a>
-</div>
-
+  <div class="cart-drawer" id="cartDrawer">
+    <span class="cart-close" onclick="closeCart()">×</span>
+    <h3>Your Cart</h3>
+    <div id="cartContents">Cart is empty.</div>
+    <a href="cart.html" class="add-to-cart">Go to Cart</a>
+  </div>
 
   <script>
-const products = {
-  booktitle: {
-    name: 'Book Title',
-    image: 'images/booktitle.jpg'
-  },
-  booktitlespecial1: {
-    name: 'Book Title — Special Edition 1',
-    image: 'images/booktitlespecial1.jpg'
-  },
-  booktitlespecial2: {
-    name: 'Book Title — Special Edition 2',
-    image: 'images/booktitlespecial2.jpg'
-  },
-  booktitlespecial3: {
-    name: 'Book Title — Special Edition 3',
-    image: 'images/booktitlespecial3.jpg'
-  }
-};
+    function addToCart(productId) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || {};
+      cart[productId] = (cart[productId] || 0) + 1;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+      openCart();
+    }
 
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || {};
+      const cartContents = document.getElementById('cartContents');
+      if (Object.keys(cart).length === 0) {
+        cartContents.innerHTML = "Cart is empty.";
+        return;
+      }
+      let html = '';
+      for (let id in cart) {
+        html += `<p>${id}: ${cart[id]}</p>`;
+      }
+      cartContents.innerHTML = html;
+    }
 
-  function addToCart(productId) {
-    const cart = JSON.parse(localStorage.getItem('cart')) || {};
-    cart[productId] = (cart[productId] || 0) + 1;
-    localStorage.setItem('cart', JSON.stringify(cart));
-    renderCart();
-    openCart();
-  }
+    function openCart() {
+      document.getElementById('cartDrawer').classList.add('open');
+    }
 
-function renderCart() {
-  const cart = JSON.parse(localStorage.getItem('cart')) || {};
-  const drawer = document.getElementById('cartDrawer');
-  const container = drawer.querySelector('.cart-items');
-  container.innerHTML = '';
+    function closeCart() {
+      document.getElementById('cartDrawer').classList.remove('open');
+    }
 
-  for (const productId in cart) {
-    const product = products[productId];
-    if (!product) continue;
+    // Close drawer when clicking outside it
+    document.addEventListener('click', (e) => {
+      const drawer = document.getElementById('cartDrawer');
+      if (drawer.classList.contains('open') && !drawer.contains(e.target) && !e.target.matches('.add-to-cart')) {
+        closeCart();
+      }
+    });
 
-    const item = document.createElement('div');
-    item.className = 'cart-item';
-    item.innerHTML = `
-      <img src="${product.image}" alt="${product.name}">
-      <div>
-        <strong>${product.name}</strong><br>
-        Quantity: ${cart[productId]}
-      </div>
-    `;
-    container.appendChild(item);
-  }
-
-  updateCartDot();
-}
-
-function updateCartDot() {
-  const cart = JSON.parse(localStorage.getItem('cart')) || {};
-  const cartLink = document.getElementById('cart');
-  if (Object.keys(cart).length > 0) {
-    cartLink.classList.remove('hidden-dot');
-  } else {
-    cartLink.classList.add('hidden-dot');
-  }
-}
-
-
-
-
-  function openCart() {
-    document.getElementById('cartDrawer').classList.add('open');
-  }
-
-  function closeCart() {
-    document.getElementById('cartDrawer').classList.remove('open');
-  }
-
-  function goToCart() {
-    window.location.href = 'cart.html';
-  }
-
-  document.addEventListener('DOMContentLoaded', renderCart);
-document.addEventListener('click', (e) => {
-  const drawer = document.getElementById('cartDrawer');
-  if (!drawer.contains(e.target) && !e.target.classList.contains('add-to-cart-btn') && drawer.classList.contains('open')) {
-    closeCart();
-  }
-});
-
-    
-</script>
-
-<div id="cartDrawer" class="cart-drawer"></div>
+    // Restore cart drawer content on page load
+    document.addEventListener('DOMContentLoaded', renderCart);
   </script>
 </body>
 </html>
