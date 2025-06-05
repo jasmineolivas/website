@@ -177,18 +177,31 @@
 <div id="cartDrawer" class="cart-drawer">
   <button class="cart-close" onclick="closeCart()">×</button>
   <h2>Your Cart</h2>
-  <div id="cartItems"></div>
+<div class="cart-items"></div>
   <a href="cart.html" style="display: inline-block; margin-top: 1rem; background: #D98F59; color: white; padding: 0.5rem 1rem; text-decoration: none;">Go to Cart</a>
 </div>
 
 
   <script>
-  const products = {
-    booktitle: {
-      name: "Book Title",
-      image: "images/booktitle.jpg"
-    }
-  };
+const products = {
+  booktitle: {
+    name: 'Book Title',
+    image: 'images/booktitle.jpg'
+  },
+  booktitlespecial1: {
+    name: 'Book Title — Special Edition 1',
+    image: 'images/booktitlespecial1.jpg'
+  },
+  booktitlespecial2: {
+    name: 'Book Title — Special Edition 2',
+    image: 'images/booktitlespecial2.jpg'
+  },
+  booktitlespecial3: {
+    name: 'Book Title — Special Edition 3',
+    image: 'images/booktitlespecial3.jpg'
+  }
+};
+
 
   function addToCart(productId) {
     const cart = JSON.parse(localStorage.getItem('cart')) || {};
@@ -198,25 +211,31 @@
     openCart();
   }
 
-  function renderCart() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || {};
-    const drawer = document.getElementById('cartDrawer');
-    drawer.innerHTML = '<button class="cart-close" onclick="closeCart()">×</button>';
+function renderCart() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  const drawer = document.getElementById('cartDrawer');
+  const container = drawer.querySelector('.cart-items');
+  container.innerHTML = '';
 
-    for (const productId in cart) {
-      const product = products[productId];
-      if (!product) continue;
-      const quantity = cart[productId];
-      drawer.innerHTML += `
-        <div class="cart-item">
-          <img src="${product.image}" alt="${product.name}" />
-          <div>
-            <strong>${product.name}</strong><br>
-            Quantity: ${quantity}
-          </div>
-        </div>
-      `;
-    }
+  for (const productId in cart) {
+    const product = products[productId];
+    if (!product) continue;
+
+    const item = document.createElement('div');
+    item.className = 'cart-item';
+    item.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <div>
+        <strong>${product.name}</strong><br>
+        Quantity: ${cart[productId]}
+      </div>
+    `;
+    container.appendChild(item);
+  }
+
+  updateCartDot();
+}
+
 
     drawer.innerHTML += '<button class="add-to-cart-btn" onclick="goToCart()">Go to Cart</button>';
 
