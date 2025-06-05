@@ -92,7 +92,23 @@
       font-family: 'Roboto', sans-serif;
       margin-top: 1rem;
     }
+.cart-item img {
+  width: 50px;
+  height: auto;
+  margin-right: 1rem;
+  vertical-align: middle;
+  border-radius: 4px;
+}
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.cart-item div {
+  flex: 1;
+}
 
+    
     .amazon-section {
       max-width: 800px;
       margin: 2rem auto;
@@ -266,6 +282,12 @@ function updateCartDot() {
   }
 
   document.addEventListener('DOMContentLoaded', renderCart);
+document.addEventListener('click', (e) => {
+  const drawer = document.getElementById('cartDrawer');
+  if (!drawer.contains(e.target) && !e.target.classList.contains('add-to-cart-btn') && drawer.classList.contains('open')) {
+    closeCart();
+  }
+});
 
     
 </script>
