@@ -161,7 +161,7 @@
     </div>
     <div class="product-info">
       <p><strong>Description:</strong> A captivating fantasy novel that takes you on a journey of self-discovery and shadows.</p>
-      <button class="add-to-cart" onclick="addToCart('booktitle')">Add to Cart</button>
+<button class="add-to-cart" onclick="addToCart('booktitle')">Add to Cart</button>
     </div>
   </div>
 
@@ -180,27 +180,30 @@
   </div>
 
   <script>
-    function addToCart(productId) {
-      const cart = JSON.parse(localStorage.getItem('cart')) || {};
-      cart[productId] = (cart[productId] || 0) + 1;
-      localStorage.setItem('cart', JSON.stringify(cart));
-      renderCart();
-      openCart();
-    }
+function addToCart(productId) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  cart[productId] = (cart[productId] || 0) + 1;
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCart();
+}
 
-    function renderCart() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || {};
-      const cartContents = document.getElementById('cartContents');
-      if (Object.keys(cart).length === 0) {
-        cartContents.innerHTML = "Cart is empty.";
-        return;
-      }
-      let html = '';
-      for (let id in cart) {
-        html += `<p>${id}: ${cart[id]}</p>`;
-      }
-      cartContents.innerHTML = html;
-    }
+function renderCart() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  const cartContents = document.getElementById('cartContents');
+
+  if (Object.keys(cart).length === 0) {
+    cartContents.innerHTML = "Cart is empty.";
+    return;
+  }
+
+  let html = '';
+  for (let id in cart) {
+    html += `<p>${id}: ${cart[id]}</p>`;
+  }
+
+  cartContents.innerHTML = html;
+}
+  window.onload = renderCart;
 
     function openCart() {
       document.getElementById('cartDrawer').classList.add('open');
