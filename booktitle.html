@@ -26,6 +26,46 @@
   max-height: 200px; /* optional: keep it compact */
   object-fit: cover;
 }
+    .banner-container {
+  position: relative;
+  text-align: center;
+  color: white;
+  font-family: 'Cinzel', serif;
+}
+
+.banner-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 200px;
+}
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.banner-text h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.banner-line {
+  width: 50px;
+  height: 2px;
+  background-color: white;
+  margin: 0.5rem auto;
+}
+
+.banner-text p {
+  font-size: 1rem;
+  margin: 0;
+}
+
 
 
     h1 {
@@ -155,9 +195,17 @@
   </style>
 </head>
 <body>
-  <a href="index.html" class="site-banner">
-  <img src="images/githubwebsitebanner03.jpg" alt="Banner" />
-</a>
+<div class="banner-container">
+  <a href="index.html">
+    <img src="images/githubwebsitebanner03.jpg" alt="Banner" />
+  </a>
+  <div class="banner-text">
+    <h1>Jasmine Olivas</h1>
+    <div class="banner-line"></div>
+    <p>Fantasy Author & Illustrator</p>
+  </div>
+</div>
+
 
 <nav>
   <a href="index.html">Home</a>
