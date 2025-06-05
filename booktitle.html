@@ -2,184 +2,121 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Book Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Roboto&display=swap" rel="stylesheet">
+  <title>Book Title</title>
   <style>
-    :root {
-      --accent: #D98F59;
-      --background: #F1E2BB;
-      --text-dark: #171516;
-    }
-
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: white;
-      color: var(--text-dark);
+      background-color: #fdfbf6;
+      color: #171516;
       margin: 0;
       padding: 0;
     }
-
-    h1 {
-      font-family: 'Cinzel', serif;
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    nav {
-      background-color: var(--text-dark);
-      color: var(--background);
-      text-align: center;
-      padding: 1rem 0;
-      font-family: 'Cinzel', serif;
-    }
-
-    nav a {
-      color: var(--background);
-      margin: 0 1.5rem;
-      text-decoration: none;
-      position: relative;
-    }
-
-    nav a#cart::after {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-      position: absolute;
-      top: 0;
-      right: -10px;
-    }
-
-    .product-layout {
+    .container {
       display: flex;
-      flex-wrap: wrap;
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 2rem auto;
-      padding: 1rem;
       gap: 2rem;
-      justify-content: center;
+      padding: 0 1rem;
     }
-
-    .product-image {
-      flex: 1 1 300px;
-      text-align: right;
+    .image-column {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
     }
-
-    .product-image img {
-      width: 100%;
-      max-width: 300px;
-      height: auto;
+    .details-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
-
-    .product-info {
-      flex: 1 1 400px;
-      text-align: left;
+    .details-column h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
     }
-
-    .add-to-cart {
-      background-color: var(--accent);
+    .add-to-cart-btn {
+      background-color: #D98F59;
       color: white;
+      padding: 0.6rem 1.5rem;
       border: none;
-      padding: 0.75rem 1.5rem;
       font-size: 1rem;
       cursor: pointer;
       font-family: 'Roboto', sans-serif;
-      margin-top: 1rem;
     }
-
-    .amazon-section {
-      max-width: 800px;
-      margin: 2rem auto;
-      text-align: center;
-    }
-
-    .amazon-section h3 {
-      font-family: 'Cinzel', serif;
-    }
-
-    .amazon-section a {
-      display: inline-block;
-      background-color: var(--accent);
-      color: white;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      margin: 0.5rem;
-    }
-
-    /* Cart drawer */
     .cart-drawer {
       position: fixed;
       top: 0;
-      right: -400px;
+      right: 0;
       width: 300px;
-      height: 100%;
-      background: #fff;
-      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+      height: 100vh;
+      background: white;
+      box-shadow: -2px 0 6px rgba(0,0,0,0.1);
       padding: 1rem;
-      transition: right 0.3s ease;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
       z-index: 999;
     }
-
     .cart-drawer.open {
-      right: 0;
+      transform: translateX(0);
     }
-
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .cart-item img {
+      width: 50px;
+      height: auto;
+      margin-right: 1rem;
+    }
     .cart-close {
-      cursor: pointer;
-      float: right;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
       font-size: 1.2rem;
-      font-weight: bold;
-    }
-
-    @media (max-width: 768px) {
-      .product-layout {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .product-image,
-      .product-info {
-        text-align: center;
-      }
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="booktitle.html">Book</a>
-    <a href="cart.html" id="cart">Cart</a>
+  <nav style="background-color: #171516; color: #F1E2BB; text-align: center; padding: 1rem; font-family: 'Cinzel', serif;">
+    <a href="index.html" style="margin: 0 1rem; color: #F1E2BB; text-decoration: none;">Home</a>
+    <a href="booktitle.html" style="margin: 0 1rem; color: #F1E2BB; text-decoration: none;">Book</a>
+    <a href="#" onclick="openCart()" style="margin: 0 1rem; color: #F1E2BB; text-decoration: none; position: relative;">
+      Cart <span id="cart-count-dot" style="background: #D98F59; width: 10px; height: 10px; border-radius: 50%; display: inline-block; position: absolute; top: -4px; right: -12px;"></span>
+    </a>
   </nav>
 
-  <h1>Book Title</h1>
-
-  <div class="product-layout">
-    <div class="product-image">
-      <img src="images/booktitle.jpg" alt="Book Title Cover" />
+  <div class="container">
+    <div class="image-column">
+      <img src="images/booktitle.jpg" alt="Book Title" style="max-width: 300px; height: auto;">
     </div>
-    <div class="product-info">
-      <p><strong>Description:</strong> A captivating fantasy novel that takes you on a journey of self-discovery and shadows.</p>
-      <button class="add-to-cart" onclick="addToCart('booktitle')">Add to Cart</button>
+    <div class="details-column">
+      <h1>Book Title</h1>
+      <p>Description of the book goes here. It includes compelling reasons to buy this beautiful piece of art and story.</p>
+      <button class="add-to-cart-btn" onclick="addToCart('booktitle')">Add to Cart</button>
     </div>
   </div>
 
-  <div class="amazon-section">
-    <h3>Also Available on Amazon</h3>
-    <p>Prefer to buy through Amazon? Choose your format below:</p>
-    <a href="https://www.amazon.com/dp/examplekindle" target="_blank">Kindle</a>
-    <a href="https://www.amazon.com/dp/examplepaperback" target="_blank">Paperback</a>
-  </div>
-
-  <div class="cart-drawer" id="cartDrawer">
-    <span class="cart-close" onclick="closeCart()">×</span>
-    <h3>Your Cart</h3>
-    <div id="cartContents">Cart is empty.</div>
-    <a href="cart.html" class="add-to-cart">Go to Cart</a>
+  <div id="cartDrawer" class="cart-drawer">
+    <button class="cart-close" onclick="closeCart()">&times;</button>
+    <h2>Your Cart</h2>
+    <div id="cartItems"></div>
+    <a href="cart.html">Go to Cart</a>
   </div>
 
   <script>
+    const productData = {
+      booktitle: {
+        name: "Book Title",
+        image: "images/booktitle.jpg"
+      }
+    };
+
     function addToCart(productId) {
       const cart = JSON.parse(localStorage.getItem('cart')) || {};
       cart[productId] = (cart[productId] || 0) + 1;
@@ -190,16 +127,30 @@
 
     function renderCart() {
       const cart = JSON.parse(localStorage.getItem('cart')) || {};
-      const cartContents = document.getElementById('cartContents');
-      if (Object.keys(cart).length === 0) {
-        cartContents.innerHTML = "Cart is empty.";
-        return;
+      const cartItemsContainer = document.getElementById('cartItems');
+      cartItemsContainer.innerHTML = '';
+
+      let totalItems = 0;
+      for (const id in cart) {
+        const product = productData[id];
+        const quantity = cart[id];
+        totalItems += quantity;
+
+        if (product) {
+          const item = document.createElement('div');
+          item.className = 'cart-item';
+          item.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" />
+            <div>
+              <strong>${product.name}</strong><br />
+              Quantity: ${quantity}
+            </div>
+          `;
+          cartItemsContainer.appendChild(item);
+        }
       }
-      let html = '';
-      for (let id in cart) {
-        html += `<p>${id}: ${cart[id]}</p>`;
-      }
-      cartContents.innerHTML = html;
+
+      document.getElementById('cart-count-dot').style.display = totalItems > 0 ? 'inline-block' : 'none';
     }
 
     function openCart() {
@@ -210,15 +161,6 @@
       document.getElementById('cartDrawer').classList.remove('open');
     }
 
-    // Close drawer when clicking outside it
-    document.addEventListener('click', (e) => {
-      const drawer = document.getElementById('cartDrawer');
-      if (drawer.classList.contains('open') && !drawer.contains(e.target) && !e.target.matches('.add-to-cart')) {
-        closeCart();
-      }
-    });
-
-    // Restore cart drawer content on page load
     document.addEventListener('DOMContentLoaded', renderCart);
   </script>
 </body>
