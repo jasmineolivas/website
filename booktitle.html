@@ -6,241 +6,188 @@
   <title>Book Title</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Roboto&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --brand-orange: #D98F59;
-      --dark: #171516;
-      --light: #F1E2BB;
-    }
-
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background: white;
-      color: var(--dark);
+      background: #fff;
+      color: #171516;
     }
-
     header {
-      background-color: var(--dark);
-      padding: 1rem;
+      background: #171516;
+      color: #F1E2BB;
       text-align: center;
+      padding: 1rem 0;
       font-family: 'Cinzel', serif;
-      color: var(--light);
     }
-
-    .cart-link {
-      position: relative;
-      display: inline-block;
-      color: var(--light);
+    nav a {
+      margin: 0 1rem;
+      color: #F1E2BB;
       text-decoration: none;
-      font-weight: bold;
+      font-size: 1.1rem;
     }
-
-    .cart-dot {
-      position: absolute;
-      top: -5px;
-      right: -10px;
-      width: 10px;
-      height: 10px;
-      background-color: var(--brand-orange);
-      border-radius: 50%;
-    }
-
-    .main-container {
+    .product-container {
       display: flex;
       flex-wrap: wrap;
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
       gap: 2rem;
+      padding: 2rem;
+      justify-content: center;
+      align-items: flex-start;
     }
-
     .product-image {
-      flex: 1 1 300px;
-      max-width: 400px;
-      text-align: right;
+      max-width: 300px;
+      flex: 1;
     }
-
-    .product-image img {
-      max-width: 100%;
-      height: auto;
+    .product-details {
+      flex: 1;
+      min-width: 280px;
     }
-
-    .product-info {
-      flex: 1 1 300px;
-      text-align: left;
-    }
-
-    .product-info h1 {
+    .product-details h1 {
       font-family: 'Cinzel', serif;
-      font-size: 2rem;
-      margin-top: 0;
     }
-
-    .add-to-cart {
-      background-color: var(--brand-orange);
+    .product-details button {
+      background: #D98F59;
       color: white;
+      padding: 0.5rem 1rem;
       border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
       cursor: pointer;
-      margin-top: 1rem;
-      border-radius: 5px;
+      font-family: 'Roboto', sans-serif;
     }
-
-    /* Cart drawer */
-    .cart-drawer {
+    .cart-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #D98F59;
+      border-radius: 50%;
+      margin-left: 5px;
+    }
+    .drawer {
       position: fixed;
-      right: 0;
       top: 0;
+      right: 0;
       width: 300px;
       height: 100%;
-      background: white;
-      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
-      padding: 1rem;
+      background: #fff;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.3);
       transform: translateX(100%);
       transition: transform 0.3s ease;
-      z-index: 1000;
+      padding: 1rem;
       overflow-y: auto;
+      z-index: 1000;
     }
-
-    .cart-drawer.open {
+    .drawer.open {
       transform: translateX(0);
     }
-
-    .cart-drawer h2 {
-      font-family: 'Cinzel', serif;
-    }
-
-    .cart-item {
+    .drawer-header {
       display: flex;
+      justify-content: space-between;
       align-items: center;
+      font-family: 'Cinzel', serif;
       margin-bottom: 1rem;
     }
-
-    .cart-item img {
-      width: 50px;
-      height: auto;
-      margin-right: 1rem;
+    .amazon-section {
+      margin: 2rem;
     }
-
-    .close-cart {
-      cursor: pointer;
-      color: var(--brand-orange);
-      background: none;
+    .amazon-section button {
+      background: #D98F59;
+      color: white;
+      margin: 0.5rem;
       border: none;
-      font-size: 1.5rem;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-    }
-
-    @media (max-width: 768px) {
-      .main-container {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .product-image, .product-info {
-        text-align: center;
-      }
-
-      .product-info {
-        align-items: center;
-      }
+      padding: 0.5rem 1rem;
+      font-family: 'Roboto', sans-serif;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <header>
-    <a href="index.html" class="cart-link">Cart<span id="cart-dot" class="cart-dot" style="display:none;"></span></a>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Book</a>
+      <a href="#">Illustrations</a>
+      <a href="#">Cart<span id="cart-dot" class="cart-dot" style="display: none;"></span></a>
+    </nav>
   </header>
 
-  <main class="main-container">
-    <div class="product-image">
-      <img src="images/booktitle.jpg" alt="Book Title Cover" />
+  <main>
+    <div class="product-container">
+      <img src="images/booktitle.jpg" alt="Book Title" class="product-image" />
+      <div class="product-details">
+        <h1>Book Title</h1>
+        <p>Short description of the book goes here. Engaging, elegant, and to the point.</p>
+        <select id="edition-select">
+          <option value="booktitle">Standard Edition</option>
+          <option value="booktitlespecial1">Special Edition 1</option>
+          <option value="booktitlespecial2">Special Edition 2</option>
+          <option value="booktitlespecial3">Special Edition 3</option>
+        </select>
+        <br><br>
+        <button onclick="addToCart()">Add to Cart</button>
+      </div>
     </div>
-    <div class="product-info">
-      <h1>Book Title</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. A gripping fantasy debut set in a world on the edge of magic and ruin.</p>
 
-      <!-- Optional future dropdown -->
-      <label for="format">Available on Amazon:</label><br>
-      <select id="format" onchange="goToAmazon(this.value)">
-        <option value="">-- Choose Format --</option>
-        <option value="https://amazon.com/kindle-link">Kindle</option>
-        <option value="https://amazon.com/paperback-link">Paperback</option>
-      </select>
-
-      <button class="add-to-cart" onclick="addToCart('booktitle')">Add to Cart</button>
+    <div class="amazon-section">
+      <h2>Also available on Amazon</h2>
+      <p>Prefer to buy on Amazon? Choose a version below:</p>
+      <button onclick="window.open('https://amazon.com/kindle-link', '_blank')">Kindle</button>
+      <button onclick="window.open('https://amazon.com/paperback-link', '_blank')">Paperback</button>
     </div>
   </main>
 
-  <aside class="cart-drawer" id="cart-drawer">
-    <button class="close-cart" onclick="toggleCart(false)">×</button>
-    <h2>Your Cart</h2>
+  <div id="cart-drawer" class="drawer">
+    <div class="drawer-header">
+      <strong>Your Cart</strong>
+      <button onclick="toggleDrawer()">&times;</button>
+    </div>
     <div id="cart-items"></div>
-    <button class="add-to-cart" onclick="goToCart()">Go to Cart</button>
-  </aside>
+    <br>
+    <button onclick="window.location.href='cart.html'">Go to Cart</button>
+  </div>
 
   <script>
-    const cartKey = 'cart';
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
 
-    function getCart() {
-      return JSON.parse(localStorage.getItem(cartKey)) || {};
+    function updateCartUI() {
+      const dot = document.getElementById('cart-dot');
+      const count = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+      dot.style.display = count > 0 ? 'inline-block' : 'none';
     }
 
-    function saveCart(cart) {
-      localStorage.setItem(cartKey, JSON.stringify(cart));
+    function toggleDrawer() {
+      document.getElementById('cart-drawer').classList.toggle('open');
     }
 
-    function updateCartDot() {
-      const cart = getCart();
-      const hasItems = Object.keys(cart).length > 0;
-      document.getElementById('cart-dot').style.display = hasItems ? 'inline-block' : 'none';
+    function addToCart() {
+      const id = document.getElementById('edition-select').value;
+      if (!cart[id]) cart[id] = { quantity: 0 };
+      cart[id].quantity++;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartUI();
+      renderDrawer();
+      document.getElementById('cart-drawer').classList.add('open');
     }
 
-    function addToCart(id) {
-      const cart = getCart();
-      cart[id] = (cart[id] || 0) + 1;
-      saveCart(cart);
-      renderDrawerCart();
-      toggleCart(true);
-      updateCartDot();
-    }
-
-    function renderDrawerCart() {
-      const cart = getCart();
+    function renderDrawer() {
       const container = document.getElementById('cart-items');
       container.innerHTML = '';
-
       for (let id in cart) {
+        const qty = cart[id].quantity;
+        const imgSrc = `images/${id}.jpg`;
         const itemDiv = document.createElement('div');
-        itemDiv.className = 'cart-item';
-        itemDiv.innerHTML = `
-          <img src="images/${id}.jpg" alt="${id}">
-          <div>
-            <strong>${id.replace('booktitle', 'Book Title')}</strong><br>
-            Quantity: ${cart[id]}
-          </div>
-        `;
+        itemDiv.innerHTML = `<img src="${imgSrc}" alt="${id}" style="width:40px;vertical-align:middle;margin-right:10px;"> ${id} x ${qty}`;
         container.appendChild(itemDiv);
       }
     }
 
-    function toggleCart(show) {
-      document.getElementById('cart-drawer').classList.toggle('open', show);
-    }
+    document.addEventListener('click', function(event) {
+      const drawer = document.getElementById('cart-drawer');
+      if (!drawer.contains(event.target) && !event.target.closest('button[onclick*="addToCart"]')) {
+        drawer.classList.remove('open');
+      }
+    });
 
-    function goToCart() {
-      window.location.href = 'cart.html';
-    }
-
-    function goToAmazon(link) {
-      if (link) window.open(link, '_blank');
-    }
-
-    // Initial state
-    updateCartDot();
+    updateCartUI();
+    renderDrawer();
   </script>
 </body>
 </html>
