@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Cart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #D98F59;
+      --background: #F1E2BB;
+      --text-dark: #171516;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: white;
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: var(--text-dark);
+      color: var(--background);
+      font-family: 'Cinzel', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 3.5rem;
+      overflow: hidden;
+    }
+
+    nav a {
+      color: var(--background);
+      margin: 0 1.5rem;
+      text-decoration: none;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      text-align: center;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .cart-item button {
+      margin: 0 0.25rem;
+    }
+
+    .subtotal {
+      text-align: right;
+      font-weight: bold;
+      margin-top: 2rem;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .actions a, .actions button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner-container">
+    <a href="index.html">
+      <img src="your-banner-image.jpg" alt="Banner" />
+      <div class="banner-text">
+        <h1>Your Store Name</h1>
+        <div class="banner-line"></div>
+        <p>Your Cart</p>
+      </div>
+    </a>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="store.html">Store</a>
+    <a href="cart.html">Cart</a>
+  </nav>
+
+  <div class="container">
+    <h1>Shopping Cart</h1>
+    <div id="cartPageContents"></div>
+    <div class="subtotal" id="subtotalDisplay"></div>
+    <div class="actions">
+      <a href="store.html">Continue Shopping</a>
+      <button onclick="location.href='checkout.html'">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    function renderCartPage() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || {};
+      const container = document.getElementById('cartPageContents');
+      const subtotalEl = document.getElementById('subtotalDisplay');
+
+      if (Object.keys(cart).length === 0) {
+        container.innerHTML = '<p>Your cart is empty.</p>';
+        subtotalEl.textContent = '';
+        return;
+      }
+
+      let html = '';
+      let total = 0;
+
+      for (let id in cart) {
+        const quantity = cart[id];
+        const price = id.includes('hardcover') ? 30 : 20;
+        total += quantity * price;
+
+        html += `
+          <div class="cart-item">
+            <span><strong>${id.replace('booktitle_', '').toUpperCase()}</strong></span>
+            <span>
+              <button onclick="updateQuantity('${id}', -1)">−</button>
+              ${quantity}
+              <button onclick="updateQuantity('${id}', 1)">+</button>
+              <button onclick="removeItem('${id}')">🗑</button>
+            </span>
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+      subtotalEl.textContent = `Subtotal: $${total}`;
+    }
+
+    function updateQuantity(id, change) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || {};
+      if (!cart[id]) return;
+      cart[id] += change;
+      if (cart[id] <= 0) delete cart[id];
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCartPage();
+    }
+
+    function removeItem(id) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || {};
+      delete cart[id];
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCartPage();
+    }
+
+    window.onload = renderCartPage;
+  </script>
+</body>
+</html>
