@@ -176,7 +176,7 @@ nav a#cart::after {
       cursor: pointer;
     }
     .container {
-  max-width: 900px; /* or whatever works for your layout */
+  max-width: 600px; /* or whatever works for your layout */
   margin: 0 auto;
   padding: 0 1rem; /* Adds breathing room on mobile */
   box-sizing: border-box;
@@ -194,6 +194,20 @@ nav a#cart::after {
     text-align: center;
   }
 }
+    .cart-button {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  width: auto;        /* Prevents full width */
+  max-width: 200px;   /* Optional limit */
+  text-align: center;
+  white-space: nowrap;
+}
+
 
   </style>
 </head>
@@ -220,10 +234,11 @@ nav a#cart::after {
     <h1>Shopping Cart</h1>
     <div id="cartPageContents"></div>
     <div class="subtotal" id="subtotalDisplay"></div>
-    <div class="actions">
-      <a href="store.html">Continue Shopping</a>
-      <button onclick="location.href='checkout.html'">Proceed to Checkout</button>
-    </div>
+<div class="actions">
+  <a href="index.html" class="cart-button">Continue Shopping</a>
+  <button onclick="location.href='checkout.html'" class="cart-button">Proceed to Checkout</button>
+</div>
+
   </div>
 
   <script>
