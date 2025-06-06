@@ -181,7 +181,15 @@ nav a#cart::after {
       flex: 1 1 400px;
       text-align: left;
     }
+.book-price {
+  font-size: 1.25rem;
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-dark);
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
 
+    
     .add-to-cart {
       background-color: var(--accent);
       color: white;
@@ -271,13 +279,19 @@ nav a#cart::after {
 
 
   <h1>Book Title</h1>
-
+<p id="price" class="book-price">$19.99</p>
+  
   <div class="product-layout">
     <div class="product-image">
       <img src="images/booktitle.jpg" alt="Book Title Cover" />
     </div>
     <div class="product-info">
       <p><strong>Description:</strong> A captivating fantasy novel that takes you on a journey of self-discovery and shadows.</p>
+      <div class="edition-selector">
+  <button onclick="selectVersion('paperback')" id="paperbackBtn" class="active">Paperback</button>
+  <button onclick="selectVersion('hardcover')" id="hardcoverBtn">Hardcover</button>
+</div>
+
 <button class="add-to-cart" onclick="addToCart('booktitle')">Add to Cart</button>
     </div>
   </div>
@@ -297,53 +311,73 @@ nav a#cart::after {
   </div>
 
   <script>
-function addToCart(productId) {
-  const cart = JSON.parse(localStorage.getItem('cart')) || {};
-  cart[productId] = (cart[productId] || 0) + 1;
-  localStorage.setItem('cart', JSON.stringify(cart));
-  renderCart();
+  // ✅ Default to paperback unless changed by user
+  let currentEdition = 'paperback';
 
-  // 🔓 Open the drawer when an item is added
-  document.getElementById('cartDrawer').classList.add('open');
-}
+      // ✅ Update selected edition and price on button click
+  function selectVersion(version) {
+    currentEdition = version;
 
+    document.getElementById('paperbackBtn').classList.remove('active');
+    document.getElementById('hardcoverBtn').classList.remove('active');
+    document.getElementById(version + 'Btn').classList.add('active');
 
-function renderCart() {
-  const cart = JSON.parse(localStorage.getItem('cart')) || {};
-  const cartContents = document.getElementById('cartContents');
+    const priceTag = document.getElementById('price');
+    priceTag.textContent = version === 'hardcover' ? "$29.99" : "$19.99";
+  }
+    
+  // ✅ Add to cart using selected edition
+  function addToCart() {
+    const productId = currentEdition === 'hardcover' ? 'booktitle_hardcover' : 'booktitle_paperback';
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    cart[productId] = (cart[productId] || 0) + 1;
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
 
-  if (Object.keys(cart).length === 0) {
-    cartContents.innerHTML = "Cart is empty.";
-    return;
+    document.getElementById('cartDrawer').classList.add('open');
   }
 
-  let html = '';
-  for (let id in cart) {
-    html += `<p>${id}: ${cart[id]}</p>`;
+
+  // ✅ Keep your renderCart logic
+  function renderCart() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const cartContents = document.getElementById('cartContents');
+
+    if (Object.keys(cart).length === 0) {
+      cartContents.innerHTML = "Cart is empty.";
+      return;
+    }
+
+    let html = '';
+    for (let id in cart) {
+      html += `<p>${id}: ${cart[id]}</p>`;
+    }
+
+    cartContents.innerHTML = html;
   }
 
-  cartContents.innerHTML = html;
-}
+    
   window.onload = renderCart;
 
-    function openCart() {
-      document.getElementById('cartDrawer').classList.add('open');
+  // ✅ Keep drawer open/close behavior
+  function openCart() {
+    document.getElementById('cartDrawer').classList.add('open');
+  }
+
+  function closeCart() {
+    document.getElementById('cartDrawer').classList.remove('open');
+  }
+
+  document.addEventListener('click', (e) => {
+    const drawer = document.getElementById('cartDrawer');
+    if (drawer.classList.contains('open') && !drawer.contains(e.target) && !e.target.matches('.add-to-cart')) {
+      closeCart();
     }
+  });
 
-    function closeCart() {
-      document.getElementById('cartDrawer').classList.remove('open');
-    }
-
-    // Close drawer when clicking outside it
-    document.addEventListener('click', (e) => {
-      const drawer = document.getElementById('cartDrawer');
-      if (drawer.classList.contains('open') && !drawer.contains(e.target) && !e.target.matches('.add-to-cart')) {
-        closeCart();
-      }
-    });
-
-    // Restore cart drawer content on page load
-    document.addEventListener('DOMContentLoaded', renderCart);
-  </script>
+  // ✅ Restore cart content on page load
+  window.onload = renderCart;
+  document.addEventListener('DOMContentLoaded', renderCart);
+</script>
 </body>
 </html>
