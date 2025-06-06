@@ -406,6 +406,10 @@ function renderCart() {
   html += `<p><strong>Subtotal: $${total}</strong></p>`;
   cartContents.innerHTML = html;
 }
+    document.getElementById('cartDrawer').addEventListener('click', (e) => {
+  e.stopPropagation();
+});
+
 
 function updateQuantity(id, change) {
   const cart = JSON.parse(localStorage.getItem('cart')) || {};
