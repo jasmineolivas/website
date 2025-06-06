@@ -226,21 +226,23 @@ nav a#cart::after {
         const price = id.includes('hardcover') ? 30 : 20;
         total += quantity * price;
 
-        html += `
-          <div class="cart-item">
-            <span><strong>${id.replace('booktitle_', '').toUpperCase()}</strong></span>
-            <span>
-              <button onclick="updateQuantity('${id}', -1)">−</button>
-              ${quantity}
-              <button onclick="updateQuantity('${id}', 1)">+</button>
-              <button onclick="removeItem('${id}')">🗑</button>
-            </span>
-          </div>
-        `;
+html += `
+  <div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+    <span><strong>${id.replace('booktitle_', '').toUpperCase()}</strong></span>
+    <span style="display: flex; align-items: center; gap: 0.5rem;">
+      <button onclick="updateQuantity('${id}', -1)">−</button>
+      <span>${quantity}</span>
+      <button onclick="updateQuantity('${id}', 1)">+</button>
+      <button onclick="removeItem('${id}')">🗑</button>
+    </span>
+  </div>
+`;
+
       }
 
       container.innerHTML = html;
-      subtotalEl.textContent = `Subtotal: $${total}`;
+subtotalEl.innerHTML = `<strong>Subtotal: $${total}</strong>`;
+
     }
 
     function updateQuantity(id, change) {
