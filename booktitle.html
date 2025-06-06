@@ -298,6 +298,17 @@ nav a#cart::after {
   background-color: #c57e4e;
 }
 
+    .button.secondary {
+  background-color: #555;
+}
+
+.button.outline {
+  background-color: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+
 
 @media (max-width: 600px) {
   .button {
@@ -319,6 +330,40 @@ nav a#cart::after {
         text-align: center;
       }
     }
+
+.site-footer {
+  background-color: var(--text-dark);
+  color: var(--background);
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  flex: 1 1 300px;
+}
+
+.footer-column h3 {
+  font-family: 'Cinzel', serif;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+    
   </style>
 </head>
 <body>
@@ -375,6 +420,21 @@ nav a#cart::after {
 <a href="cart.html" class="button">Go to Cart</a>
 
   </div>
+<footer class="site-footer">
+  <div class="footer-columns">
+    <div class="footer-column">
+      <h3>Shipping</h3>
+      <p>Free USPS shipping on most orders. For large or unusual shipments, I’ll contact you directly. All orders are printed and packaged by hand in the USA.</p>
+    </div>
+    <div class="footer-column">
+      <h3>Returns</h3>
+      <p>Returns are not accepted, but if anything arrives damaged or incorrect, please contact me so I can make it right.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 [Your Name or Brand]. All rights reserved.</p>
+  </div>
+</footer>
 
   <script>
   // ✅ Default to paperback unless changed by user
