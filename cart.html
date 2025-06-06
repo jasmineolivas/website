@@ -187,6 +187,14 @@ nav a#cart::after {
     flex-direction: column;
     gap: 1rem;
   }
+      @media (max-width: 600px) {
+  .button {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+  }
+}
+
 
   .actions a,
   .actions button {
@@ -207,6 +215,41 @@ nav a#cart::after {
   text-align: center;
   white-space: nowrap;
 }
+    .cart-controls button {
+  background-color: transparent;
+  border: 1px solid var(--text-dark);
+  color: var(--text-dark);
+  font-size: 1rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.cart-controls button:hover {
+  background-color: var(--background);
+}
+.button {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: #c57e4e; /* Slightly darker for hover */
+}
+
 
 
   </style>
@@ -235,8 +278,8 @@ nav a#cart::after {
     <div id="cartPageContents"></div>
     <div class="subtotal" id="subtotalDisplay"></div>
 <div class="actions">
-  <a href="index.html" class="cart-button">Continue Shopping</a>
-  <button onclick="location.href='checkout.html'" class="cart-button">Proceed to Checkout</button>
+  <a href="index.html" class="button">Continue Shopping</a>
+  <button onclick="location.href='checkout.html'" class="button">Proceed to Checkout</button>
 </div>
 
   </div>
@@ -264,12 +307,12 @@ nav a#cart::after {
 html += `
   <div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
     <span><strong>${id.replace('booktitle_', '').toUpperCase()}</strong></span>
-    <span style="display: flex; align-items: center; gap: 0.5rem;">
-      <button onclick="updateQuantity('${id}', -1)">−</button>
-      <span>${quantity}</span>
-      <button onclick="updateQuantity('${id}', 1)">+</button>
-      <button onclick="removeItem('${id}')">🗑</button>
-    </span>
+<span class="cart-controls" style="display: flex; align-items: center; gap: 0.5rem;">
+  <button onclick="updateQuantity('${id}', -1)">−</button>
+  <span>${quantity}</span>
+  <button onclick="updateQuantity('${id}', 1)">+</button>
+  <button onclick="removeItem('${id}')">🗑</button>
+</span>
   </div>
 `;
 
