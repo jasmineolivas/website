@@ -74,17 +74,18 @@
 
 @media (max-width: 600px) {
   .banner-text h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .banner-text p {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .banner-line {
-    width: 100px;
+    width: 80px;
   }
 }
+
 
 
 
@@ -108,13 +109,19 @@
       margin-top: 1rem;
     }
 
-    nav {
-      background-color: var(--text-dark);
-      color: var(--background);
-      text-align: center;
-      padding: 1rem 0;
-      font-family: 'Cinzel', serif;
-    }
+nav {
+  background-color: var(--text-dark);
+  color: var(--background);
+  font-family: 'Cinzel', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3.5rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
 
     nav a {
       color: var(--background);
@@ -123,16 +130,30 @@
       position: relative;
     }
 
-    nav a#cart::after {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-      position: absolute;
-      top: 0;
-      right: -10px;
-    }
+nav a#cart::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: absolute;
+  top: -2px; /* move up or down */
+  right: -12px; /* adjust dot position */
+}
+
+@media (max-width: 600px) {
+  nav a#cart::after {
+    top: 2px;
+    right: -10px;
+  }
+}
+@media (max-width: 600px) {
+  nav a {
+    font-size: 0.9rem;
+    margin: 0 0.8rem;
+  }
+}
+
 
     .product-layout {
       display: flex;
