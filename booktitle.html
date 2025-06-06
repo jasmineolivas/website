@@ -439,12 +439,16 @@ function removeItem(id) {
     document.getElementById('cartDrawer').classList.remove('open');
   }
 
-  document.addEventListener('click', (e) => {
-    const drawer = document.getElementById('cartDrawer');
-    if (drawer.classList.contains('open') && !drawer.contains(e.target) && !e.target.matches('.add-to-cart')) {
-      closeCart();
-    }
-  });
+document.addEventListener('click', (e) => {
+  const drawer = document.getElementById('cartDrawer');
+  const isInsideDrawer = drawer.contains(e.target);
+  const isCartToggle = e.target.closest('.add-to-cart') || e.target.closest('#cart'); // optional cart icon logic
+
+  if (drawer.classList.contains('open') && !isInsideDrawer && !isCartToggle) {
+    closeCart();
+  }
+});
+
 
   // ✅ Restore cart content on page load
   window.onload = renderCart;
