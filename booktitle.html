@@ -263,6 +263,22 @@ nav a#cart::after {
       font-weight: bold;
     }
 
+    #cartContents button {
+  background: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+#cartContents button:hover {
+  background-color: var(--accent);
+  color: white;
+}
+
+
     @media (max-width: 768px) {
       .product-layout {
         flex-direction: column;
@@ -357,23 +373,59 @@ nav a#cart::after {
   }
 
 
-  // ✅ Keep your renderCart logic
-  function renderCart() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || {};
-    const cartContents = document.getElementById('cartContents');
+function renderCart() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  const cartContents = document.getElementById('cartContents');
 
-    if (Object.keys(cart).length === 0) {
-      cartContents.innerHTML = "Cart is empty.";
-      return;
-    }
-
-    let html = '';
-    for (let id in cart) {
-      html += `<p>${id}: ${cart[id]}</p>`;
-    }
-
-    cartContents.innerHTML = html;
+  if (Object.keys(cart).length === 0) {
+    cartContents.innerHTML = "Cart is empty.";
+    return;
   }
+
+  let html = '';
+  let total = 0;
+
+  for (let id in cart) {
+    const quantity = cart[id];
+    const price = id.includes('hardcover') ? 30 : 20;
+    total += quantity * price;
+
+    html += `
+      <div style="margin-bottom: 1rem;">
+        <p><strong>${id}</strong></p>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <button onclick="updateQuantity('${id}', -1)">−</button>
+          <span>${quantity}</span>
+          <button onclick="updateQuantity('${id}', 1)">+</button>
+          <button onclick="removeItem('${id}')">🗑</button>
+        </div>
+      </div>
+    `;
+  }
+
+  html += `<p><strong>Subtotal: $${total}</strong></p>`;
+  cartContents.innerHTML = html;
+}
+
+function updateQuantity(id, change) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  if (!cart[id]) return;
+
+  cart[id] += change;
+  if (cart[id] <= 0) {
+    delete cart[id];
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCart();
+}
+
+function removeItem(id) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  delete cart[id];
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCart();
+}
 
     
   window.onload = renderCart;
