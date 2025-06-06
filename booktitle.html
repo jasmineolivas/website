@@ -189,6 +189,24 @@ nav a#cart::after {
   margin-bottom: 1rem;
 }
 
+    .version-btn {
+  border: 2px solid #D98F59;
+  background-color: transparent;
+  color: #D98F59;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0.25rem;
+}
+
+.version-btn.active {
+  background-color: #D98F59;
+  color: white;
+}
+
     
     .add-to-cart {
       background-color: var(--accent);
@@ -287,10 +305,11 @@ nav a#cart::after {
     <div class="product-info">
       <p><strong>Description:</strong> A captivating fantasy novel that takes you on a journey of self-discovery and shadows.</p>
       <p id="price" class="book-price">$19.99</p>
-      <div class="edition-selector">
-  <button onclick="selectVersion('paperback')" id="paperbackBtn" class="active">Paperback</button>
-  <button onclick="selectVersion('hardcover')" id="hardcoverBtn">Hardcover</button>
+<div class="edition-selector">
+  <button onclick="selectVersion('paperback')" id="paperbackBtn" class="version-btn active">Paperback</button>
+  <button onclick="selectVersion('hardcover')" id="hardcoverBtn" class="version-btn">Hardcover</button>
 </div>
+
 
 <button class="add-to-cart" onclick="addToCart('booktitle')">Add to Cart</button>
     </div>
