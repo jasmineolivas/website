@@ -277,6 +277,35 @@ nav a#cart::after {
   background-color: var(--accent);
   color: white;
 }
+.button {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.button:hover {
+  background-color: #c57e4e;
+}
+
+
+@media (max-width: 600px) {
+  .button {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+  }
+}
 
 
     @media (max-width: 768px) {
@@ -322,27 +351,29 @@ nav a#cart::after {
       <p><strong>Description:</strong> A captivating fantasy novel that takes you on a journey of self-discovery and shadows.</p>
       <p id="price" class="book-price">$19.99</p>
 <div class="edition-selector">
-  <button onclick="selectVersion('paperback')" id="paperbackBtn" class="version-btn active">Paperback</button>
-  <button onclick="selectVersion('hardcover')" id="hardcoverBtn" class="version-btn">Hardcover</button>
+  <button onclick="selectVersion('paperback')" id="paperbackBtn" class="button version-btn active">Paperback</button>
+  <button onclick="selectVersion('hardcover')" id="hardcoverBtn" class="button version-btn">Hardcover</button>
 </div>
 
+<button class="button add-to-cart" onclick="addToCart('booktitle')">Add to Cart</button>
 
-<button class="add-to-cart" onclick="addToCart('booktitle')">Add to Cart</button>
     </div>
   </div>
 
   <div class="amazon-section">
     <h3>Also Available on Amazon</h3>
     <p>Prefer to buy through Amazon? Choose your format below:</p>
-    <a href="https://www.amazon.com/dp/examplekindle" target="_blank">Kindle</a>
-    <a href="https://www.amazon.com/dp/examplepaperback" target="_blank">Paperback</a>
+<a href="https://www.amazon.com/dp/examplekindle" target="_blank" class="button outline">Kindle</a>
+<a href="https://www.amazon.com/dp/examplepaperback" target="_blank" class="button outline">Paperback</a>
+
   </div>
 
   <div class="cart-drawer" id="cartDrawer">
     <span class="cart-close" onclick="closeCart()">×</span>
     <h3>Your Cart</h3>
     <div id="cartContents">Cart is empty.</div>
-    <a href="cart.html" class="add-to-cart">Go to Cart</a>
+<a href="cart.html" class="button">Go to Cart</a>
+
   </div>
 
   <script>
