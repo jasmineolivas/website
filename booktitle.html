@@ -190,14 +190,15 @@ nav a#cart::after {
 }
 .version-btn {
   border: 2px solid var(--accent);
-  background-color: transparent;
+  background-color: white;
   color: var(--accent);
   font-family: 'Cinzel', serif;
   font-size: 1rem;
   padding: 0.5rem 1rem;
   margin: 0.5rem;
-  border-radius: 0.25rem;
+  cursor: pointer;
   transition: all 0.3s ease;
+  border-radius: 0.25rem;
 }
 
 .version-btn.active {
@@ -208,10 +209,11 @@ nav a#cart::after {
 
     
 .add-to-cart {
-  padding: 0.6rem 1.2rem; /* matches .button */
-    display: inline-block; /* not block or centered */
+  padding: 0.6rem 1.2rem;
   margin-top: 1rem;
-  margin-left: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
