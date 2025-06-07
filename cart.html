@@ -256,6 +256,31 @@ nav a#cart::after {
   background-color: #c57e4e; /* Slightly darker for hover */
 }
 
+
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.body-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+
+    
+
+    
+
+    
 .site-footer {
   background-color: var(--text-dark);
   color: var(--background);
@@ -292,6 +317,7 @@ nav a#cart::after {
   </style>
 </head>
 <body>
+    <div class="body-wrapper">
 <div class="banner-container">
   <a href="index.html">
     <img src="images/githubwebsitebanner03.jpg" alt="Banner" />
@@ -335,6 +361,8 @@ nav a#cart::after {
     <p>&copy; 2025 [Your Name or Brand]. All rights reserved.</p>
   </div>
 </footer>
+        </div>
+</body>
   <script>
     function renderCartPage() {
       const cart = JSON.parse(localStorage.getItem('cart')) || {};
