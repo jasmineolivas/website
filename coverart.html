@@ -446,8 +446,8 @@ html, body {
       maybe we'll have to see what happens down here, where did the size selectors go? we'll never know I guess.</p>
       <p id="price" class="artprint-price">$9.99</p>
 <div class="size-selector">
-  <button onclick="selectVersion('coverart6x9')" id="coverart6x9Btn" class="button version-btn active">6x9</button>
-  <button onclick="selectVersion('coverart9x12')" id="coverart9x12Btn" class="button version-btn">9x12</button>
+  <button onclick="selectVersion('casmall')" id="casmallBtn" class="button version-btn active">6x9</button>
+  <button onclick="selectVersion('calarge')" id="calargeBtn" class="button version-btn">9x12</button>
 </div>
 
 <button class="button add-to-cart" onclick="addToCart('')">Add to Cart</button>
@@ -481,23 +481,23 @@ html, body {
 
   <script>
   // ✅ Default to paperback unless changed by user
-  let currentSize = 'coverart6x9';
+  let currentSize = 'casmall';
 
       // ✅ Update selected size and price on button click
   function selectVersion(version) {
     currentSize = version;
 
-    document.getElementById('coverart6x9Btn').classList.remove('active');
-    document.getElementById('coverart9x12Btn').classList.remove('active');
+    document.getElementById('casmallBtn').classList.remove('active');
+    document.getElementById('calargeBtn').classList.remove('active');
     document.getElementById(version + 'Btn').classList.add('active');
 
     const priceTag = document.getElementById('price');
-    priceTag.textContent = version === 'hardcover' ? "$12.99" : "$9.99";
+    priceTag.textContent = version === 'calarge' ? "$12.99" : "$9.99";
   }
     
   // ✅ Add to cart using selected size
   function addToCart() {
-    const productId = currentSize === 'coverart9x12' ? 'coverart_9x12' : 'coverart_6x9';
+    const productId = currentSize === 'calarge' ? 'coverart_large' : 'coverart_small';
     const cart = JSON.parse(localStorage.getItem('cart')) || {};
     cart[productId] = (cart[productId] || 0) + 1;
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -521,7 +521,7 @@ function renderCart() {
 
   for (let id in cart) {
     const quantity = cart[id];
-    const price = id.includes('coverart9x12') ? 12.99 : 9.99;
+    const price = id.includes('calarge') ? 12 : 9;
     total += quantity * price;
 
     html += `
