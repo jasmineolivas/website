@@ -215,11 +215,14 @@ nav a#cart::after {
 }
 
 
-    .amazon-section {
-      max-width: 800px;
-      margin: 2rem auto;
-      text-align: center;
-    }
+.amazon-section {
+  max-width: 100%;
+  overflow-x: hidden;
+  padding: 1rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
 
     .amazon-section h3 {
       font-family: 'Cinzel', serif;
@@ -310,16 +313,21 @@ nav a#cart::after {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  justify-content: center;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 
-@media (max-width: 500px) {
-  .button {
-    width: 100%;
-    max-width: none;
-    box-sizing: border-box;
-  }
+
+@media (max-width: 600px) {
+.button, .version-btn {
+  width: 100%;
+  max-width: 300px;
+  margin: 0.5rem auto;
+  display: block;
+}
+
 
   .edition-selector {
     flex-direction: column;
@@ -335,7 +343,7 @@ nav a#cart::after {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .edition-selector {
     flex-direction: column;
     align-items: center;
