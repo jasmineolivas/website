@@ -446,8 +446,8 @@ html, body {
       maybe we'll have to see what happens down here, where did the size selectors go? we'll never know I guess.</p>
       <p id="price" class="artprint-price">$9.99</p>
 <div class="size-selector">
-  <button onclick="selectVersion('casmall')" id="casmallBtn" class="button version-btn active">6x9</button>
-  <button onclick="selectVersion('calarge')" id="calargeBtn" class="button version-btn">9x12</button>
+  <button onclick="selectVersion('sixByNine')" id="sixByNineBtn" class="button version-btn active">6x9</button>
+  <button onclick="selectVersion('nineByTwelve')" id="nineByTwelveeBtn" class="button version-btn">9x12</button>
 </div>
 
 <button class="button add-to-cart" onclick="addToCart('')">Add to Cart</button>
@@ -481,23 +481,23 @@ html, body {
 
   <script>
   // ✅ Default to paperback unless changed by user
-  let currentSize = 'casmall';
+  let currentSize = 'sixByNine';
 
       // ✅ Update selected size and price on button click
   function selectVersion(version) {
     currentSize = version;
 
-    document.getElementById('casmallBtn').classList.remove('active');
-    document.getElementById('calargeBtn').classList.remove('active');
+    document.getElementById('sixByNinelBtn').classList.remove('active');
+    document.getElementById('nineByTwelveeBtn').classList.remove('active');
     document.getElementById(version + 'Btn').classList.add('active');
 
     const priceTag = document.getElementById('price');
-    priceTag.textContent = version === 'calarge' ? "$12.99" : "$9.99";
+    priceTag.textContent = version === 'nineByTwelve' ? "$12.99" : "$9.99";
   }
     
   // ✅ Add to cart using selected size
   function addToCart() {
-    const productId = currentSize === 'calarge' ? 'coverart_large' : 'coverart_small';
+    const productId = currentSize === 'nineByTwelve' ? 'coverart_9x12' : 'coverart_6x9';
     const cart = JSON.parse(localStorage.getItem('cart')) || {};
     cart[productId] = (cart[productId] || 0) + 1;
     localStorage.setItem('cart', JSON.stringify(cart));
