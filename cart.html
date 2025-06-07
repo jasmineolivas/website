@@ -267,14 +267,6 @@ html, body {
   min-height: 100vh;
 }
 
-.container {
-  flex: 1;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  box-sizing: border-box;
-}
-
     
     
 
@@ -314,8 +306,23 @@ html, body {
 }
 
 
+#cartPageContents {
+  width: 100%;
+}
+.cart-item {
+  max-width: 100%;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
 
 
+.container {
+  outline: 2px solid red;
+}
+
+#cartPageContents {
+  outline: 2px solid blue;
+}
 
 
     
@@ -341,6 +348,18 @@ html, body {
   <a href="cart.html" id="cart">Cart</a>
 </nav>
 
+
+
+.container {
+  flex: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+
+    
     
   <div class="container">
     <h1>Shopping Cart</h1>
