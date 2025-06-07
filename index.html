@@ -163,7 +163,7 @@ nav a#cart::after {
 
 .product-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   padding: 2rem;
   max-width: 1200px;
@@ -194,6 +194,19 @@ nav a#cart::after {
 .product-tile:hover {
   transform: translateY(-4px);
 }
+
+@media (max-width: 768px) {
+  .product-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .product-tile h2 {
+    font-size: 1rem;
+  }
+}
+
 
 
 html, body {
@@ -235,6 +248,18 @@ html, body {
   <a href="illustration03.html" class="product-tile">
     <img src="images/illustration03.jpg" alt="Illustration 03">
     <h2>Illustration 03</h2>
+  </a>
+    <a href="illustration04.html" class="product-tile">
+    <img src="images/illustration04.jpg" alt="Illustration 04">
+    <h2>Illustration 04</h2>
+  </a>
+  <a href="illustration05.html" class="product-tile">
+    <img src="images/illustration05.jpg" alt="Illustration 05">
+    <h2>Illustration 05</h2>
+  </a>
+  <a href="illustration06.html" class="product-tile">
+    <img src="images/illustration06.jpg" alt="Illustration 06">
+    <h2>Illustration 06</h2>
   </a>
   <!-- Repeat for more -->
 </main>
