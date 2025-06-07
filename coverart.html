@@ -487,8 +487,8 @@ html, body {
   function selectVersion(version) {
     currentSize = version;
 
-    document.getElementById('sixByNinelBtn').classList.remove('active');
-    document.getElementById('nineByTwelveeBtn').classList.remove('active');
+    document.getElementById('sixByNineBtn').classList.remove('active');
+    document.getElementById('nineByTwelveBtn').classList.remove('active');
     document.getElementById(version + 'Btn').classList.add('active');
 
     const priceTag = document.getElementById('price');
@@ -521,7 +521,7 @@ function renderCart() {
 
   for (let id in cart) {
     const quantity = cart[id];
-    const price = id.includes('calarge') ? 12 : 9;
+    const price = id.includes('nineByTwelve') ? 12 : 9;
     total += quantity * price;
 
     html += `
