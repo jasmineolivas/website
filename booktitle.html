@@ -11,7 +11,7 @@
       --background: #F1E2BB;
       --text-dark: #171516;
     }
-
+    
     body {
       font-family: 'Roboto', sans-serif;
       background-color: white;
@@ -397,7 +397,15 @@ nav a#cart::after {
   font-size: 0.8rem;
   opacity: 0.8;
 }
-    
+
+    * {
+  outline: 1px solid red; /* helps you visualize what's overflowing */
+}
+
+html, body {
+  overflow-x: hidden; /* prevents accidental sideways scroll */
+}
+
   </style>
 </head>
 <body>
