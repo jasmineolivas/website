@@ -209,16 +209,11 @@ nav a#cart::after {
 
 
     
-    .add-to-cart {
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      cursor: pointer;
-      font-family: 'Roboto', sans-serif;
-      margin-top: 1rem;
-    }
+.add-to-cart {
+  padding: 0.6rem 1.2rem; /* matches .button */
+  margin-top: 1rem;
+}
+
 
     .amazon-section {
       max-width: 800px;
@@ -291,6 +286,7 @@ nav a#cart::after {
   cursor: pointer;
   display: inline-block;
   border-radius: 4px;
+  min-width: 140px;
   transition: background-color 0.2s ease;
   white-space: nowrap;
 }
@@ -313,11 +309,12 @@ nav a#cart::after {
 
 @media (max-width: 600px) {
   .button {
-    width: 100%;
-    max-width: none;
+    width: auto;
+    max-width: 100%;
     box-sizing: border-box;
   }
 }
+
 
 
     @media (max-width: 768px) {
