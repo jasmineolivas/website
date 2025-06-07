@@ -188,7 +188,6 @@ nav a#cart::after {
   margin-top: -0.5rem;
   margin-bottom: 1rem;
 }
-
 .version-btn {
   border: 2px solid var(--accent);
   background-color: transparent;
@@ -197,9 +196,8 @@ nav a#cart::after {
   font-size: 1rem;
   padding: 0.5rem 1rem;
   margin: 0.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
   border-radius: 0.25rem;
+  transition: all 0.3s ease;
 }
 
 .version-btn.active {
@@ -291,14 +289,11 @@ nav a#cart::after {
   min-width: 140px;
   transition: background-color 0.2s ease;
   white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .button:hover {
   background-color: #c57e4e;
-}
-
-    .button.secondary {
-  background-color: #555;
 }
 
 .button.outline {
@@ -307,32 +302,49 @@ nav a#cart::after {
   color: var(--accent);
 }
 
+.button.secondary {
+  background-color: #555;
+}
+
 .edition-selector {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 1rem;
-  justify-content: flex-start;
-  flex-wrap: wrap; /* ensures it stacks on narrow screens */
 }
 
 
 @media (max-width: 600px) {
   .button {
-    width: auto;
-    max-width: 100%;
+    width: 100%;
+    max-width: none;
     box-sizing: border-box;
   }
+
+  .edition-selector {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-to-cart {
+    width: 100%;
+  }
+
+  .product-info {
+    text-align: center;
+  }
 }
+
 @media (max-width: 600px) {
   .edition-selector {
     flex-direction: column;
     align-items: center;
   }
 
-  .add-to-cart {
-    display: block;
-    margin: 1rem auto 0;
-  }
+.add-to-cart {
+  margin-top: 1rem;
+}
+
 
   .product-info {
     text-align: center;
