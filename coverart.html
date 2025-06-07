@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cover Art</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #D98F59;
+      --background: #F1E2BB;
+      --text-dark: #171516;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: white;
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
+    }
+    .site-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 200px; /* optional: keep it compact */
+  object-fit: cover;
+}
+    .banner-container {
+  position: relative;
+  text-align: center;
+  color: #F1E2BB;
+  font-family: 'Cinzel', serif;
+}
+
+.banner-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 200px;
+}
+
+    
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  max-width: 90%;
+  padding: .9rem;
+  box-sizing: border-box;
+}
+
+.banner-text h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.banner-line {
+  width: 200px;
+  height: 2px;
+  background-color: #F1E2BB;
+  margin: 0.4rem auto;
+}
+
+.banner-text p {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .banner-text h1 {
+    font-size: 1rem; /* Was 0.9rem */
+  }
+
+  .banner-text p {
+    font-size: 0.85rem; /* Was 0.6rem — now closer to navbar size */
+      white-space: nowrap;
+  }
+
+  .banner-line {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .banner-text {
+    padding: 0.5rem 0; /* or less */
+  }
+}
+
+.banner-container a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.banner-container a:hover .banner-text {
+  opacity: 0.9;
+}
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+nav {
+  background-color: var(--text-dark);
+  color: var(--background);
+  font-family: 'Cinzel', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3.5rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+
+    nav a {
+      color: var(--background);
+      margin: 0 1.5rem;
+      text-decoration: none;
+      position: relative;
+    }
+
+nav a#cart::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: absolute;
+  top: -2px; /* move up or down */
+  right: -12px; /* adjust dot position */
+}
+
+@media (max-width: 600px) {
+  nav a#cart::after {
+    top: 2px;
+    right: -10px;
+  }
+}
+@media (max-width: 600px) {
+  nav a {
+    font-size: 0.8rem;
+    margin: 0 0.6rem;
+  }
+}
+@media (max-width: 600px) {
+  nav {
+    height: 2rem;
+  }
+}
+
+
+    .product-layout {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .product-image {
+      flex: 1 1 400px;
+      text-align: right;
+    }
+
+    .product-image img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+    }
+    
+
+    .product-info {
+      flex: 1 1 400px;
+      text-align: left;
+    }
+.artprint-price {
+  font-size: 1.25rem;
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-dark);
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+.size-selector .version-btn {
+  border: 2px solid var(--accent);
+  background-color: white;
+  color: var(--accent);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0.25rem;
+}
+
+.size-selector .version-btn.active {
+  background-color: var(--accent);
+  color: white;
+}
+
+
+    
+.product-info .add-to-cart {
+  padding: 0.6rem 1.2rem;
+  margin-top: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+
+
+
+    
+
+    /* Cart drawer */
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 300px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+      padding: 1rem;
+      transition: right 0.3s ease;
+      z-index: 999;
+    }
+
+    .cart-drawer.open {
+      right: 0;
+    }
+
+    .cart-close {
+      cursor: pointer;
+      float: right;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    #cartContents button {
+  background: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+#cartContents button:hover {
+  background-color: var(--accent);
+  color: white;
+}
+.button {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 4px;
+  min-width: 140px;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.button:hover {
+  background-color: #c57e4e;
+}
+
+.button.outline {
+  background-color: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.button.secondary {
+  background-color: #555;
+}
+
+.size-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+
+
+@media (max-width: 600px) {
+.button, .version-btn {
+  width: 100%;
+  max-width: 300px;
+  margin: 0.5rem auto;
+  display: block;
+}
+
+
+  .size-selector {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-to-cart {
+    width: 100%;
+  }
+
+  .product-info {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .size-selector {
+    flex-direction: column;
+    align-items: center;
+  }
+
+.add-to-cart {
+  margin-top: 1rem;
+}
+
+
+  .product-info {
+    text-align: center;
+  }
+}
+
+
+
+    @media (max-width: 768px) {
+      .product-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .product-image,
+      .product-info {
+        text-align: center;
+      }
+    }
+
+.site-footer {
+  background-color: var(--text-dark);
+  color: var(--background);
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  flex: 1 1 300px;
+}
+
+.footer-column h3 {
+  font-family: 'Cinzel', serif;
+  margin-bottom: 0.5rem;
+  color: var(--background);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+    img, button, input, select, textarea {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+
+
+html, body {
+  overflow-x: hidden; /* prevents accidental sideways scroll */
+}
+
+  </style>
+</head>
+<body>
+<div class="banner-container">
+  <a href="index.html">
+    <img src="images/githubwebsitebanner03.jpg" alt="Banner" />
+    <div class="banner-text">
+      <h1>Jasmine Olivas</h1>
+      <div class="banner-line"></div>
+      <p>Fantasy Author & Illustrator</p>
+    </div>
+  </a>
+</div>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="booktitle.html">Book</a>
+  <a href="about.html">About Me</a>
+  <a href="cart.html" id="cart">Cart</a>
+</nav>
+
+
+  <h1>Cover Art</h1>
+  
+  <div class="product-layout">
+    <div class="product-image">
+      <img src="images/coverart.jpg" alt="Cover Art" />
+    </div>
+    <div class="product-info">
+      <p><strong>Description:</strong> <br>
+        A really cool illustration <br>
+        <i>that has a dramatic line of text here</i><br>
+      and another line of text here because this is where the story actually goes. lets see how long the text will go before it becomes wrapped on the next line. blablablablab balbal blabal balbal  ablabla bal alb alba lbbalbalbalab balbalba albalb.<br>
+        and another line of text here because this is where the story actually goes. lets see how long the text will go before it becomes wrapped on the next line. blablablablab balbal blabal balbal  ablabla bal alb alba lbbalbalbalab balbalba albalb.<br>
+        and another line of text here because this is where the story actually goes. lets see how long the text will go before it becomes wrapped on the next line. blablablablab balbal blabal balbal  ablabla bal alb alba lbbalbalbalab balbalba albalb.<br>
+      here is the final line of text to see how far down this text will go<br>
+      maybe we'll have to see what happens down here, where did the size selectors go? we'll never know I guess.</p>
+      <p id="price" class="artprint-price">$9.99</p>
+<div class="size-selector">
+  <button onclick="selectVersion('coverart6x9')" id="coverart6x9Btn" class="button version-btn active">6x9</button>
+  <button onclick="selectVersion('coverart9x12')" id="coverart9x12Btn" class="button version-btn">9x12</button>
+</div>
+
+<button class="button add-to-cart" onclick="addToCart('')">Add to Cart</button>
+
+    </div>
+  </div>
+
+
+  <div class="cart-drawer" id="cartDrawer">
+    <span class="cart-close" onclick="closeCart()">×</span>
+    <h3>Your Cart</h3>
+    <div id="cartContents">Cart is empty.</div>
+<a href="cart.html" class="button">Go to Cart</a>
+
+  </div>
+<footer class="site-footer">
+  <div class="footer-columns">
+    <div class="footer-column">
+      <h3>Shipping</h3>
+      <p>Free USPS shipping on most orders. For large or unusual shipments, I’ll contact you directly. All orders are printed and packaged by hand in the USA.</p>
+    </div>
+    <div class="footer-column">
+      <h3>Returns</h3>
+      <p>Returns are not accepted, but if anything arrives damaged or incorrect, please contact me so I can make it right.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 [Your Name or Brand]. All rights reserved.</p>
+  </div>
+</footer>
+
+  <script>
+  // ✅ Default to paperback unless changed by user
+  let currentSize = 'coverart6x9';
+
+      // ✅ Update selected size and price on button click
+  function selectVersion(version) {
+    currentSize = version;
+
+    document.getElementById('coverart6x9Btn').classList.remove('active');
+    document.getElementById('coverart9x12Btn').classList.remove('active');
+    document.getElementById(version + 'Btn').classList.add('active');
+
+    const priceTag = document.getElementById('price');
+    priceTag.textContent = version === 'hardcover' ? "$12.99" : "$9.99";
+  }
+    
+  // ✅ Add to cart using selected size
+  function addToCart() {
+    const productId = currentSize === 'coverart9x12' ? 'coverart_9x12' : 'coverart_6x9';
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    cart[productId] = (cart[productId] || 0) + 1;
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+
+    document.getElementById('cartDrawer').classList.add('open');
+  }
+
+
+function renderCart() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  const cartContents = document.getElementById('cartContents');
+
+  if (Object.keys(cart).length === 0) {
+    cartContents.innerHTML = "Cart is empty.";
+    return;
+  }
+
+  let html = '';
+  let total = 0;
+
+  for (let id in cart) {
+    const quantity = cart[id];
+    const price = id.includes('coverart9x12') ? 12.99 : 9.99;
+    total += quantity * price;
+
+    html += `
+      <div style="margin-bottom: 1rem;">
+        <p><strong>${id}</strong></p>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <button onclick="updateQuantity('${id}', -1)">−</button>
+          <span>${quantity}</span>
+          <button onclick="updateQuantity('${id}', 1)">+</button>
+          <button onclick="removeItem('${id}')">🗑</button>
+        </div>
+      </div>
+    `;
+  }
+
+  html += `<p><strong>Subtotal: $${total}</strong></p>`;
+  cartContents.innerHTML = html;
+}
+    document.getElementById('cartDrawer').addEventListener('click', (e) => {
+  e.stopPropagation();
+});
+
+
+function updateQuantity(id, change) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  if (!cart[id]) return;
+
+  cart[id] += change;
+  if (cart[id] <= 0) {
+    delete cart[id];
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCart();
+}
+
+function removeItem(id) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  delete cart[id];
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCart();
+}
+
+    
+  window.onload = renderCart;
+
+  // ✅ Keep drawer open/close behavior
+  function openCart() {
+    document.getElementById('cartDrawer').classList.add('open');
+  }
+
+  function closeCart() {
+    document.getElementById('cartDrawer').classList.remove('open');
+  }
+
+document.addEventListener('click', (e) => {
+  const drawer = document.getElementById('cartDrawer');
+  const isInsideDrawer = drawer.contains(e.target);
+  const isCartToggle = e.target.closest('.add-to-cart') || e.target.closest('#cart'); // optional cart icon logic
+
+  if (drawer.classList.contains('open') && !isInsideDrawer && !isCartToggle) {
+    closeCart();
+  }
+});
+
+
+  // ✅ Restore cart content on page load
+  window.onload = renderCart;
+  document.addEventListener('DOMContentLoaded', renderCart);
+</script>
+</body>
+</html>
