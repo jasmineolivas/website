@@ -182,14 +182,7 @@ nav a#cart::after {
       cursor: pointer;
     }
 
-    
-    .container {
-        flex: 1;
-  max-width: 800px; /* or whatever works for your layout */
-  margin: 0 auto;
-  padding: 0 1rem; /* Adds breathing room on mobile */
-  box-sizing: border-box;
-}
+
 
     @media (max-width: 600px) {
   .actions {
@@ -261,10 +254,11 @@ nav a#cart::after {
 
 
     
+
 html, body {
-  height: 100%;
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 .site-wrapper {
@@ -273,7 +267,13 @@ html, body {
   min-height: 100vh;
 }
 
-
+.container {
+  flex: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
 
     
     
