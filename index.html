@@ -161,6 +161,80 @@ nav a#cart::after {
 
 
 
+
+    .featured-book {
+  background-color: var(--text-dark); /* #171516 */
+  color: var(--background);           /* #F1E2BB */
+  padding: 3rem 1rem;
+}
+
+.featured-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.featured-image img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+}
+
+.featured-info {
+  flex: 1 1 300px;
+  max-width: 600px;
+}
+
+.featured-info h2,
+.featured-info h3 {
+  font-family: 'Cinzel', serif;
+  margin: 0.2rem 0;
+}
+
+.featured-info p {
+  font-family: 'Roboto', sans-serif;
+  margin: 1rem 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.preorder-btn {
+  background-color: var(--accent); /* #D98F59 */
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.preorder-btn:hover {
+  background-color: #c47845;
+}
+
+@media (max-width: 768px) {
+  .featured-layout {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .featured-info {
+    max-width: none;
+  }
+}
+
+
+
+    
+
 .product-gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -234,9 +308,29 @@ html, body {
   <a href="cart.html" id="cart">Cart</a>
 </nav>
 
-    
+
+
+<section class="featured-book">
+  <div class="featured-layout">
+    <div class="featured-image">
+      <img src="images/booktitle.jpg" alt="Book Title Cover">
+    </div>
+    <div class="featured-info">
+      <h2>Book Title</h2>
+      <h3>by Author Name</h3>
+      <p>A brief description of the book goes here. Introduce the setting, tone, or theme—just enough to draw the eye and invite a click.</p>
+      <a href="booktitle.html" class="button preorder-btn">Preorder Now</a>
+    </div>
+  </div>
+</section>
+
+  
 
 <main class="product-gallery">
+    <a href="coverart.html" class="product-tile">
+    <img src="images/coverart.jpg" alt="Cover Art">
+    <h2>Cover Art</h2>
+  </a>
   <a href="illustration01.html" class="product-tile">
     <img src="images/illustration01.jpg" alt="Illustration 01">
     <h2>Illustration 01</h2>
@@ -257,10 +351,7 @@ html, body {
     <img src="images/illustration05.jpg" alt="Illustration 05">
     <h2>Illustration 05</h2>
   </a>
-  <a href="illustration06.html" class="product-tile">
-    <img src="images/illustration06.jpg" alt="Illustration 06">
-    <h2>Illustration 06</h2>
-  </a>
+
   <!-- Repeat for more -->
 </main>
 
