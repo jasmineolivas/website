@@ -258,7 +258,24 @@ nav a#cart::after {
 
 
     
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+}
+
+
+    
     
 
     
@@ -299,7 +316,7 @@ nav a#cart::after {
   </style>
 </head>
 <body>
-
+  <div class="site-wrapper">
 <div class="banner-container">
   <a href="index.html">
     <img src="images/githubwebsitebanner03.jpg" alt="Banner" />
@@ -318,6 +335,7 @@ nav a#cart::after {
   <a href="cart.html" id="cart">Cart</a>
 </nav>
 
+    
   <div class="container">
     <h1>Shopping Cart</h1>
     <div id="cartPageContents"></div>
@@ -328,6 +346,10 @@ nav a#cart::after {
 </div>
 
   </div>
+
+
+
+    
 <footer class="site-footer">
   <div class="footer-columns">
     <div class="footer-column">
@@ -343,7 +365,7 @@ nav a#cart::after {
     <p>&copy; 2025 [Your Name or Brand]. All rights reserved.</p>
   </div>
 </footer>
-
+  </div> <!-- end .site-wrapper -->
 
   <script>
     function renderCartPage() {
