@@ -331,6 +331,11 @@ html, body {
   box-sizing: border-box;
 }
 
+.cart-item-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
 
 
     
@@ -410,8 +415,7 @@ html, body {
         const price = id.includes('hardcover') ? 30 : 20;
         total += quantity * price;
 
-html += `
-  <div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+html += `<div class="cart-item"><div class="cart-item-inner">
     <span><strong>${id.replace('booktitle_', '').toUpperCase()}</strong></span>
 <span class="cart-controls" style="display: flex; align-items: center; gap: 0.5rem;">
   <button onclick="updateQuantity('${id}', -1)">−</button>
@@ -419,8 +423,7 @@ html += `
   <button onclick="updateQuantity('${id}', 1)">+</button>
   <button onclick="removeItem('${id}')">🗑</button>
 </span>
-  </div>
-`;
+</div></div>`;
 
       }
 
