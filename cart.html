@@ -11,7 +11,7 @@
       --background: #F1E2BB;
       --text-dark: #171516;
     }
-
+    
     body {
       font-family: 'Roboto', sans-serif;
       background-color: white;
@@ -74,23 +74,25 @@
 
 @media (max-width: 900px) {
   .banner-text h1 {
-    font-size: .9rem;
+    font-size: 1rem; /* Was 0.9rem */
   }
 
   .banner-text p {
-    font-size: 0.6rem;
+    font-size: 0.85rem; /* Was 0.6rem — now closer to navbar size */
+      white-space: nowrap;
   }
 
   .banner-line {
-    width: 90px;
+    display: none;
   }
 }
 
+@media (max-width: 900px) {
+  .banner-text {
+    padding: 0.5rem 0; /* or less */
+  }
+}
 
-
-
-
-    
 .banner-container a {
   text-decoration: none;
   color: inherit;
@@ -100,8 +102,6 @@
 .banner-container a:hover .banner-text {
   opacity: 0.9;
 }
-
-
 
     h1 {
       font-family: 'Cinzel', serif;
@@ -149,10 +149,16 @@ nav a#cart::after {
 }
 @media (max-width: 600px) {
   nav a {
-    font-size: 0.9rem;
-    margin: 0 0.8rem;
+    font-size: 0.8rem;
+    margin: 0 0.6rem;
   }
 }
+@media (max-width: 600px) {
+  nav {
+    height: 2rem;
+  }
+}
+
 
     .subtotal {
       text-align: right;
