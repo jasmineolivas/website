@@ -422,8 +422,7 @@ html += `
       }
 
       container.innerHTML = html;
-subtotalEl.innerHTML = <strong>Subtotal: $${total}</strong>;
-
+subtotalEl.innerHTML = `<strong>Subtotal: $${total}</strong>`;
     }
 
     function updateQuantity(id, change) {
