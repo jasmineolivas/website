@@ -208,6 +208,32 @@ nav a#cart::after {
   white-space: nowrap;
 }
 
+.fake-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ddd;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.footer-columns p {
+  flex: 1;
+  min-width: 200px;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #999;
+}
 
   </style>
 </head>
@@ -240,6 +266,14 @@ nav a#cart::after {
 </div>
 
   </div>
+  
+<div class="fake-footer">
+  <div class="footer-columns">
+    <p><strong>Shipping & Returns</strong><br>All sales final unless damaged in shipping.</p>
+    <p><strong>Contact</strong><br>contact@myauthorname.com</p>
+  </div>
+  <p class="copyright">© 2025 Jasmine Olivas</p>
+</div>
 
   <script>
     function renderCartPage() {
