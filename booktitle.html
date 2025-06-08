@@ -633,7 +633,20 @@ function removeItem(id) {
   function openCart() {
     document.getElementById('cartDrawer').classList.add('open');
   }
+    
+  document.addEventListener('DOMContentLoaded', () => {
+    const cartTab = document.getElementById('cartTab');
+    if (cartTab) {
+      cartTab.addEventListener('click', () => {
+        openCart?.();
+      });
+    }
 
+    renderCart?.();       
+    renderCartPage?.();   
+    updateCartDot?.();    
+  });
+    
   function closeCart() {
     document.getElementById('cartDrawer').classList.remove('open');
   }
@@ -670,14 +683,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCart?.();       // Safe redundancy for older browsers
 });
 
-      document.addEventListener('DOMContentLoaded', () => {
-    const cartTab = document.getElementById('cartTab');
-    if (cartTab) {
-      cartTab.addEventListener('click', () => {
-        openCart?.();
-      });
-    }
-  });
+
 
 </script>
 </body>
