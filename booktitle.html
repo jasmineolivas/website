@@ -634,18 +634,19 @@ function removeItem(id) {
     document.getElementById('cartDrawer').classList.add('open');
   }
     
-  document.addEventListener('DOMContentLoaded', () => {
-    const cartTab = document.getElementById('cartTab');
-    if (cartTab) {
-      cartTab.addEventListener('click', () => {
-        openCart?.();
-      });
-    }
+document.addEventListener('DOMContentLoaded', () => {
+  const cartTab = document.getElementById('cartTab');
+  if (cartTab) {
+    cartTab.addEventListener('click', () => {
+      openCart?.();
+    });
+  }
 
-    renderCart?.();       
-    renderCartPage?.();   
-    updateCartDot?.();    
-  });
+  renderCart?.();       // For drawer display
+  renderCartPage?.();   // For full cart.html if applicable
+  updateCartDot?.();    // Cart dot update
+});
+
     
   function closeCart() {
     document.getElementById('cartDrawer').classList.remove('open');
@@ -677,12 +678,6 @@ window.onload = () => {
   renderCartPage?.();   // For cart.html, no effect here
   updateCartDot?.();    // Cart dot logic
 };
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderCart?.();       // Safe redundancy for older browsers
-});
-
 
 
 </script>
