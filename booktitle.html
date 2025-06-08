@@ -247,6 +247,32 @@ nav a#cart.has-items::after {
       margin: 0.5rem;
     }
 
+
+
+    #cartTab {
+  position: fixed;
+  top: 6rem;
+  right: 0;
+  background-color: var(--accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  z-index: 20;
+  font-family: 'Cinzel', serif;
+  box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+  #cartTab {
+    top: 4rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+
+    
     /* Cart drawer */
     .cart-drawer {
       position: fixed;
@@ -490,6 +516,8 @@ html, body {
 <a href="cart.html" class="button">Go to Cart</a>
 
   </div>
+  <div id="cartTab" onclick="openCart()">🛒</div>
+
 <footer class="site-footer">
   <div class="footer-columns">
     <div class="footer-column">
