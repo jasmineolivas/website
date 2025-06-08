@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #D98F59;
+      --background: #F1E2BB;
+      --text-dark: #171516;
+    }
+  body {
+      font-family: 'Roboto', sans-serif;
+      background-color: white;
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
+	    height: 100%;
+	    display: flex;
+	    flex-direction: column;
+    }
+    .site-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 200px; /* optional: keep it compact */
+  object-fit: cover;
+}
+    .banner-container {
+  position: relative;
+  text-align: center;
+  color: #F1E2BB;
+  font-family: 'Cinzel', serif;
+}
+
+.banner-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 200px;
+}
+
+    .banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  max-width: 90%;
+  padding: .9rem;
+  box-sizing: border-box;
+}
+
+.banner-text h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.banner-line {
+  width: 200px;
+  height: 2px;
+  background-color: #F1E2BB;
+  margin: 0.4rem auto;
+}
+
+.banner-text p {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .banner-text h1 {
+    font-size: 1rem; /* Was 0.9rem */
+  }
+
+  .banner-text p {
+    font-size: 0.85rem; /* Was 0.6rem — now closer to navbar size */
+      white-space: nowrap;
+  }
+
+  .banner-line {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .banner-text {
+    padding: 0.5rem 0; /* or less */
+  }
+}
+
+.banner-container a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.banner-container a:hover .banner-text {
+  opacity: 0.9;
+}
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+nav {
+  background-color: var(--text-dark);
+  color: var(--background);
+  font-family: 'Cinzel', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3.5rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+    nav a {
+      color: var(--background);
+      margin: 0 1.5rem;
+      text-decoration: none;
+      position: relative;
+    }
+
+
+nav a#cart.has-items::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: absolute;
+  top: -2px;
+  right: -12px;
+}
+
+
+@media (max-width: 600px) {
+  nav a#cart::after {
+    top: 2px;
+    right: -10px;
+  }
+}
+@media (max-width: 600px) {
+  nav a {
+    font-size: 0.8rem;
+    margin: 0 0.6rem;
+  }
+}
+@media (max-width: 600px) {
+  nav {
+    height: 2rem;
+  }
+}
+
+
+nav {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+
+
+    
+    .subtotal {
+      text-align: right;
+      font-weight: bold;
+      margin-top: 2rem;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .actions a, .actions button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+ .container {
+	   flex: 1;
+	   padding-top: 32px;
+	   width: 94%;
+padding: 0 1rem 80px;
+
+  max-width: 600px; /* or whatever works for your layout */
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+	  
+
+    @media (max-width: 600px) {
+  .actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .actions a,
+  .actions button {
+    width: 100%;
+    text-align: center;
+  }
+}
+    .cart-button {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  width: auto;        /* Prevents full width */
+  max-width: 200px;   /* Optional limit */
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+
+
+
+
+    
+.site-footer {
+  background-color: var(--text-dark);
+  color: var(--background);
+	padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  flex: 1 1 300px;
+}
+
+.footer-column h3 {
+  font-family: 'Cinzel', serif;
+  margin-bottom: 0.5rem;
+  color: var(--background);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+    img, button, input, select, textarea {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+	  
+  </style>
+</head>
+<body>  
+<div class="banner-container">
+  <a href="index.html">
+    <img src="images/githubwebsitebanner03.jpg" alt="Banner" />
+    <div class="banner-text">
+      <h1>Jasmine Olivas</h1>
+      <div class="banner-line"></div>
+      <p>Fantasy Author & Illustrator</p>
+    </div>
+  </a>
+</div>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="booktitle.html">Book</a>
+  <a href="about.html">About Me</a>
+  <a href="cart.html" id="cart">Cart</a>
+</nav>
+
+	
+  <div class="container">
+    <h1>Shopping Cart</h1>
+    <div id="cartPageContents"></div>
+    <div class="subtotal" id="subtotalDisplay"></div>
+<div class="actions">
+  <a href="index.html" class="cart-button">Continue Shopping</a>
+  <button onclick="location.href='checkout.html'" class="cart-button">Proceed to Checkout</button>
+</div>
+  </div>
+  
+  
+<div class="site-footer">
+  <div class="footer-columns">
+    <div class="footer-column">
+      <h3>Shipping</h3>
+      <p>Free USPS shipping on most orders. For large or unusual shipments, I’ll contact you directly. All orders are printed and packaged by hand in the USA.</p>
+    </div>
+    <div class="footer-column">
+      <h3>Returns</h3>
+      <p>Returns are not accepted, but if anything arrives damaged or incorrect, please contact me so I can make it right.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 [Your Name or Brand]. All rights reserved.</p>
+  </div>
+</div>
+
+  <script>
+    function renderCartPage() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || {};
+      const container = document.getElementById('cartPageContents');
+      const subtotalEl = document.getElementById('subtotalDisplay');
+
+      if (Object.keys(cart).length === 0) {
+        container.innerHTML = '<p>Your cart is empty.</p>';
+        subtotalEl.textContent = '';
+        return;
+      }
+
+      let html = '';
+      let total = 0;
+
+      for (let id in cart) {
+        const quantity = cart[id];
+        const price = id.includes('hardcover') ? 30 : 20;
+        total += quantity * price;
+
+html += `
+  <div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+    <span><strong>${id.replace('booktitle_', '').toUpperCase()}</strong></span>
+    <span style="display: flex; align-items: center; gap: 0.5rem;">
+      <button onclick="updateQuantity('${id}', -1)">−</button>
+      <span>${quantity}</span>
+      <button onclick="updateQuantity('${id}', 1)">+</button>
+      <button onclick="removeItem('${id}')">🗑</button>
+    </span>
+  </div>
+`;
+
+      }
+
+      container.innerHTML = html;
+subtotalEl.innerHTML = `<strong>Subtotal: $${total}</strong>`;
+updateCartDot();
+    }
+
+    function updateQuantity(id, change) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || {};
+      if (!cart[id]) return;
+      cart[id] += change;
+      if (cart[id] <= 0) delete cart[id];
+      localStorage.setItem('cart', JSON.stringify(cart));
+renderCartPage();
+updateCartDot();
+
+    }
+
+    function removeItem(id) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || {};
+      delete cart[id];
+      localStorage.setItem('cart', JSON.stringify(cart));
+renderCartPage();
+updateCartDot();
+
+    }
+
+function updateCartDot() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  const hasItems = Object.keys(cart).length > 0;
+  const cartLink = document.getElementById('cart');
+
+  if (cartLink) {
+    if (hasItems) {
+      cartLink.classList.add('has-items');
+    } else {
+      cartLink.classList.remove('has-items');
+    }
+  }
+}
+
+	  
+window.onload = () => {
+  renderCartPage();
+  updateCartDot();
+};
+
+  </script>
+</body>
+</html>
