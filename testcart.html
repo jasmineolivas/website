@@ -108,18 +108,19 @@
       text-align: center;
       margin-top: 1rem;
     }
-
 nav {
   background-color: var(--text-dark);
   color: var(--background);
   font-family: 'Cinzel', serif;
-  display: flex;
+  display: flex !important;
   justify-content: center;
   align-items: center;
   height: 3.5rem;
   overflow: hidden;
   position: relative;
   z-index: 10;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
     nav a {
@@ -141,13 +142,6 @@ nav a#cart.has-items::after {
   right: -12px;
 }
 
-
-
-nav {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
 
 
 
