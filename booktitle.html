@@ -580,21 +580,19 @@ function updateQuantity(id, change) {
   if (cart[id] <= 0) {
     delete cart[id];
   }
-
   localStorage.setItem('cart', JSON.stringify(cart));
-renderCartPage();
-updateCartDot();
-
+  renderCart(); // <- this updates the drawer view
+  updateCartDot();
 }
 
 function removeItem(id) {
   const cart = JSON.parse(localStorage.getItem('cart')) || {};
   delete cart[id];
   localStorage.setItem('cart', JSON.stringify(cart));
-renderCartPage();
-updateCartDot();
-
+  renderCart(); // <- same here
+  updateCartDot();
 }
+
 
 
   // ✅ Keep drawer open/close behavior
