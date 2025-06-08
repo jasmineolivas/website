@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Your Cart</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Roboto&display=swap" rel="stylesheet">
   <style>
@@ -11,8 +11,7 @@
       --background: #F1E2BB;
       --text-dark: #171516;
     }
-
-    body {
+  body {
       font-family: 'Roboto', sans-serif;
       background-color: white;
       color: var(--text-dark);
@@ -41,9 +40,7 @@
   max-height: 200px;
 }
 
-    
-
-.banner-text {
+    .banner-text {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -74,23 +71,25 @@
 
 @media (max-width: 900px) {
   .banner-text h1 {
-    font-size: .9rem;
+    font-size: 1rem; /* Was 0.9rem */
   }
 
   .banner-text p {
-    font-size: 0.6rem;
+    font-size: 0.85rem; /* Was 0.6rem — now closer to navbar size */
+      white-space: nowrap;
   }
 
   .banner-line {
-    width: 90px;
+    display: none;
   }
 }
 
+@media (max-width: 900px) {
+  .banner-text {
+    padding: 0.5rem 0; /* or less */
+  }
+}
 
-
-
-
-    
 .banner-container a {
   text-decoration: none;
   color: inherit;
@@ -100,8 +99,6 @@
 .banner-container a:hover .banner-text {
   opacity: 0.9;
 }
-
-
 
     h1 {
       font-family: 'Cinzel', serif;
@@ -121,7 +118,6 @@ nav {
   position: relative;
   z-index: 10;
 }
-
 
     nav a {
       color: var(--background);
@@ -149,11 +145,22 @@ nav a#cart::after {
 }
 @media (max-width: 600px) {
   nav a {
-    font-size: 0.9rem;
-    margin: 0 0.8rem;
+    font-size: 0.8rem;
+    margin: 0 0.6rem;
+  }
+}
+@media (max-width: 600px) {
+  nav {
+    height: 2rem;
   }
 }
 
+
+
+
+
+
+    
     .subtotal {
       text-align: right;
       font-weight: bold;
@@ -175,6 +182,10 @@ nav a#cart::after {
       font-weight: bold;
       cursor: pointer;
     }
+
+
+
+    
     .container {
   max-width: 600px; /* or whatever works for your layout */
   margin: 0 auto;
@@ -208,36 +219,68 @@ nav a#cart::after {
   white-space: nowrap;
 }
 
-.fake-footer {
-  margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 1px solid #ddd;
+
+
+
+
+
+    
+.site-footer {
+  background-color: var(--text-dark);
+  color: var(--background);
   font-size: 0.9rem;
-  color: #555;
 }
 
 .footer-columns {
   display: flex;
-  justify-content: space-between;
-  gap: 2rem;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  gap: 2rem;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.footer-columns p {
-  flex: 1;
-  min-width: 200px;
+.footer-column {
+  flex: 1 1 300px;
 }
 
-.copyright {
+.footer-column h3 {
+  font-family: 'Cinzel', serif;
+  margin-bottom: 0.5rem;
+  color: var(--background);
+}
+
+.footer-bottom {
   text-align: center;
+  margin-top: 2rem;
   font-size: 0.8rem;
-  color: #999;
+  opacity: 0.8;
+}
+    img, button, input, select, textarea {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+html, body {height: 100%;}
+#wrap {min-height: 100%;}
+#main {overflow:auto;
+	padding-bottom: 300px;}  /* must be same height as the footer */
+#footer {position: relative;
+	margin-top: -300px; /* negative value of footer height */
+	height: 300px;
+	clear:both;} 
+
+html, body {
+  overflow-x: hidden; /* prevents accidental sideways scroll */
 }
 
   </style>
 </head>
 <body>
+
+<div class="bigbox">
+  
 <div class="banner-container">
   <a href="index.html">
     <img src="images/githubwebsitebanner03.jpg" alt="Banner" />
@@ -264,15 +307,24 @@ nav a#cart::after {
   <a href="index.html" class="cart-button">Continue Shopping</a>
   <button onclick="location.href='checkout.html'" class="cart-button">Proceed to Checkout</button>
 </div>
-
   </div>
   
-<div class="fake-footer">
+</div> 
+  
+<div class="site-footer">
   <div class="footer-columns">
-    <p><strong>Shipping & Returns</strong><br>All sales final unless damaged in shipping.</p>
-    <p><strong>Contact</strong><br>contact@myauthorname.com</p>
+    <div class="footer-column">
+      <h3>Shipping</h3>
+      <p>Free USPS shipping on most orders. For large or unusual shipments, I’ll contact you directly. All orders are printed and packaged by hand in the USA.</p>
+    </div>
+    <div class="footer-column">
+      <h3>Returns</h3>
+      <p>Returns are not accepted, but if anything arrives damaged or incorrect, please contact me so I can make it right.</p>
+    </div>
   </div>
-  <p class="copyright">© 2025 Jasmine Olivas</p>
+  <div class="footer-bottom">
+    <p>&copy; 2025 [Your Name or Brand]. All rights reserved.</p>
+  </div>
 </div>
 
   <script>
