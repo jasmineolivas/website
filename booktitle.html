@@ -523,15 +523,18 @@ html, body {
   }
     
   // ✅ Add to cart using selected edition
-  function addToCart() {
-    const productId = currentEdition === 'hardcover' ? 'booktitle_hardcover' : 'booktitle_paperback';
-    const cart = JSON.parse(localStorage.getItem('cart')) || {};
-    cart[productId] = (cart[productId] || 0) + 1;
-    localStorage.setItem('cart', JSON.stringify(cart));
-    renderCart();
+function addToCart() {
+  const productId = currentEdition === 'hardcover' ? 'booktitle_hardcover' : 'booktitle_paperback';
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  cart[productId] = (cart[productId] || 0) + 1;
+  localStorage.setItem('cart', JSON.stringify(cart));
+  
+  renderCart(); // Update drawer content
+  updateCartDot(); // ✅ Add this line
 
-    document.getElementById('cartDrawer').classList.add('open');
-  }
+  document.getElementById('cartDrawer').classList.add('open');
+}
+
 
 
 function renderCart() {
