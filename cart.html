@@ -13,6 +13,8 @@
     }
     
     body {
+        display: grid;
+  grid-template-rows: auto 1fr auto;
       font-family: 'Roboto', sans-serif;
       background-color: white;
       color: var(--text-dark);
@@ -272,29 +274,35 @@ nav a#cart::after {
 }
 
 html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  height: 100%;
-    width: 100%;
 }
 
-.site-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-    width: 100%;
+.container {
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+    min-height: 60vh;
 }
 
-    
-    
-
-    
 .site-footer {
-
   background-color: var(--text-dark);
   color: var(--background);
   padding: 2rem 1rem;
   font-size: 0.9rem;
+  text-align: center;
+}
+    
+
+    
+.site-footer {
+  background-color: var(--text-dark);
+  color: var(--background);
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  text-align: center;
 }
 
 .footer-columns {
@@ -329,7 +337,7 @@ html, body {
   </style>
 </head>
 <body>
-  <div class="site-wrapper">
+
 <div class="banner-container">
   <a href="index.html">
     <img src="images/githubwebsitebanner03.jpg" alt="Banner" />
@@ -380,7 +388,7 @@ html, body {
     <p>&copy; 2025 [Your Name or Brand]. All rights reserved.</p>
   </div>
 </footer>
-  </div> <!-- end .site-wrapper -->
+
 
 
 
