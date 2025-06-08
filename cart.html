@@ -119,7 +119,7 @@ nav {
   height: 3.5rem;
   overflow: hidden;
   position: relative;
-  z-index: 9999;
+  z-index: 10;
 }
 
     nav a {
@@ -143,24 +143,17 @@ nav a#cart.has-items::after {
 
 
 @media (max-width: 600px) {
-  nav a#cart.has-items::after {
+  nav a#cart::after {
     top: 2px;
     right: -10px;
   }
 }
-
 @media (max-width: 600px) {
   nav a {
-    font-size: 0.8rem;
-    margin: 0 0.6rem;
+    font-size: 0.9rem;
+    margin: 0 0.8rem;
   }
 }
-@media (max-width: 600px) {
-  nav {
-    height: 2rem;
-  }
-}
-
 
 
 
