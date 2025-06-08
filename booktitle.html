@@ -596,8 +596,6 @@ updateCartDot();
 
 }
 
-    
-  window.onload = renderCart;
 
   // ✅ Keep drawer open/close behavior
   function openCart() {
@@ -631,9 +629,10 @@ document.addEventListener('click', (e) => {
 
 window.onload = () => {
   renderCart?.();       // For booktitle.html drawer cart
-  renderCartPage?.();   // For full cart.html page (won’t run unless the function exists)
-  updateCartDot?.();    // Update the dot
+  renderCartPage?.();   // For cart.html, no effect here
+  updateCartDot?.();    // Cart dot logic
 };
+
 
 document.addEventListener('DOMContentLoaded', () => {
   renderCart?.();       // Safe redundancy for older browsers
