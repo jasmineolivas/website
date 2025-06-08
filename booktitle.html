@@ -516,7 +516,10 @@ html, body {
 <a href="cart.html" class="button">Go to Cart</a>
 
   </div>
-  <div id="cartTab" onclick="openCart()">🛒</div>
+
+  
+<div id="cartTab">🛒</div>
+
 
 <footer class="site-footer">
   <div class="footer-columns">
@@ -666,6 +669,15 @@ window.onload = () => {
 document.addEventListener('DOMContentLoaded', () => {
   renderCart?.();       // Safe redundancy for older browsers
 });
+
+      document.addEventListener('DOMContentLoaded', () => {
+    const cartTab = document.getElementById('cartTab');
+    if (cartTab) {
+      cartTab.addEventListener('click', () => {
+        openCart?.();
+      });
+    }
+  });
 
 </script>
 </body>
