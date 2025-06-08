@@ -116,11 +116,12 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 3.5rem;
+  min-height: 3.5rem; /* ✅ use this instead of height */
   overflow: hidden;
   position: relative;
   z-index: 10;
 }
+
 
     nav a {
       color: var(--background);
