@@ -140,12 +140,25 @@ nav a#cart::after {
   right: -12px; /* adjust dot position */
 }
 
+nav a#cart.has-items::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: absolute;
+  top: -2px;
+  right: -12px;
+}
+
+
 @media (max-width: 600px) {
-  nav a#cart::after {
+  nav a#cart.has-items::after {
     top: 2px;
     right: -10px;
   }
 }
+
 @media (max-width: 600px) {
   nav a {
     font-size: 0.8rem;
@@ -368,7 +381,7 @@ html += `
 
       container.innerHTML = html;
 subtotalEl.innerHTML = `<strong>Subtotal: $${total}</strong>`;
-
+updateCartDot();
     }
 
     function updateQuantity(id, change) {
@@ -377,17 +390,40 @@ subtotalEl.innerHTML = `<strong>Subtotal: $${total}</strong>`;
       cart[id] += change;
       if (cart[id] <= 0) delete cart[id];
       localStorage.setItem('cart', JSON.stringify(cart));
-      renderCartPage();
+renderCartPage();
+updateCartDot();
+
     }
 
     function removeItem(id) {
       const cart = JSON.parse(localStorage.getItem('cart')) || {};
       delete cart[id];
       localStorage.setItem('cart', JSON.stringify(cart));
-      renderCartPage();
+renderCartPage();
+updateCartDot();
+
     }
 
-    window.onload = renderCartPage;
+function updateCartDot() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  const hasItems = Object.keys(cart).length > 0;
+  const cartLink = document.getElementById('cart');
+
+  if (cartLink) {
+    if (hasItems) {
+      cartLink.classList.add('has-items');
+    } else {
+      cartLink.classList.remove('has-items');
+    }
+  }
+}
+
+	  
+window.onload = () => {
+  renderCartPage();
+  updateCartDot();
+};
+
   </script>
 </body>
 </html>
