@@ -17,6 +17,8 @@
       color: var(--text-dark);
       margin: 0;
       padding: 0;
+	    height: 100%;
+	    display: flex;
     }
     .site-banner img {
   width: 100%;
@@ -184,14 +186,29 @@ nav a#cart::after {
     }
 
 
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
 
-    
-    .container {
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+ .container {
+	   flex: 1;
+	   padding-top: 32px;
+	   width: 94%;
   max-width: 600px; /* or whatever works for your layout */
   margin: 0 auto;
   padding: 0 1rem; /* Adds breathing room on mobile */
   box-sizing: border-box;
 }
+
+	  
 
     @media (max-width: 600px) {
   .actions {
@@ -263,16 +280,6 @@ nav a#cart::after {
   box-sizing: border-box;
 }
 
-html, body {height: 100%;}
-  overflow-x: hidden; /* prevents accidental sideways scroll */
-#bigbox {min-height: 100%;}
-#container {overflow:auto;
-	padding-bottom: 150px;}  /* must be same height as the footer */
-#site-footer {position: relative;
-	margin-top: -150px; /* negative value of footer height */
-	height: 150px;
-	clear:both;} 
-
 	  
   </style>
 </head>
@@ -295,7 +302,6 @@ html, body {height: 100%;}
   <a href="cart.html" id="cart">Cart</a>
 </nav>
 
-<div class="bigbox">
 	
   <div class="container">
     <h1>Shopping Cart</h1>
@@ -307,7 +313,6 @@ html, body {height: 100%;}
 </div>
   </div>
   
-</div> 
   
 <div class="site-footer">
   <div class="footer-columns">
