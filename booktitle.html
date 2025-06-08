@@ -116,7 +116,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 3.5rem;
+  min-height: 3.5rem; /* ✅ use this instead of height */
   overflow: hidden;
   position: relative;
   z-index: 10;
@@ -130,34 +130,35 @@ nav {
       position: relative;
     }
 
-nav a#cart::after {
+
+nav a#cart.has-items::after {
   content: '';
   width: 8px;
   height: 8px;
   background: var(--accent);
   border-radius: 50%;
   position: absolute;
-  top: -2px; /* move up or down */
-  right: -12px; /* adjust dot position */
+  top: -2px;
+  right: -12px;
 }
 
+
 @media (max-width: 600px) {
-  nav a#cart::after {
-    top: 2px;
-    right: -10px;
+  nav {
+    min-height: 2rem;
   }
-}
-@media (max-width: 600px) {
+
   nav a {
     font-size: 0.8rem;
     margin: 0 0.6rem;
   }
-}
-@media (max-width: 600px) {
-  nav {
-    height: 2rem;
+
+  nav a#cart.has-items::after {
+    top: 2px;
+    right: -10px;
   }
 }
+
 
 
     .product-layout {
@@ -581,14 +582,18 @@ function updateQuantity(id, change) {
   }
 
   localStorage.setItem('cart', JSON.stringify(cart));
-  renderCart();
+renderCartPage();
+updateCartDot();
+
 }
 
 function removeItem(id) {
   const cart = JSON.parse(localStorage.getItem('cart')) || {};
   delete cart[id];
   localStorage.setItem('cart', JSON.stringify(cart));
-  renderCart();
+renderCartPage();
+updateCartDot();
+
 }
 
     
@@ -613,10 +618,27 @@ document.addEventListener('click', (e) => {
   }
 });
 
+    function updateCartDot() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  const cartLink = document.getElementById('cart');
+  if (!cartLink) return;
+  if (Object.keys(cart).length > 0) {
+    cartLink.classList.add('has-items');
+  } else {
+    cartLink.classList.remove('has-items');
+  }
+}
 
-  // ✅ Restore cart content on page load
-  window.onload = renderCart;
-  document.addEventListener('DOMContentLoaded', renderCart);
+window.onload = () => {
+  renderCart?.();       // For booktitle.html drawer cart
+  renderCartPage?.();   // For full cart.html page (won’t run unless the function exists)
+  updateCartDot?.();    // Update the dot
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderCart?.();       // Safe redundancy for older browsers
+});
+
 </script>
 </body>
 </html>
