@@ -123,7 +123,6 @@ nav {
   z-index: 10;
 }
 
-
     nav a {
       color: var(--background);
       margin: 0 1.5rem;
@@ -161,28 +160,94 @@ nav a#cart::after {
 }
 
 
-    .subtotal {
-      text-align: right;
-      font-weight: bold;
-      margin-top: 2rem;
-    }
 
-    .actions {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 2rem;
-    }
 
-    .actions a, .actions button {
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      text-decoration: none;
-      font-weight: normal;
-      cursor: pointer;
-    }
 
+.cart-item {
+  border: 1px solid var(--accent);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 6px;
+  background-color: #fff7f2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cart-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+}
+
+.cart-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.cart-controls button {
+  background-color: transparent;
+  border: 1px solid var(--text-dark);
+  color: var(--text-dark);
+  font-size: 1rem;
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.cart-controls button:hover {
+  background-color: var(--background);
+}
+
+.cart-quantity {
+  min-width: 2rem;
+  text-align: center;
+  display: inline-block;
+}
+
+.remove-item {
+  border-color: #b00000;
+  color: #b00000;
+}
+
+.remove-item:hover {
+  background-color: #ffe5e5;
+}
+
+.subtotal {
+  text-align: right;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.actions a,
+.actions button {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 4px;
+  flex: 1 1 45%;
+  text-align: center;
+}
+
+
+    
+
+    
 
 
     @media (max-width: 600px) {
@@ -205,56 +270,6 @@ nav a#cart::after {
     text-align: center;
   }
 }
-    .cart-button {
-  background-color: var(--accent);
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  text-decoration: none;
-  font-weight: normal;
-  cursor: pointer;
-  width: auto;        /* Prevents full width */
-  max-width: 200px;   /* Optional limit */
-  text-align: center;
-  white-space: nowrap;
-}
-    .cart-controls button {
-  background-color: transparent;
-  border: 1px solid var(--text-dark);
-  color: var(--text-dark);
-  font-size: 1rem;
-  padding: 0.3rem 0.6rem;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
-}
-
-.cart-controls button:hover {
-  background-color: var(--background);
-}
-.button {
-  background-color: var(--accent);
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-  font-weight: normal;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 4px;
-  white-space: nowrap;
-  transition: background-color 0.2s ease;
-}
-
-.button:hover {
-  background-color: #c57e4e; /* Slightly darker for hover */
-}
-
-
-    
 
 html, body {
   margin: 0;
@@ -308,34 +323,6 @@ html, body {
   opacity: 0.8;
 }
 
-
-#cartPageContents {
-  width: 100%;
-}
-.cart-item {
-  max-width: 100%;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #ddd;
-}
-
-    .container {
-  flex: 1;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  box-sizing: border-box;
-}
-
-#cartPageContents, #cartPageContents .cart-item {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.cart-item-inner {
-  max-width: 800px;
-  margin: 0 auto;
-  width: 100%;
-}
 
 
     
@@ -395,6 +382,8 @@ html, body {
 </footer>
   </div> <!-- end .site-wrapper -->
 
+
+
   <script>
     function renderCartPage() {
       const cart = JSON.parse(localStorage.getItem('cart')) || {};
@@ -415,20 +404,23 @@ html, body {
         const price = id.includes('hardcover') ? 30 : 20;
         total += quantity * price;
 
-html += `<div class="cart-item"><div class="cart-item-inner">
-    <span><strong>${id.replace('booktitle_', '').toUpperCase()}</strong></span>
-<span class="cart-controls" style="display: flex; align-items: center; gap: 0.5rem;">
-  <button onclick="updateQuantity('${id}', -1)">−</button>
-  <span>${quantity}</span>
-  <button onclick="updateQuantity('${id}', 1)">+</button>
-  <button onclick="removeItem('${id}')">🗑</button>
-</span>
-</div></div>`;
+html += `
+  <div class="cart-item">
+    <div class="cart-title"><strong>${id.replace('booktitle_', '').toUpperCase()}</strong></div>
+    <div class="cart-controls">
+      <button onclick="updateQuantity('${id}', -1')">−</button>
+      <span class="cart-quantity">${quantity}</span>
+      <button onclick="updateQuantity('${id}', 1')">+</button>
+      <button class="remove-item" onclick="removeItem('${id}')">🗑</button>
+    </div>
+  </div>
+`;
+
 
       }
 
       container.innerHTML = html;
-subtotalEl.innerHTML = `<strong>Subtotal: $${total}</strong>`;
+subtotalEl.innerHTML = <strong>Subtotal: $${total}</strong>;
 
     }
 
@@ -449,6 +441,27 @@ subtotalEl.innerHTML = `<strong>Subtotal: $${total}</strong>`;
     }
 
     window.onload = renderCartPage;
+
+    function updateCartDot() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  const cartLink = document.getElementById('cart');
+  if (!cartLink) return;
+
+  if (Object.keys(cart).length === 0) {
+    cartLink.removeAttribute('id'); // removes the ID that triggers the dot
+  } else {
+    cartLink.setAttribute('id', 'cart');
+  }
+}
+
+window.onload = function () {
+  renderCartPage();
+  updateCartDot();
+};
+
   </script>
+
+
+  
 </body>
 </html>
