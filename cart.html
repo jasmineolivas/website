@@ -387,6 +387,8 @@ html, body {
   <script>
     function renderCartPage() {
       const cart = JSON.parse(localStorage.getItem('cart')) || {};
+      console.log("Cart contents:", cart);
+
       const container = document.getElementById('cartPageContents');
       const subtotalEl = document.getElementById('subtotalDisplay');
 
