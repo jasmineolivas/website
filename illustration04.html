@@ -294,11 +294,17 @@ nav a#cart.has-items::after {
 
 /* Individual cart items */
 .cart-item {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ccc;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+    .quantity-controls {
+  display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .cart-item:last-child {
@@ -618,9 +624,9 @@ function renderCart() {
     total += quantity * price;
 
     html += `
-      <div style="margin-bottom: 1rem;">
+      <div class="cart-item">
         <p>${id}</p>
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <div class="quantity-controls">
           <button onclick="updateQuantity('${id}', -1)">−</button>
           <span>${quantity}</span>
           <button onclick="updateQuantity('${id}', 1)">+</button>
@@ -630,10 +636,10 @@ function renderCart() {
     `;
   }
 
-html += `<p><strong>Subtotal: $${total.toFixed(2)}</strong></p>`;
-
+  html += `<p><strong>Subtotal: $${total.toFixed(2)}</strong></p>`;
   cartContents.innerHTML = html;
 }
+
     document.getElementById('cartDrawer').addEventListener('click', (e) => {
   e.stopPropagation();
 });
