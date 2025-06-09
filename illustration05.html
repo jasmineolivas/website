@@ -576,7 +576,7 @@ function renderCart() {
     return;
   }
 
-  let html = '';
+  cartContents.innerHTML = ''; // Clear existing content
   let total = 0;
 
   for (let id in cart) {
@@ -584,29 +584,40 @@ function renderCart() {
     const price = id.includes('nineByTwelve') ? 12.99 : 9.99;
     total += quantity * price;
 
-html += `
-  <div class="cart-item">
-    <div class="item-info">
-      <p>${id}</p>
-    </div>
-    <div class="quantity-controls">
-      <button onclick="updateQuantity('${id}', -1)">−</button>
-      <span>${quantity}</span>
-      <button onclick="updateQuantity('${id}', 1)">+</button>
-      <button onclick="removeItem('${id}')">🗑</button>
-    </div>
-  </div>
-`;
+    const itemDiv = document.createElement('div');
+    itemDiv.className = 'cart-item';
 
+    const title = document.createElement('p');
+    title.textContent = id;
+
+    const controls = document.createElement('div');
+    controls.className = 'quantity-controls';
+
+    const minusBtn = document.createElement('button');
+    minusBtn.textContent = '−';
+    minusBtn.onclick = () => updateQuantity(id, -1);
+
+    const plusBtn = document.createElement('button');
+    plusBtn.textContent = '+';
+    plusBtn.onclick = () => updateQuantity(id, 1);
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = '🗑';
+    deleteBtn.onclick = () => removeItem(id);
+
+    const count = document.createElement('span');
+    count.textContent = quantity;
+
+    controls.append(minusBtn, count, plusBtn, deleteBtn);
+    itemDiv.append(title, controls);
+    cartContents.appendChild(itemDiv);
   }
 
-html += `<p><strong>Subtotal: $${total.toFixed(2)}</strong></p>`;
-
-  cartContents.innerHTML = html;
+  const subtotal = document.createElement('p');
+  subtotal.innerHTML = `<strong>Subtotal: $${total.toFixed(2)}</strong>`;
+  cartContents.appendChild(subtotal);
 }
-    document.getElementById('cartDrawer').addEventListener('click', (e) => {
-  e.stopPropagation();
-});
+
 
 
 function updateQuantity(id, change) {
