@@ -388,7 +388,8 @@ for (let id in cart) {
 
   html += `
     <div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-      <span><a href="${link}" style="text-decoration: none; color: inherit;">${name} — $${price.toFixed(2)}</a></span>
+<span><a href="${link}" style="text-decoration: none; color: inherit;">${name}</a></span>
+
       <span style="display: flex; align-items: center; gap: 0.5rem;">
         <button onclick="updateQuantity('${id}', -1)">−</button>
         <span>${quantity}</span>
