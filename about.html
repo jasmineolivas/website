@@ -347,6 +347,21 @@ html, body {
       </div>
     </footer>
   </div> <!-- end site-wrapper -->
+
+    <script>
+  function updateCartDot() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const cartLink = document.getElementById('cart');
+    if (!cartLink) return;
+    if (Object.keys(cart).length > 0) {
+      cartLink.classList.add('has-items');
+    } else {
+      cartLink.classList.remove('has-items');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', updateCartDot);
+</script>
 </body>
 </html>
     
