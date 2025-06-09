@@ -402,7 +402,8 @@ for (let id in cart) {
 
 
       container.innerHTML = html;
-subtotalEl.innerHTML = `<strong>Subtotal: $${total}</strong>`;
+subtotalEl.innerHTML = `<strong>Subtotal: $${total.toFixed(2)}</strong>`;
+
 updateCartDot();
     }
 
