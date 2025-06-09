@@ -636,7 +636,8 @@ function renderCart() {
     `;
   }
 
-  html += `<p><strong>Subtotal: $${total}</strong></p>`;
+html += `<p><strong>Subtotal: $${total.toFixed(2)}</strong></p>`;
+
   cartContents.innerHTML = html;
 }
     document.getElementById('cartDrawer').addEventListener('click', (e) => {
