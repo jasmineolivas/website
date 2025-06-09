@@ -713,8 +713,11 @@ window.onload = () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderCart?.();       // Safe redundancy for older browsers
+  renderCart?.();       // For product page drawer
+  renderCartPage?.();   // For cart.html only
+  updateCartDot?.();    // Ensures the dot shows up from localStorage
 });
+
 
 </script>
 </body>
