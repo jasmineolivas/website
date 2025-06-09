@@ -620,7 +620,7 @@ function renderCart() {
 
   for (let id in cart) {
     const quantity = cart[id];
-    const price = id.includes('hardcover') ? 30 : 20;
+    const price = id.includes('hardcover') ? 29.99 : 19.99;
     total += quantity * price;
 
     html += `
