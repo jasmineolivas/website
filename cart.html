@@ -234,7 +234,6 @@ padding: 0 1rem 80px;
   gap: 1rem;
 }
 
-.actions .cart-button,
 .actions a,
 .actions button {
   background-color: var(--accent);
@@ -261,6 +260,24 @@ padding: 0 1rem 80px;
   background-color: #b96c3f;
 }
 
+.cart-button {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  /* Don't add width/max-width/white-space here */
+}
+
+
+	  
 @media (max-width: 600px) {
   .actions {
     flex-direction: column;
@@ -268,15 +285,15 @@ padding: 0 1rem 80px;
     gap: 1rem;
   }
 
+  .actions .cart-button,
   .actions a,
-  .actions button,
-  .actions .cart-button {
-    width: 100% !important;     /* force full width */
-    max-width: none !important; /* remove max width */
-    white-space: normal !important; /* allow wrapping */
-    display: block !important;  /* ensure stacking */
+  .actions button {
+    width: 100%;
+    display: block;
   }
 }
+
+
 
 
   </style>
