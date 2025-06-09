@@ -539,13 +539,6 @@ html, body {
     </div>
   </div>
 
-  <div class="amazon-section">
-    <h3>Also Available on Amazon</h3>
-    <p>Prefer to buy through Amazon? Choose your format below:</p>
-<a href="https://www.amazon.com/dp/examplekindle" target="_blank" class="button outline">Kindle</a>
-<a href="https://www.amazon.com/dp/examplepaperback" target="_blank" class="button outline">Paperback</a>
-
-  </div>
 
 <div class="cart-drawer" id="cartDrawer">
   <div class="cart-header">
@@ -588,7 +581,7 @@ html, body {
     document.getElementById(version + 'Btn').classList.add('active');
 
     const priceTag = document.getElementById('price');
-    priceTag.textContent = version === 'nineByTwelve' ? "$12.99" : "$9.99";
+    priceTag.textContent = version === 'hardcover' ? "$12.99" : "$9.99";
   }
     
   // ✅ Add to cart using selected edition
@@ -699,17 +692,17 @@ document.addEventListener('click', (e) => {
 }
 
 window.onload = () => {
-  renderCart?.();       // For booktitle.html drawer cart
-  renderCartPage?.();   // For cart.html, no effect here
-  updateCartDot?.();    // Cart dot logic
+  if (typeof renderCart === 'function') renderCart();
+  if (typeof renderCartPage === 'function') renderCartPage();
+  updateCartDot();
 };
 
-
 document.addEventListener('DOMContentLoaded', () => {
-  renderCart?.();       // For product page drawer
-  renderCartPage?.();   // For cart.html only
-  updateCartDot?.();    // Ensures the dot shows up from localStorage
+  if (typeof renderCart === 'function') renderCart();
+  if (typeof renderCartPage === 'function') renderCartPage();
+  updateCartDot();
 });
+
 
 
 </script>
