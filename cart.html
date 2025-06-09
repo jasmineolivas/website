@@ -372,7 +372,7 @@ padding: 0 1rem 80px;
 
 html += `
   <div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-    <span><strong>${id.replace('booktitle_', '').toUpperCase()}</strong></span>
+    <span>${id.replace('booktitle_', '').toUpperCase()}</span>
     <span style="display: flex; align-items: center; gap: 0.5rem;">
       <button onclick="updateQuantity('${id}', -1)">−</button>
       <span>${quantity}</span>
