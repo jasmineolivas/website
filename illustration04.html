@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jasmine Olivas | Art Prints</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Roboto&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent: #D98F59;
+      --background: #F1E2BB;
+      --text-dark: #171516;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: white;
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
+    }
+    .site-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 200px; /* optional: keep it compact */
+  object-fit: cover;
+}
+    .banner-container {
+  position: relative;
+  text-align: center;
+  color: #F1E2BB;
+  font-family: 'Cinzel', serif;
+}
+
+.banner-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 200px;
+}
+
+    
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  max-width: 90%;
+  padding: .9rem;
+  box-sizing: border-box;
+}
+
+.banner-text h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.banner-line {
+  width: 200px;
+  height: 2px;
+  background-color: #F1E2BB;
+  margin: 0.4rem auto;
+}
+
+.banner-text p {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .banner-text h1 {
+    font-size: 1rem; /* Was 0.9rem */
+  }
+
+  .banner-text p {
+    font-size: 0.85rem; /* Was 0.6rem — now closer to navbar size */
+      white-space: nowrap;
+  }
+
+  .banner-line {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .banner-text {
+    padding: 0.5rem 0; /* or less */
+  }
+}
+
+.banner-container a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.banner-container a:hover .banner-text {
+  opacity: 0.9;
+}
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+nav {
+  background-color: var(--text-dark);
+  color: var(--background);
+  font-family: 'Cinzel', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 3.5rem; /* ✅ use this instead of height */
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+
+    nav a {
+      color: var(--background);
+      margin: 0 1.5rem;
+      text-decoration: none;
+      position: relative;
+    }
+
+
+nav a#cart.has-items::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: absolute;
+  top: -2px;
+  right: -12px;
+}
+
+
+@media (max-width: 600px) {
+  nav {
+    min-height: 2rem;
+  }
+
+  nav a {
+    font-size: 0.8rem;
+    margin: 0 0.6rem;
+  }
+
+  nav a#cart.has-items::after {
+    top: 2px;
+    right: -10px;
+  }
+}
+
+
+
+    .product-layout {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .product-image {
+      flex: 1 1 400px;
+      text-align: right;
+    }
+
+    .product-image img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+    }
+    
+
+    .product-info {
+      flex: 1 1 400px;
+      text-align: left;
+    }
+.book-price {
+  font-size: 1.25rem;
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-dark);
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+.edition-selector .version-btn {
+  border: 2px solid var(--accent);
+  background-color: white;
+  color: var(--accent);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0.25rem;
+}
+
+.edition-selector .version-btn.active {
+  background-color: var(--accent);
+  color: white;
+}
+
+
+    
+.product-info .add-to-cart {
+  padding: 0.6rem 1.2rem;
+  margin-top: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+
+
+.amazon-section {
+  max-width: 100%;
+  overflow-x: hidden;
+  padding: 1rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+
+    .amazon-section h3 {
+      font-family: 'Cinzel', serif;
+    }
+
+    .amazon-section a {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+    }
+
+
+
+
+
+    
+    .cart-drawer {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  transition: right 0.3s ease;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-drawer.open {
+  right: 0;
+}
+
+/* Header area for "Your Cart" and X */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Cinzel', serif;
+    font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.cart-close {
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Individual cart items */
+.cart-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+#cartContents button {
+  background: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+#cartContents button:hover {
+  background-color: var(--accent);
+  color: white;
+}
+
+
+
+.cart-drawer .button {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--accent);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.cart-drawer .button:hover {
+  background-color: #b96c3f;
+}
+
+
+#cartContents {
+  margin-bottom: 1rem;
+}
+
+
+    
+.button {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  min-width: 140px;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.button:hover {
+  background-color: #c57e4e;
+}
+
+.button.outline {
+  background-color: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.button.secondary {
+  background-color: #555;
+}
+
+.edition-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+
+
+@media (max-width: 600px) {
+.button, .version-btn {
+  width: 100%;
+  max-width: 300px;
+  margin: 0.5rem auto;
+  display: block;
+}
+
+
+  .edition-selector {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-to-cart {
+    width: 100%;
+  }
+
+  .product-info {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .edition-selector {
+    flex-direction: column;
+    align-items: center;
+  }
+
+.add-to-cart {
+  margin-top: 1rem;
+}
+
+
+  .product-info {
+    text-align: center;
+  }
+}
+
+
+
+    @media (max-width: 768px) {
+      .product-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .product-image,
+      .product-info {
+        text-align: center;
+      }
+    }
+
+.site-footer {
+  background-color: var(--text-dark);
+  color: var(--background);
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  flex: 1 1 300px;
+}
+
+.footer-column h3 {
+  font-family: 'Cinzel', serif;
+  margin-bottom: 0.5rem;
+  color: var(--background);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+    img, button, input, select, textarea {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+
+
+html, body {
+  overflow-x: hidden; /* prevents accidental sideways scroll */
+}
+
+  </style>
+</head>
+<body>
+<div class="banner-container">
+  <a href="index.html">
+    <img src="images/githubwebsitebanner03.jpg" alt="Banner" />
+    <div class="banner-text">
+      <h1>Jasmine Olivas</h1>
+      <div class="banner-line"></div>
+      <p>Fantasy Author & Illustrator</p>
+    </div>
+  </a>
+</div>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="booktitle.html">Book</a>
+  <a href="about.html">About Me</a>
+  <a href="cart.html" id="cart">Cart</a>
+</nav>
+
+
+  <h1>Illustration 04 Print</h1>
+  
+  <div class="product-layout">
+    <div class="product-image">
+      <img src="images/illustration04.jpg" alt="Illustration 04 Print" />
+    </div>
+    <div class="product-info">
+      <p><strong>Description:</strong> <br>
+        A totally cool illustration print from the book<br>
+        <br>
+      Chapter 30 - Carisis goes to The Witch<br>
+     <i>Here is a small summary of the section of the book that matches with the picture drawn in the illustration. It will be a short four or five sentence thing, something that exactly matches the inspiration given by that particular scene which made the illustration. Nothing too long, just a short bite, and a sales pitch.</i><br>
+    <br> 
+      A beautiful art print of the front cover, title removed. Printed on super fancy paper, cold press, what have you.<br> 
+        If you'd like a copy of this print with the title included, please message me and I'll be happy to accomodate you.<br></p>
+      <p id="price" class="book-price">$9.99</p>
+<div class="edition-selector">
+  <button onclick="selectVersion('sixByNine')" id="sixByNineBtn" class="button version-btn active">6x9</button>
+  <button onclick="selectVersion('nineByTwelve')" id="nineByTwelveBtn" class="button version-btn">9x12</button>
+</div>
+
+<button class="button add-to-cart" onclick="addToCart('booktitle')">Add to Cart</button>
+
+    </div>
+  </div>
+
+
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <span>Your Cart</span>
+    <span class="cart-close" onclick="closeCart()">×</span>
+  </div>
+  <div id="cartContents">Cart is empty.</div>
+  <a href="cart.html" class="button">Go to Cart</a>
+</div>
+
+
+
+  </div>
+<footer class="site-footer">
+  <div class="footer-columns">
+    <div class="footer-column">
+      <h3>Shipping</h3>
+      <p>Free shipping within the US via USPS. International shipping calculated at checkout. Large or bulk orders may be processed into separate shipments. Books are printed in the USA and packaged by hand.</p>
+    </div>
+    <div class="footer-column">
+      <h3>Returns</h3>
+      <p>Refunds or exchanges are accepted if the item is damaged or defective, or if the item recieved differs from the one ordered. Please contact me if any of these issues arise.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Jasmine Olivas. All rights reserved.</p>
+  </div>
+</footer>
+
+  <script>
+  // ✅ Default to paperback unless changed by user
+  let currentEdition = 'sixByNine';
+
+      // ✅ Update selected edition and price on button click
+  function selectVersion(version) {
+    currentEdition = version;
+
+    document.getElementById('sixByNineBtn').classList.remove('active');
+    document.getElementById('nineByTwelveBtn').classList.remove('active');
+    document.getElementById(version + 'Btn').classList.add('active');
+
+    const priceTag = document.getElementById('price');
+    priceTag.textContent = version === 'hardcover' ? "$12.99" : "$9.99";
+  }
+    
+  // ✅ Add to cart using selected edition
+function addToCart() {
+  const productId = currentEdition === 'nineByTwelve' ? 'Illustration 04 Print - 9x12' : 'Illustration 04 Print - 6x9';
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  cart[productId] = (cart[productId] || 0) + 1;
+  localStorage.setItem('cart', JSON.stringify(cart));
+  
+  renderCart(); // Update drawer content
+  updateCartDot(); // ✅ Add this line
+
+  document.getElementById('cartDrawer').classList.add('open');
+}
+
+
+
+function renderCart() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  const cartContents = document.getElementById('cartContents');
+
+  if (Object.keys(cart).length === 0) {
+    cartContents.innerHTML = "Cart is empty.";
+    return;
+  }
+
+  let html = '';
+  let total = 0;
+
+  for (let id in cart) {
+    const quantity = cart[id];
+    const price = id.includes('nineByTwelve') ? 12.99 : 9.99;
+    total += quantity * price;
+
+    html += `
+      <div style="margin-bottom: 1rem;">
+        <p>${id}</p>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <button onclick="updateQuantity('${id}', -1)">−</button>
+          <span>${quantity}</span>
+          <button onclick="updateQuantity('${id}', 1)">+</button>
+          <button onclick="removeItem('${id}')">🗑</button>
+        </div>
+      </div>
+    `;
+  }
+
+html += `<p><strong>Subtotal: $${total.toFixed(2)}</strong></p>`;
+
+  cartContents.innerHTML = html;
+}
+    document.getElementById('cartDrawer').addEventListener('click', (e) => {
+  e.stopPropagation();
+});
+
+
+function updateQuantity(id, change) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  if (!cart[id]) return;
+
+  cart[id] += change;
+  if (cart[id] <= 0) {
+    delete cart[id];
+  }
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCart(); // <- this updates the drawer view
+  updateCartDot();
+}
+
+function removeItem(id) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  delete cart[id];
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCart(); // <- same here
+  updateCartDot();
+}
+
+
+
+  // ✅ Keep drawer open/close behavior
+  function openCart() {
+    document.getElementById('cartDrawer').classList.add('open');
+  }
+
+  function closeCart() {
+    document.getElementById('cartDrawer').classList.remove('open');
+  }
+
+document.addEventListener('click', (e) => {
+  const drawer = document.getElementById('cartDrawer');
+  const isInsideDrawer = drawer.contains(e.target);
+  const isCartToggle = e.target.closest('.add-to-cart') || e.target.closest('#cart'); // optional cart icon logic
+
+  if (drawer.classList.contains('open') && !isInsideDrawer && !isCartToggle) {
+    closeCart();
+  }
+});
+
+    function updateCartDot() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  const cartLink = document.getElementById('cart');
+  if (!cartLink) return;
+  if (Object.keys(cart).length > 0) {
+    cartLink.classList.add('has-items');
+  } else {
+    cartLink.classList.remove('has-items');
+  }
+}
+
+window.onload = () => {
+  if (typeof renderCart === 'function') renderCart();
+  if (typeof renderCartPage === 'function') renderCartPage();
+  updateCartDot();
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof renderCart === 'function') renderCart();
+  if (typeof renderCartPage === 'function') renderCartPage();
+  updateCartDot();
+});
+
+
+
+</script>
+</body>
+</html>
