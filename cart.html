@@ -351,6 +351,19 @@ padding: 0 1rem 80px;
 </div>
 
   <script>
+
+	  const linkMap = {
+  'booktitle_paperback': 'booktitle.html',
+  'booktitle_hardcover': 'booktitle.html',
+  'coverart_6x9': 'coverart.html',
+  'coverart_8.5x11': 'coverart.html',
+  'illustration01_6x9': 'illustration01.html',
+  'illustration01_8.5x11': 'illustration01.html',
+  // add more as needed
+};
+
+
+	  
     function renderCartPage() {
       const cart = JSON.parse(localStorage.getItem('cart')) || {};
       const container = document.getElementById('cartPageContents');
@@ -365,24 +378,27 @@ padding: 0 1rem 80px;
       let html = '';
       let total = 0;
 
-      for (let id in cart) {
-        const quantity = cart[id];
-        const price = id.includes('hardcover') ? 30 : 20;
-        total += quantity * price;
+for (let id in cart) {
+  const quantity = cart[id];
+  const price = id.includes('hardcover') ? 29.99 : 19.99;
+  total += quantity * price;
 
-html += `
-  <div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-    <span>${id.replace('booktitle_', '')}</span>
-    <span style="display: flex; align-items: center; gap: 0.5rem;">
-      <button onclick="updateQuantity('${id}', -1)">−</button>
-      <span>${quantity}</span>
-      <button onclick="updateQuantity('${id}', 1)">+</button>
-      <button onclick="removeItem('${id}')">🗑</button>
-    </span>
-  </div>
-`;
+  const name = id.replace('booktitle_', '').replace(/_/g, ' ');
+  const link = linkMap[id] || '#';
 
-      }
+  html += `
+    <div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+      <span><a href="${link}" style="text-decoration: none; color: inherit;">${name} — $${price.toFixed(2)}</a></span>
+      <span style="display: flex; align-items: center; gap: 0.5rem;">
+        <button onclick="updateQuantity('${id}', -1)">−</button>
+        <span>${quantity}</span>
+        <button onclick="updateQuantity('${id}', 1)">+</button>
+        <button onclick="removeItem('${id}')">🗑</button>
+      </span>
+    </div>
+  `;
+}
+
 
       container.innerHTML = html;
 subtotalEl.innerHTML = `<strong>Subtotal: $${total}</strong>`;
