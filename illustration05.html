@@ -253,62 +253,28 @@ nav a#cart.has-items::after {
 
 
     
- .cart-drawer {
-  position: fixed;
-  top: 0;
-  right: -400px;
-  width: 300px;
-  height: 100%;
-  background: #fff;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
-  padding: 1rem;
-  transition: right 0.3s ease;
-  z-index: 999;
+.cart-drawer {
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Ensures scroll stays internal */
-}
-
-.cart-drawer.open {
-  right: 0;
-}
-
-.cart-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'Cinzel', serif;
-  font-weight: 400; /* was bold — now regular */
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 0.5rem;
+  height: 100%;
+  overflow: hidden;
 }
 
 #cartContents {
   flex: 1;
   overflow-y: auto;
-  padding-right: 0.5rem; /* room for scrollbar */
-  margin-bottom: 1rem;
+  padding-right: 0.5rem;
+  margin-bottom: 0;
 }
 
-/* Optional: more distinct cart item spacing */
-.cart-item {
-  padding: 1rem 0;
-  border-bottom: 1px solid #ccc;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
+/* Cart footer stays pinned, with a safe gap */
+.cart-footer {
+  padding: 1rem 0 1.5rem 0;
+  background: #fff;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.cart-item:last-child {
-  border-bottom: none;
-}
-
-/* Button stays pinned at bottom */
-.cart-drawer .button {
-  display: block;
+.cart-footer .button {
   width: 100%;
   padding: 0.5rem 1rem;
   background-color: var(--accent);
@@ -319,12 +285,29 @@ nav a#cart.has-items::after {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   font-weight: normal;
-  white-space: nowrap;
-  margin-top: auto;
+  display: block;
 }
 
-.cart-drawer .button:hover {
+.cart-footer .button:hover {
   background-color: #b96c3f;
+}
+
+.cart-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 
@@ -520,14 +503,19 @@ html, body {
   </div>
 
 
-<div class="cart-drawer" id="cartDrawer">
+<div class="cart-drawer" id="cartDrawer"> 
   <div class="cart-header">
     <span>Your Cart</span>
     <span class="cart-close" onclick="closeCart()">×</span>
   </div>
+
   <div id="cartContents">Cart is empty.</div>
-  <a href="cart.html" class="button">Go to Cart</a>
+
+  <div class="cart-footer">
+    <a href="cart.html" class="button">Go to Cart</a>
+  </div>
 </div>
+
 
 
 
@@ -596,17 +584,20 @@ function renderCart() {
     const price = id.includes('nineByTwelve') ? 12.99 : 9.99;
     total += quantity * price;
 
-    html += `
-      <div style="margin-bottom: 1rem;">
-        <p>${id}</p>
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <button onclick="updateQuantity('${id}', -1)">−</button>
-          <span>${quantity}</span>
-          <button onclick="updateQuantity('${id}', 1)">+</button>
-          <button onclick="removeItem('${id}')">🗑</button>
-        </div>
-      </div>
-    `;
+html += `
+  <div class="cart-item">
+    <div class="item-info">
+      <p>${id}</p>
+    </div>
+    <div class="quantity-controls">
+      <button onclick="updateQuantity('${id}', -1)">−</button>
+      <span>${quantity}</span>
+      <button onclick="updateQuantity('${id}', 1)">+</button>
+      <button onclick="removeItem('${id}')">🗑</button>
+    </div>
+  </div>
+`;
+
   }
 
 html += `<p><strong>Subtotal: $${total.toFixed(2)}</strong></p>`;
