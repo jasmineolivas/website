@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Main Page</title>
+  <title>Cover Art Print</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Roboto&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -116,7 +116,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 3.5rem;
+  min-height: 3.5rem; /* ✅ use this instead of height */
   overflow: hidden;
   position: relative;
   z-index: 10;
@@ -130,34 +130,35 @@ nav {
       position: relative;
     }
 
-nav a#cart::after {
+
+nav a#cart.has-items::after {
   content: '';
   width: 8px;
   height: 8px;
   background: var(--accent);
   border-radius: 50%;
   position: absolute;
-  top: -2px; /* move up or down */
-  right: -12px; /* adjust dot position */
+  top: -2px;
+  right: -12px;
 }
 
+
 @media (max-width: 600px) {
-  nav a#cart::after {
-    top: 2px;
-    right: -10px;
+  nav {
+    min-height: 2rem;
   }
-}
-@media (max-width: 600px) {
+
   nav a {
     font-size: 0.8rem;
     margin: 0 0.6rem;
   }
-}
-@media (max-width: 600px) {
-  nav {
-    height: 2rem;
+
+  nav a#cart.has-items::after {
+    top: 2px;
+    right: -10px;
   }
 }
+
 
 
 
