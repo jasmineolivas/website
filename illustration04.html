@@ -295,19 +295,20 @@ nav a#cart.has-items::after {
 
 /* Individual cart items */
 .cart-item {
-  padding: 0.25rem 0;
+  padding: 0.3rem 0;         /* vertical padding only */
   border-bottom: 1px solid #ccc;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  font-size: 1rem;
+  gap: 0.25rem;              /* spacing between ID text and buttons */
+  font-size: 0.9rem;         /* slightly smaller font */
 }
 
 .quantity-controls {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.3rem;               /* tighter button spacing */
 }
+
 .cart-footer {
   margin-top: auto; /* pushes it to the bottom of the flex column */
   padding-top: 1rem;
@@ -561,11 +562,12 @@ html, body {
     <span class="cart-close" onclick="closeCart()">×</span>
   </div>
   <div id="cartContents">Cart is empty.</div>
-  <div class="cart-footer">
+<div class="cart-footer">
   <a href="cart.html" class="button">Go to Cart</a>
 </div>
-
 </div>
+
+
 
 
 
