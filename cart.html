@@ -160,33 +160,16 @@ nav a#cart.has-items::after {
 }
 
 
-/* Quantity +/− and 🗑 buttons inside cart items */
-.cart-item button {
-  border: 1px solid var(--accent); /* thinner border */
-  background-color: white;
-  color: var(--accent);
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-  font-weight: normal; /* not bold */
-  padding: 0.3rem 0.7rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.cart-item button:hover {
-  background-color: var(--accent);
-  color: white;
-}
-
-/* Footer action buttons (Continue / Checkout) */
 .actions {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* default center on desktop */
+  margin-top: 2rem;
   gap: 1rem;
 }
 
-.actions .cart-button {
+.actions .cart-button,
+.actions a,
+.actions button {
   background-color: var(--accent);
   color: white;
   border: none;
@@ -197,57 +180,24 @@ nav a#cart.has-items::after {
   border-radius: 0.25rem;
   cursor: pointer;
   text-decoration: none;
-  display: inline-block;
   transition: background-color 0.3s ease;
   text-align: center;
-}
-
-/* Hover effect for footer buttons */
-.actions .cart-button:hover {
-  background-color: #b96c3f;
-}
-
-    .subtotal {
-      text-align: right;
-      font-weight: bold;
-      margin-top: 2rem;
-    }
-
-    .actions {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 2rem;
-    }
-
-    .actions a, .actions button {
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      text-decoration: none;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .cart-button {
-  background-color: var(--accent);
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
-  width: auto;        /* Prevents full width */
-  max-width: 200px;   /* Optional limit */
-  text-align: center;
+  display: inline-block;
+  width: auto;
+  max-width: 200px;
   white-space: nowrap;
 }
 
-/* Mobile responsiveness: stack buttons full-width */
+.actions .cart-button:hover,
+.actions a:hover,
+.actions button:hover {
+  background-color: #b96c3f;
+}
+
 @media (max-width: 600px) {
   .actions {
     flex-direction: column;
     align-items: stretch;
-    gap: 1rem;
   }
 
   .actions a,
@@ -256,6 +206,7 @@ nav a#cart.has-items::after {
     text-align: center;
   }
 }
+
 
 
 	  
