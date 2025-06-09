@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cover Art</title>
+  <title>Cover Art Print</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Roboto&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -116,7 +116,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 3.5rem;
+  min-height: 3.5rem; /* ✅ use this instead of height */
   overflow: hidden;
   position: relative;
   z-index: 10;
@@ -130,34 +130,35 @@ nav {
       position: relative;
     }
 
-nav a#cart::after {
+
+nav a#cart.has-items::after {
   content: '';
   width: 8px;
   height: 8px;
   background: var(--accent);
   border-radius: 50%;
   position: absolute;
-  top: -2px; /* move up or down */
-  right: -12px; /* adjust dot position */
+  top: -2px;
+  right: -12px;
 }
 
+
 @media (max-width: 600px) {
-  nav a#cart::after {
-    top: 2px;
-    right: -10px;
+  nav {
+    min-height: 2rem;
   }
-}
-@media (max-width: 600px) {
+
   nav a {
     font-size: 0.8rem;
     margin: 0 0.6rem;
   }
-}
-@media (max-width: 600px) {
-  nav {
-    height: 2rem;
+
+  nav a#cart.has-items::after {
+    top: 2px;
+    right: -10px;
   }
 }
+
 
 
     .product-layout {
@@ -186,14 +187,14 @@ nav a#cart::after {
       flex: 1 1 400px;
       text-align: left;
     }
-.artprint-price {
+.book-price {
   font-size: 1.25rem;
   font-family: 'Roboto', sans-serif;
   color: var(--text-dark);
   margin-top: -0.5rem;
   margin-bottom: 1rem;
 }
-.size-selector .version-btn {
+.edition-selector .version-btn {
   border: 2px solid var(--accent);
   background-color: white;
   color: var(--accent);
@@ -206,7 +207,7 @@ nav a#cart::after {
   border-radius: 0.25rem;
 }
 
-.size-selector .version-btn.active {
+.edition-selector .version-btn.active {
   background-color: var(--accent);
   color: white;
 }
@@ -224,35 +225,81 @@ nav a#cart::after {
 
 
 
+.amazon-section {
+  max-width: 100%;
+  overflow-x: hidden;
+  padding: 1rem;
+  box-sizing: border-box;
+  text-align: center;
+}
 
-    
 
-    /* Cart drawer */
+    .amazon-section h3 {
+      font-family: 'Cinzel', serif;
+    }
+
+    .amazon-section a {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+    }
+
     .cart-drawer {
-      position: fixed;
-      top: 0;
-      right: -400px;
-      width: 300px;
-      height: 100%;
-      background: #fff;
-      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
-      padding: 1rem;
-      transition: right 0.3s ease;
-      z-index: 999;
-    }
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  transition: right 0.3s ease;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+}
 
-    .cart-drawer.open {
-      right: 0;
-    }
+.cart-drawer.open {
+  right: 0;
+}
 
-    .cart-close {
-      cursor: pointer;
-      float: right;
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
+/* Header area for "Your Cart" and X */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Cinzel', serif;
+    font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
 
-    #cartContents button {
+.cart-close {
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Individual cart items */
+.cart-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+#cartContents button {
   background: none;
   border: 1px solid var(--accent);
   color: var(--accent);
@@ -260,12 +307,15 @@ nav a#cart::after {
   cursor: pointer;
   border-radius: 4px;
   font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  transition: background-color 0.3s ease;
 }
 
 #cartContents button:hover {
   background-color: var(--accent);
   color: white;
 }
+
 .button {
   background-color: var(--accent);
   color: white;
@@ -278,7 +328,7 @@ nav a#cart::after {
   text-decoration: none;
   cursor: pointer;
   display: inline-block;
-  border-radius: 4px;
+  border-radius: 2px;
   min-width: 140px;
   transition: background-color 0.2s ease;
   white-space: nowrap;
@@ -299,7 +349,7 @@ nav a#cart::after {
   background-color: #555;
 }
 
-.size-selector {
+.edition-selector {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -319,7 +369,7 @@ nav a#cart::after {
 }
 
 
-  .size-selector {
+  .edition-selector {
     flex-direction: column;
     align-items: stretch;
   }
@@ -334,7 +384,7 @@ nav a#cart::after {
 }
 
 @media (max-width: 600px) {
-  .size-selector {
+  .edition-selector {
     flex-direction: column;
     align-items: center;
   }
@@ -429,33 +479,49 @@ html, body {
 </nav>
 
 
-  <h1>Cover Art</h1>
+  <h1>Cover Art Print</h1>
   
   <div class="product-layout">
     <div class="product-image">
-      <img src="images/coverart.jpg" alt="Cover Art" />
+      <img src="images/coverart.jpg" alt="Cover Art Print" />
     </div>
     <div class="product-info">
       <p><strong>Description:</strong> <br>
-        A really cool illustration <br>
+        A cool print of the book's cover art<br>
         <i>that has a dramatic line of text here</i><br>
       and another line of text here because this is where the story actually goes. lets see how long the text will go before it becomes wrapped on the next line. blablablablab balbal blabal balbal  ablabla bal alb alba lbbalbalbalab balbalba albalb.<br>
         and another line of text here because this is where the story actually goes. lets see how long the text will go before it becomes wrapped on the next line. blablablablab balbal blabal balbal  ablabla bal alb alba lbbalbalbalab balbalba albalb.<br>
         and another line of text here because this is where the story actually goes. lets see how long the text will go before it becomes wrapped on the next line. blablablablab balbal blabal balbal  ablabla bal alb alba lbbalbalbalab balbalba albalb.<br>
       here is the final line of text to see how far down this text will go<br>
-      maybe we'll have to see what happens down here, where did the size selectors go? we'll never know I guess.</p>
-      <p id="price" class="artprint-price">$9.99</p>
-<div class="size-selector">
+      maybe we'll have to see what happens down here, where did the edition selectors go? we'll never know I guess.</p>
+      <p id="price" class="book-price">$9.99</p>
+<div class="edition-selector">
   <button onclick="selectVersion('sixByNine')" id="sixByNineBtn" class="button version-btn active">6x9</button>
   <button onclick="selectVersion('nineByTwelve')" id="nineByTwelveBtn" class="button version-btn">9x12</button>
 </div>
 
-<button class="button add-to-cart" onclick="addToCart('')">Add to Cart</button>
+<button class="button add-to-cart" onclick="addToCart('coverart')">Add to Cart</button>
 
     </div>
   </div>
 
+  <div class="amazon-section">
+    <h3>Also Available on Amazon</h3>
+    <p>Prefer to buy through Amazon? Choose your format below:</p>
+<a href="https://www.amazon.com/dp/examplekindle" target="_blank" class="button outline">Kindle</a>
+<a href="https://www.amazon.com/dp/examplepaperback" target="_blank" class="button outline">Paperback</a>
 
+  </div>
+
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <span>Your Cart</span>
+    <span class="cart-close" onclick="closeCart()">×</span>
+  </div>
+  <div id="cartContents"></div>
+</div>
+
+  
   <div class="cart-drawer" id="cartDrawer">
     <span class="cart-close" onclick="closeCart()">×</span>
     <h3>Your Cart</h3>
@@ -481,11 +547,11 @@ html, body {
 
   <script>
   // ✅ Default to paperback unless changed by user
-  let currentSize = 'sixByNine';
+  let currentEdition = 'sixByNine';
 
-      // ✅ Update selected size and price on button click
+      // ✅ Update selected edition and price on button click
   function selectVersion(version) {
-    currentSize = version;
+    currentEdition = version;
 
     document.getElementById('sixByNineBtn').classList.remove('active');
     document.getElementById('nineByTwelveBtn').classList.remove('active');
@@ -495,16 +561,19 @@ html, body {
     priceTag.textContent = version === 'nineByTwelve' ? "$12.99" : "$9.99";
   }
     
-  // ✅ Add to cart using selected size
-  function addToCart() {
-    const productId = currentSize === 'nineByTwelve' ? 'coverart_9x12' : 'coverart_6x9';
-    const cart = JSON.parse(localStorage.getItem('cart')) || {};
-    cart[productId] = (cart[productId] || 0) + 1;
-    localStorage.setItem('cart', JSON.stringify(cart));
-    renderCart();
+  // ✅ Add to cart using selected edition
+function addToCart() {
+  const productId = currentEdition === 'nineByTwelve' ? 'Cover Art Print - 9x12' : 'Cover Art Print - 6x9';
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  cart[productId] = (cart[productId] || 0) + 1;
+  localStorage.setItem('cart', JSON.stringify(cart));
+  
+  renderCart(); // Update drawer content
+  updateCartDot(); // ✅ Add this line
 
-    document.getElementById('cartDrawer').classList.add('open');
-  }
+  document.getElementById('cartDrawer').classList.add('open');
+}
+
 
 
 function renderCart() {
@@ -526,7 +595,7 @@ function renderCart() {
 
     html += `
       <div style="margin-bottom: 1rem;">
-        <p><strong>${id}</strong></p>
+        <p>${id}</p>
         <div style="display: flex; align-items: center; gap: 0.5rem;">
           <button onclick="updateQuantity('${id}', -1)">−</button>
           <span>${quantity}</span>
@@ -553,20 +622,20 @@ function updateQuantity(id, change) {
   if (cart[id] <= 0) {
     delete cart[id];
   }
-
   localStorage.setItem('cart', JSON.stringify(cart));
-  renderCart();
+  renderCart(); // <- this updates the drawer view
+  updateCartDot();
 }
 
 function removeItem(id) {
   const cart = JSON.parse(localStorage.getItem('cart')) || {};
   delete cart[id];
   localStorage.setItem('cart', JSON.stringify(cart));
-  renderCart();
+  renderCart(); // <- same here
+  updateCartDot();
 }
 
-    
-  window.onload = renderCart;
+
 
   // ✅ Keep drawer open/close behavior
   function openCart() {
@@ -587,10 +656,28 @@ document.addEventListener('click', (e) => {
   }
 });
 
+    function updateCartDot() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  const cartLink = document.getElementById('cart');
+  if (!cartLink) return;
+  if (Object.keys(cart).length > 0) {
+    cartLink.classList.add('has-items');
+  } else {
+    cartLink.classList.remove('has-items');
+  }
+}
 
-  // ✅ Restore cart content on page load
-  window.onload = renderCart;
-  document.addEventListener('DOMContentLoaded', renderCart);
+window.onload = () => {
+  renderCart?.();       // For booktitle.html drawer cart
+  renderCartPage?.();   // For cart.html, no effect here
+  updateCartDot?.();    // Cart dot logic
+};
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderCart?.();       // Safe redundancy for older browsers
+});
+
 </script>
 </body>
 </html>
