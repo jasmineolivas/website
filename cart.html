@@ -265,12 +265,16 @@ padding: 0 1rem 80px;
   .actions {
     flex-direction: column;
     align-items: stretch;
+    gap: 1rem;
   }
 
   .actions a,
-  .actions button {
-    width: 100%;
-    text-align: center;
+  .actions button,
+  .actions .cart-button {
+    width: 100% !important;     /* force full width */
+    max-width: none !important; /* remove max width */
+    white-space: normal !important; /* allow wrapping */
+    display: block !important;  /* ensure stacking */
   }
 }
 
