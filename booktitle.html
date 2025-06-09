@@ -523,14 +523,15 @@ html, body {
       <p>
 
         In the place where fear dwells and the land is filled with blight, a sinister force is making<br>
+        <br>
   <i>The Dead Fall In Line</i><br>
-
+        <br>
 The frost seeps in sometime after midnight, ushering in the final omen that can no longer be ignored.<br>
-
+        <br>
 Carisis has a picturesque life he never thought he’d deserve: a wife, a small child, and another on the way. But he is about to be faced with an enemy from his past: The Witch. He knows all about her dark plot. The deceit. The death. The years-long war campaign that she survived at the cost of thousands of lives.<br>
-
+<br>
 Old friends will be plunged into a dire crusade where they must contend with the harsh reality of the war machine and a growing cult consumed by blind loyalty.<br>
-
+<br>
 To survive, they must uncover who truly holds power - and resist the darkness that waits with open arms. <br>
        <br>
         The Dead Fall in Line is Jasmine Olivas' debut fantasy novel, for fans of This Book Title by Steve McStephen, and Another One Over Here by Ohai Mark. Here's a closing sentence that perfectly encapsulates everything that I'm trying to say right now, a good sales pitch in general.<br>
@@ -706,17 +707,17 @@ document.addEventListener('click', (e) => {
 }
 
 window.onload = () => {
-  renderCart?.();       // For booktitle.html drawer cart
-  renderCartPage?.();   // For cart.html, no effect here
-  updateCartDot?.();    // Cart dot logic
+  if (typeof renderCart === 'function') renderCart();
+  if (typeof renderCartPage === 'function') renderCartPage();
+  updateCartDot();
 };
 
-
 document.addEventListener('DOMContentLoaded', () => {
-  renderCart?.();       // For product page drawer
-  renderCartPage?.();   // For cart.html only
-  updateCartDot?.();    // Ensures the dot shows up from localStorage
+  if (typeof renderCart === 'function') renderCart();
+  if (typeof renderCartPage === 'function') renderCartPage();
+  updateCartDot();
 });
+
 
 
 </script>
