@@ -181,7 +181,17 @@ nav a#cart.has-items::after {
 
 .header-container {
   margin-top: 4rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
+}
+
+.below-container {
+    max-width: 800px;
+  margin: 1rem auto 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
 }
     
     .product-layout {
@@ -590,6 +600,10 @@ Old friends will be plunged into a dire crusade where they must contend with the
 To survive, they must uncover who truly holds power - and resist the darkness that waits with open arms. <br>
        <br>
       </p>
+    </div>
+    
+
+    <div class="below-container">  
       <p id="price" class="book-price">$18.99</p>
 <div class="edition-selector">
   <button onclick="selectVersion('paperback')" id="paperbackBtn" class="button version-btn active">Paperback</button>
@@ -654,7 +668,7 @@ To survive, they must uncover who truly holds power - and resist the darkness th
     document.getElementById(version + 'Btn').classList.add('active');
 
     const priceTag = document.getElementById('price');
-    priceTag.textContent = version === 'hardcover' ? "$18.99" : "$24.99";
+    priceTag.textContent = version === 'hardcover' ? "$24.99" : "$18.99";
   }
     
   // ✅ Add to cart using selected edition
