@@ -583,7 +583,7 @@ Old friends will be plunged into a dire crusade where they must contend with the
 To survive, they must uncover who truly holds power - and resist the darkness that waits with open arms. <br>
        <br>
       </p>
-      <p id="price" class="book-price">$19.99</p>
+      <p id="price" class="book-price">$18.99</p>
 <div class="edition-selector">
   <button onclick="selectVersion('paperback')" id="paperbackBtn" class="button version-btn active">Paperback</button>
   <button onclick="selectVersion('hardcover')" id="hardcoverBtn" class="button version-btn">Hardcover</button>
@@ -636,23 +636,23 @@ To survive, they must uncover who truly holds power - and resist the darkness th
 
   <script>
   // ✅ Default to paperback unless changed by user
-  let currentEdition = 'sixByNine';
+  let currentEdition = 'paperback';
 
       // ✅ Update selected edition and price on button click
   function selectVersion(version) {
     currentEdition = version;
 
-    document.getElementById('sixByNineBtn').classList.remove('active');
-    document.getElementById('nineByTwelveBtn').classList.remove('active');
+    document.getElementById('paperbackBtn').classList.remove('active');
+    document.getElementById('hardcoverBtn').classList.remove('active');
     document.getElementById(version + 'Btn').classList.add('active');
 
     const priceTag = document.getElementById('price');
-    priceTag.textContent = version === 'hardcover' ? "$12.99" : "$9.99";
+    priceTag.textContent = version === 'hardcover' ? "$18.99" : "$24.99";
   }
     
   // ✅ Add to cart using selected edition
 function addToCart() {
-  const productId = currentEdition === 'nineByTwelve' ? 'The Dead Fall in Line - Hardcover' : 'The Dead Fall in Line - Paperback';
+  const productId = currentEdition === 'hardcover' ? 'The Dead Fall in Line - Hardcover' : 'The Dead Fall in Line - Paperback';
   const cart = JSON.parse(localStorage.getItem('cart')) || {};
   cart[productId] = (cart[productId] || 0) + 1;
   localStorage.setItem('cart', JSON.stringify(cart));
@@ -679,7 +679,7 @@ function renderCart() {
 
   for (let id in cart) {
     const quantity = cart[id];
-    const price = id.includes('nineByTwelve') ? 12.99 : 9.99;
+    const price = id.includes('hardcover') ? 24.99 : 18.99;
     total += quantity * price;
 
     html += `
