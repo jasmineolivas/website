@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jasmine Olivas | Cart</title>
-	<meta name="description" content="Fantasy author Jasmine Olivas — explore original books, art prints, and updates.">
-<meta name="keywords" content="Jasmine Olivas, fantasy books, debut novel, illustrated novel, original art, author shop, illustration prints">
+	<meta name="description" content="Fantasy author Jasmine Olivas. Explore original works and art prints.">
+<meta name="keywords" content="Jasmine Olivas, fantasy books, novellas, illustrated novel, original art, author shop, illustration prints">
 <meta name="author" content="Jasmine Olivas">
 <meta property="og:title" content="Jasmine Olivas | Home" />
 <meta property="og:description" content="Original fantasy works and illustrations by Jasmine Olivas. Visit the shop or explore the latest book." />
@@ -327,7 +327,7 @@ padding: 0 1rem 80px;
 
 <nav>
   <a href="/">Home</a>
-  <a href="/book/">Book</a>
+  <a href="/works/">Works</a>
   <a href="/about/">About Me</a>
   <a href="/cart/" id="cart">Cart</a>
 </nav>
@@ -348,15 +348,15 @@ padding: 0 1rem 80px;
   <div class="footer-columns">
     <div class="footer-column">
       <h3>Shipping</h3>
-      <p>Free USPS shipping on most orders. For large or unusual shipments, I’ll contact you directly. All orders are printed and packaged by hand in the USA.</p>
+      <p>Free shipping within the US via USPS. International shipping calculated at checkout. Large or bulk orders may be processed into separate shipments. Books are printed in the USA and packaged by hand.</p>
     </div>
     <div class="footer-column">
       <h3>Returns</h3>
-      <p>Returns are not accepted, but if anything arrives damaged or incorrect, please contact me so I can make it right.</p>
+      <p>Refunds or exchanges are accepted if the item is damaged or defective, or if the item recieved differs from the one ordered. Please contact me if any of these issues arise.</p>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2025 [Your Name or Brand]. All rights reserved.</p>
+    <p>&copy; 2026 Jasmine Olivas. All rights reserved.</p>
   </div>
 </div>
 
@@ -399,7 +399,7 @@ padding: 0 1rem 80px;
 
 for (let id in cart) {
   const quantity = cart[id];
-  const price = id.includes('hardcover') ? 29.99 : 19.99;
+  const price = id.includes('hardcover') ? 24.99 : 18.99;
   total += quantity * price;
 
   const name = id.replace('booktitle_', '').replace(/_/g, ' ');
