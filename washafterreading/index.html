@@ -504,9 +504,9 @@ As she becomes increasingly isolated, Laura clings to the systems that have kept
 <button class="button outline" onclick="openSample()">
   Read Sample
 </button>
-      <div id="sampleModal" class="sample-modal">
+      <div id="sampleModal" class="sample-modal" onclick="closeSample()">
 
-  <div class="sample-content">
+  <div class="sample-content" onclick="event.stopPropagation()">
 
     <span class="close-sample" onclick="closeSample()">
       &times;
@@ -558,11 +558,19 @@ As she becomes increasingly isolated, Laura clings to the systems that have kept
 
 function openSample() {
   document.getElementById('sampleModal').style.display = 'flex';
+  history.pushState({ sampleOpen: true }, '');
 }
 
 function closeSample() {
   document.getElementById('sampleModal').style.display = 'none';
 }
+    window.addEventListener('popstate', () => {
+  const modal = document.getElementById('sampleModal');
+
+  if (modal && modal.style.display === 'flex') {
+    modal.style.display = 'none';
+  }
+});
     
   function updateCartDot() {
     const cart = JSON.parse(localStorage.getItem('cart')) || {};
