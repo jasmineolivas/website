@@ -1,1 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jasmine Olivas | Wash After Reading</title>
+<meta name="description" content="Discover the latest novella by Jasmine Olivas. Available in multiple formats.">
+<meta name="keywords" content="Jasmine Olivas, fantasy books, novella, kindle, original art, author shop">
+<meta name="author" content="Jasmine Olivas">
+<meta property="og:title" content="Jasmine Olivas | Wash After Reading" />
+<meta property="og:description" content="Original fantasy novella by Jasmine Olivas. Downloads for Kindle or PDF." />
+<meta property="og:image" content="https://jasmineolivas.com/images/coverartwar.jpg" />
+<meta property="og:url" content="https://jasmineolivas.com/" />
+<meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Roboto&display=swap" rel="stylesheet">
 
+  <style>
+    :root {
+      --accent: #D98F59;
+      --background: #F1E2BB;
+      --text-dark: #171516;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: white;
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
+    }
+    .site-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 200px; /* optional: keep it compact */
+  object-fit: cover;
+}
+    .banner-container {
+  position: relative;
+  text-align: center;
+  color: #F1E2BB;
+  font-family: 'Cinzel', serif;
+}
+
+.banner-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 200px;
+}
+
+    
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  max-width: 90%;
+  padding: .9rem;
+  box-sizing: border-box;
+}
+
+.banner-text h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.banner-line {
+  width: 200px;
+  height: 2px;
+  background-color: #F1E2BB;
+  margin: 0.4rem auto;
+}
+
+.banner-text p {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .banner-text h1 {
+    font-size: 1rem; /* Was 0.9rem */
+  }
+
+  .banner-text p {
+    font-size: 0.85rem; /* Was 0.6rem — now closer to navbar size */
+      white-space: nowrap;
+  }
+
+  .banner-line {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .banner-text {
+    padding: 0.5rem 0; /* or less */
+  }
+}
+
+.banner-container a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.banner-container a:hover .banner-text {
+  opacity: 0.9;
+}
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+nav {
+  background-color: var(--text-dark);
+  color: var(--background);
+  font-family: 'Cinzel', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 3.5rem; /* ✅ use this instead of height */
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+
+    nav a {
+      color: var(--background);
+      margin: 0 1.5rem;
+      text-decoration: none;
+      position: relative;
+    }
+
+
+nav a#cart.has-items::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: absolute;
+  top: -2px;
+  right: -12px;
+}
+
+
+@media (max-width: 600px) {
+  nav {
+    min-height: 2rem;
+  }
+
+  nav a {
+    font-size: 0.8rem;
+    margin: 0 0.6rem;
+  }
+
+  nav a#cart.has-items::after {
+    top: 2px;
+    right: -10px;
+  }
+}
+
+.book-summary {
+  max-width: 800px;
+  margin: 1rem auto 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+
+
+
+    
+.header-container {
+  margin-top: 4rem;
+}
+
+.header-container h1 {
+    font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+
+
+
+
+    
+    .product-layout {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .product-image {
+      flex: 1 1 400px;
+      text-align: right;
+    }
+
+    .product-image img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+    }
+    
+
+    .product-info {
+      flex: 1 1 400px;
+      text-align: left;
+    }
+.book-price {
+  font-size: 1.25rem;
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-dark);
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+.edition-selector .version-btn {
+  border: 2px solid var(--accent);
+  background-color: white;
+  color: var(--accent);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0.25rem;
+}
+
+.edition-selector .version-btn.active {
+  background-color: var(--accent);
+  color: white;
+}
+
+
+
+
+    
+.button {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  min-width: 140px;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.button:hover {
+  background-color: #c57e4e;
+}
+
+.button.outline {
+  background-color: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.button.secondary {
+  background-color: #555;
+}
+
+.edition-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+
+
+@media (max-width: 600px) {
+.button, .version-btn {
+  width: 100%;
+  max-width: 300px;
+  margin: 0.5rem auto;
+  display: block;
+}
+
+
+
+
+  
+  .edition-selector {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-to-cart {
+    width: 100%;
+  }
+
+  .product-info {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .edition-selector {
+    flex-direction: column;
+    align-items: center;
+  }
+
+.add-to-cart {
+  margin-top: 1rem;
+}
+
+
+  .product-info {
+    text-align: center;
+  }
+}
+
+
+
+    @media (max-width: 768px) {
+      .product-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .product-image,
+      .product-info {
+        text-align: center;
+      }
+    }
+
+.site-footer {
+  background-color: var(--text-dark);
+  color: var(--background);
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  flex: 1 1 300px;
+}
+
+.footer-column h3 {
+  font-family: 'Cinzel', serif;
+  margin-bottom: 0.5rem;
+  color: var(--background);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+    img, button, input, select, textarea {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+
+
+html, body {
+  overflow-x: hidden; /* prevents accidental sideways scroll */
+}
+
+  </style>
+</head>
+<body>
+<div class="banner-container">
+  <a href="/">
+    <img src="/images/githubwebsitebanner03.jpg" alt="Banner" />
+    <div class="banner-text">
+      <h1>Jasmine Olivas</h1>
+      <div class="banner-line"></div>
+      <p>Fantasy Author & Illustrator</p>
+    </div>
+  </a>
+</div>
+
+<nav>
+  <a href="/">Home</a>
+  <a href="/works/">Works</a>
+  <a href="/about/">About Me</a>
+  <a href="/cart/" id="cart">Cart</a>
+</nav>
+
+<section class="header-container">
+  <h1>Wash After Reading</h1>
+  <p class="book-summary">
+Wash After Reading is a psychological horror novella about isolation in motherhood and contamination OCD, set in a world that is coming apart at the seams. 
+</p>
+</section>
+
+  
+  <div class="product-layout">
+    <div class="product-image">
+      <img src="/images/coverartwar.jpg" alt="Wash After Reading" />
+    </div>
+    <div class="product-info">
+      <p>
+
+Laura is pregnant when the outbreak begins.<br>
+At first, life continues much as it always has. People still go to work. Stores still open their doors. The routines of ordinary life remain intact, even as the world beyond them starts to change.<br>
+Then her husband leaves for work and never comes home.<br>
+As the outbreak spreads, Laura finds herself facing the crisis alone. Her parents stop answering the phone. The world beyond her front door grows smaller and less recognizable by the day.<br>
+Placeholder back of the book blurb.<br>
+So she adapts.<br>
+One rule becomes two. Two become ten. Shoes stay by the door. Outside clothes stay separate. Every object has a place. Every risk has a solution.<br>
+As she becomes increasingly isolated, Laura clings to the systems that have kept her safe so far. But as the world outside continues to deteriorate, strange cracks begin to appear in the reality around her. Familiar places no longer seem quite right. The boundaries of reality begin to blur.<br>
+      </p>
+
+    
+    </div>
+    </div>
+
+  <div class="amazon-section">
+    <h3>Available FREE on Kindle or E-Reader</h3>
+    <p>Choose your format below:</p>
+<a href="https://www.amazon.com/dp/examplekindle" target="_blank" class="button outline">Kindle</a>
+<a href="https://www.amazon.com/dp/examplepaperback" target="_blank" class="button outline">EPub</a>
+
+  </div>
+
+
+
+  </div>
+<footer class="site-footer">
+  <div class="footer-columns">
+    <div class="footer-column">
+      <h3>Shipping</h3>
+      <p>Free shipping within the US via USPS. International shipping calculated at checkout. Large or bulk orders may be processed into separate shipments. Books are printed in the USA and packaged by hand.</p>
+    </div>
+    <div class="footer-column">
+      <h3>Returns</h3>
+      <p>Refunds or exchanges are accepted if the item is damaged or defective, or if the item recieved differs from the one ordered. Please contact me if any of these issues arise.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Jasmine Olivas. All rights reserved.</p>
+  </div>
+</footer>
+
+  <script>
+
+
+</script>
+</body>
+</html>
