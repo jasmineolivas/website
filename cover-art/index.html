@@ -541,27 +541,27 @@ html, body {
 
 <nav>
   <a href="/">Home</a>
-  <a href="/book/">Book</a>
+  <a href="/works/">Works</a>
   <a href="/about/">About Me</a>
   <a href="/cart/" id="cart">Cart</a>
 </nav>
 
 
-  <h1>Cover Art Print</h1>
+  <h1>Illustration 01 Print</h1>
   
   <div class="product-layout">
     <div class="product-image">
-      <img src="/images/coverart.jpg" alt="Cover Art Print" />
+      <img src="/images/illustration01.jpg" alt="Illustration 01 Print" />
     </div>
     <div class="product-info">
-      <p><strong>Description:</strong> <br>
-        A totally cool illustration print from the book<br>
+      <p><strong>Coming soon!</strong> <br>
+       The upcoming novel will have interior illustrations, and some will be available for print. Find them here once the novel is published!<br>
         <br>
-      Chapter 30 - Carisis goes to The Witch<br>
-     <i>Here is a small summary of the section of the book that matches with the picture drawn in the illustration. It will be a short four or five sentence thing, something that exactly matches the inspiration given by that particular scene which made the illustration. Nothing too long, just a short bite, and a sales pitch.</i><br>
+      Chapter number - Chapter Title<br>
+   Here is a small summary from the book. What are you still doing on this page? Its not ready yet! Love the enthusiasm though... <br>
     <br> 
-      A beautiful art print of the front cover, title removed. Printed on super fancy paper, cold press, what have you.<br> 
-        If you'd like a copy of this print with the title included, please message me and I'll be happy to accomodate you.<br></p>
+      A beautiful art print. Printed on super fancy paper.<br> 
+    </p>
       <p id="price" class="book-price">$9.99</p>
 <div class="edition-selector">
   <button onclick="selectVersion('sixByNine')" id="sixByNineBtn" class="button version-btn active">6x9</button>
@@ -602,7 +602,7 @@ html, body {
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2025 Jasmine Olivas. All rights reserved.</p>
+    <p>&copy; 2026 Jasmine Olivas. All rights reserved.</p>
   </div>
 </footer>
 
@@ -619,12 +619,12 @@ html, body {
     document.getElementById(version + 'Btn').classList.add('active');
 
     const priceTag = document.getElementById('price');
-    priceTag.textContent = version === 'hardcover' ? "$12.99" : "$9.99";
+    priceTag.textContent = version === 'nineByTwelve' ? "$12.99" : "$9.99";
   }
     
   // ✅ Add to cart using selected edition
 function addToCart() {
-  const productId = currentEdition === 'nineByTwelve' ? 'Cover Art Print - 9x12' : 'Cover Art Print - 6x9';
+  const productId = currentEdition === 'nineByTwelve' ? 'Illustration 01 Print - 9x12' : 'Illustration 01 Print - 6x9';
   const cart = JSON.parse(localStorage.getItem('cart')) || {};
   cart[productId] = (cart[productId] || 0) + 1;
   localStorage.setItem('cart', JSON.stringify(cart));
@@ -746,3 +746,4 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
