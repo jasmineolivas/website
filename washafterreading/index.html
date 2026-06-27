@@ -416,7 +416,34 @@ nav a#cart.has-items::after {
   box-sizing: border-box;
 }
 
+.sample-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
+.sample-content {
+  background: white;
+  width: 90%;
+  max-width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+  border-radius: 8px;
+}
+
+.close-sample {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  cursor: pointer;
+}
 
 html, body {
   overflow-x: hidden; /* prevents accidental sideways scroll */
@@ -472,7 +499,28 @@ One rule becomes two. Two become ten. Shoes stay by the door. Outside clothes st
         <br>
 As she becomes increasingly isolated, Laura clings to the systems that have kept her safe so far. But as the world outside continues to deteriorate, strange cracks begin to appear in the reality around her. Familiar places no longer seem quite right. The boundaries of reality begin to blur.<br>
       </p>
-<a href="https://www.amazon.com/dp/examplepaperback" target="_blank" class="button outline">Sample</a>
+
+      
+<button class="button outline" onclick="openSample()">
+  Read Sample
+</button>
+      <div id="sampleModal" class="sample-modal">
+
+  <div class="sample-content">
+
+    <span class="close-sample" onclick="closeSample()">
+      &times;
+    </span>
+
+    <h2>Wash After Reading</h2>
+
+    <p>
+      Sample text goes here.
+    </p>
+
+  </div>
+
+</div>
     
     </div>
     </div>
@@ -508,6 +556,14 @@ As she becomes increasingly isolated, Laura clings to the systems that have kept
 
   <script>
 
+function openSample() {
+  document.getElementById('sampleModal').style.display = 'flex';
+}
+
+function closeSample() {
+  document.getElementById('sampleModal').style.display = 'none';
+}
+    
   function updateCartDot() {
     const cart = JSON.parse(localStorage.getItem('cart')) || {};
     const cartLink = document.getElementById('cart');
