@@ -353,6 +353,31 @@ nav a#cart.has-items::after {
       }
     }
 
+.amazon-section {
+  max-width: 100%;
+  overflow-x: hidden;
+  padding: 1rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+
+    .amazon-section h3 {
+      font-family: 'Cinzel', serif;
+    }
+
+    .amazon-section a {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+    }
+
+
+
+    
 .site-footer {
   background-color: var(--text-dark);
   color: var(--background);
@@ -450,8 +475,10 @@ As she becomes increasingly isolated, Laura clings to the systems that have kept
   <div class="amazon-section">
     <h3>Available FREE on Kindle or E-Reader</h3>
     <p>Choose your format below:</p>
+<a href="https://www.amazon.com/dp/examplepaperback" target="_blank" class="button outline">Sample</a>
 <a href="https://www.amazon.com/dp/examplekindle" target="_blank" class="button outline">Kindle</a>
 <a href="https://www.amazon.com/dp/examplepaperback" target="_blank" class="button outline">EPub</a>
+    
 
   </div>
 
@@ -476,7 +503,18 @@ As she becomes increasingly isolated, Laura clings to the systems that have kept
 
   <script>
 
+  function updateCartDot() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const cartLink = document.getElementById('cart');
+    if (!cartLink) return;
+    if (Object.keys(cart).length > 0) {
+      cartLink.classList.add('has-items');
+    } else {
+      cartLink.classList.remove('has-items');
+    }
+  }
 
+  document.addEventListener('DOMContentLoaded', updateCartDot);
 </script>
 </body>
 </html>
