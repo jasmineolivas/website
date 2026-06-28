@@ -577,8 +577,8 @@ As she becomes increasingly isolated, Laura clings to the systems that have kept
 <button class="button outline" onclick="openSample()">
   Read Sample
 </button>
-      <div id="sampleModal" class="sample-modal" onclick="closeSample()">
 
+<div id="sampleModal" class="sample-modal" onclick="closeSample()">
   <div class="sample-content" onclick="event.stopPropagation()">
 
     <span class="close-sample" onclick="closeSample()">
@@ -677,22 +677,20 @@ This novella is part of my own journey with contamination OCD and touches on my 
   </div>
 
   
-<p class="setup-link">
-  New to e-readers?
-  <a href="#" onclick="openReaderHelp(); return false;">
-    Click here for setup instructions.
-  </a>
-</p>
+    <p class="setup-link">
+      New to e-readers?
+      <a href="#" onclick="openReaderHelp(); return false;">
+        Click here for setup instructions.
+      </a>
+    </p>
 
-  <div id="readerHelpModal"
-     class="reader-help-modal"
-     onclick="closeReaderHelp()">
+  </div>
+</div>
 
-  <div class="reader-help-content"
-       onclick="event.stopPropagation()">
+<div id="readerHelpModal" class="reader-help-modal" onclick="closeReaderHelp()">
+  <div class="reader-help-content" onclick="event.stopPropagation()">
 
-    <span class="close-reader-help"
-          onclick="closeReaderHelp()">
+    <span class="close-reader-help" onclick="closeReaderHelp()">
       &times;
     </span>
 
@@ -754,41 +752,38 @@ This novella is part of my own journey with contamination OCD and touches on my 
 
   <script>
 
+
+    
 function openSample() {
   document.getElementById('sampleModal').style.display = 'flex';
-  history.pushState({ sampleOpen: true }, '');
+  history.pushState({ modal: 'sample' }, '');
 }
 
 function closeSample() {
   document.getElementById('sampleModal').style.display = 'none';
 }
-    window.addEventListener('popstate', () => {
-  const modal = document.getElementById('sampleModal');
 
-  if (modal && modal.style.display === 'flex') {
-    modal.style.display = 'none';
+function openReaderHelp() {
+  document.getElementById('readerHelpModal').style.display = 'flex';
+  history.pushState({ modal: 'readerHelp' }, '');
+}
 
+function closeReaderHelp() {
+  document.getElementById('readerHelpModal').style.display = 'none';
+}
 
-  const readerHelpModal =
-    document.getElementById('readerHelpModal');
+window.addEventListener('popstate', () => {
+  const sampleModal = document.getElementById('sampleModal');
+  const readerHelpModal = document.getElementById('readerHelpModal');
 
-  if (
-    sampleModal &&
-    sampleModal.style.display === 'flex'
-  ) {
+  if (sampleModal?.style.display === 'flex') {
     closeSample();
     return;
   }
 
-  if (
-    readerHelpModal &&
-    readerHelpModal.style.display === 'flex'
-  ) {
+  if (readerHelpModal?.style.display === 'flex') {
     closeReaderHelp();
     return;
-
-
-    
   }
 });
 
