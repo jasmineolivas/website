@@ -374,60 +374,6 @@ nav a#cart.has-items::after {
       padding: 0.5rem 1rem;
       margin: 0.5rem;
     }
-
-
-
-    
-.reader-help {
-  max-width: 800px;
-  margin: 3rem auto;
-  padding: 0 1rem;
-  box-sizing: border-box;
-}
-
-.reader-help h2 {
-  font-family: 'Cinzel', serif;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.reader-help h3 {
-  font-family: 'Cinzel', serif;
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.reader-help p,
-.reader-help li {
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.6;
-}
-
-.reader-help ol {
-  padding-left: 1.5rem;
-  margin-top: 0.5rem;
-}
-
-.reader-help a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.reader-help a:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-  .reader-help {
-    padding: 0 1rem;
-  }
-
-  .reader-help h2 {
-    font-size: 1.5rem;
-  }
-}
-
-    
     
 
     
@@ -508,6 +454,69 @@ nav a#cart.has-items::after {
   font-size: 2rem;
   cursor: pointer;
 }
+
+
+
+       
+
+.setup-link {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.setup-link a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.setup-link a:hover {
+  text-decoration: underline;
+}
+
+.reader-help-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.reader-help-content {
+  background: white;
+  width: 90%;
+  max-width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+  border-radius: 8px;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.reader-help-content h2,
+.reader-help-content h3 {
+  text-align: center;
+}
+
+.reader-help-content p,
+.reader-help-content li {
+  margin-bottom: 1rem;
+}
+
+.close-reader-help {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+
+
+    
 
 html, body {
   overflow-x: hidden; /* prevents accidental sideways scroll */
@@ -666,43 +675,65 @@ This novella is part of my own journey with contamination OCD and touches on my 
     
 
   </div>
-<section class="reader-help">
 
-  <h2>How to Read This Book</h2>
+  
+<p class="setup-link">
+  New to e-readers?
+  <a href="#" onclick="openReaderHelp(); return false;">
+    Click here for setup instructions.
+  </a>
+</p>
 
-  <h3>Kindle Users</h3>
+  <div id="readerHelpModal"
+     class="reader-help-modal"
+     onclick="closeReaderHelp()">
 
-  <ol>
-    <li>Download the EPUB file.</li>
-    <li>Open Amazon's Send to Kindle service.</li>
-    <li>Upload the EPUB file.</li>
-    <li>The book will automatically appear in your Kindle library after Amazon converts it.</li>
-  </ol>
+  <div class="reader-help-content"
+       onclick="event.stopPropagation()">
 
-  <p>
-    <a href="https://www.amazon.com/sendtokindle" target="_blank">
-      Open Amazon Send to Kindle →
-    </a>
-  </p>
+    <span class="close-reader-help"
+          onclick="closeReaderHelp()">
+      &times;
+    </span>
 
-  <h3>Kobo, Nook, PocketBook, and Other E-Readers</h3>
+    <h2>How to Read This Book</h2>
 
-  <ol>
-    <li>Download the EPUB file.</li>
-    <li>Transfer it to your device using a USB cable, cloud storage, or your device's import feature.</li>
-    <li>Open the file from your library and start reading.</li>
-  </ol>
+    <h3>Kindle Users</h3>
 
-  <h3>Reading on a Phone or Tablet</h3>
+    <ol>
+      <li>Download the EPUB file.</li>
+      <li>Open Amazon's Send to Kindle service.</li>
+      <li>Upload the EPUB file.</li>
+      <li>The book will automatically appear in your Kindle library after Amazon converts it.</li>
+    </ol>
 
-  <ol>
-    <li>Download the EPUB file.</li>
-    <li>Open it with your preferred reading app.</li>
-    <li>Most ebook apps will automatically import the book into your library.</li>
-  </ol>
+    <p>
+      <a href="https://www.amazon.com/sendtokindle"
+         target="_blank">
+         Open Amazon Send to Kindle →
+      </a>
+    </p>
 
-</section>
+    <h3>Kobo, Nook, PocketBook, and Other E-Readers</h3>
 
+    <ol>
+      <li>Download the EPUB file.</li>
+      <li>Transfer it to your device using a USB cable, cloud storage, or your device's import feature.</li>
+      <li>Open the file from your library and start reading.</li>
+    </ol>
+
+    <h3>Reading on a Phone or Tablet</h3>
+
+    <ol>
+      <li>Download the EPUB file.</li>
+      <li>Open it with your preferred reading app.</li>
+      <li>Most ebook apps will automatically import the book into your library.</li>
+    </ol>
+
+  </div>
+</div>
+
+  
 
   </div>
 <footer class="site-footer">
@@ -736,8 +767,50 @@ function closeSample() {
 
   if (modal && modal.style.display === 'flex') {
     modal.style.display = 'none';
+
+
+  const readerHelpModal =
+    document.getElementById('readerHelpModal');
+
+  if (
+    sampleModal &&
+    sampleModal.style.display === 'flex'
+  ) {
+    closeSample();
+    return;
+  }
+
+  if (
+    readerHelpModal &&
+    readerHelpModal.style.display === 'flex'
+  ) {
+    closeReaderHelp();
+    return;
+
+
+    
   }
 });
+
+
+
+    
+    function openReaderHelp() {
+  document.getElementById('readerHelpModal').style.display = 'flex';
+
+  history.pushState(
+    { readerHelpOpen: true },
+    '',
+    ''
+  );
+}
+
+function closeReaderHelp() {
+  document.getElementById('readerHelpModal').style.display = 'none';
+}
+
+
+    
     
   function updateCartDot() {
     const cart = JSON.parse(localStorage.getItem('cart')) || {};
