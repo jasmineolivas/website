@@ -585,7 +585,11 @@ As she becomes increasingly isolated, Laura clings to the systems that have kept
       </p>
 
       
-<button class="button" onclick="openSample()">
+<button class="button"
+  onclick="gtag('event', 'click', {
+    event_category: 'button',
+    event_label: 'read_sample'
+  }); openSample();">
   Read Sample
 </button>
 
