@@ -586,10 +586,7 @@ As she becomes increasingly isolated, Laura clings to the systems that have kept
 
       
 <button class="button"
-  onclick="gtag('event', 'click', {
-    event_category: 'button',
-    event_label: 'read_sample'
-  }); openSample();">
+  onclick="gtag('event', 'read_sample'); openSample();">
   Read Sample
 </button>
 
@@ -688,22 +685,15 @@ This novella is part of my own journey with contamination OCD and touches on my 
 <a href="https://www.amazon.com/dp/examplekindle"
    target="_blank"
    class="button"
-   onclick="gtag('event', 'click', {
-     event_category: 'button',
-     event_label: 'kindle_click'
-   });">
+   onclick="gtag('event', 'kindle_click');">
    Buy on Kindle
 </a>
 <a href="/downloads/WashAfterReadingepubTEST.epub"
    download
    class="button"
-   onclick="gtag('event', 'click', {
-     event_category: 'button',
-     event_label: 'epub_download'
-   });">
+   onclick="gtag('event', 'epub_download');">
    Download free EPUB
 </a>
-    
 
   </div>
 
