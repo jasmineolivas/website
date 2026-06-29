@@ -681,10 +681,22 @@ This novella is part of my own journey with contamination OCD and touches on my 
     <h3>Available on your favorite reading device.</h3>
     <p>Choose your format below:<br> (These links are broken until the cover illustration is finished. Come back soon!)</p>
 
-<a href="https://www.amazon.com/dp/examplekindle" target="_blank" class="button">Buy on Kindle</a>
+<a href="https://www.amazon.com/dp/examplekindle"
+   target="_blank"
+   class="button"
+   onclick="gtag('event', 'click', {
+     event_category: 'button',
+     event_label: 'kindle_click'
+   });">
+   Buy on Kindle
+</a>
 <a href="/downloads/WashAfterReadingepubTEST.epub"
    download
-   class="button">
+   class="button"
+   onclick="gtag('event', 'click', {
+     event_category: 'button',
+     event_label: 'epub_download'
+   });">
    Download free EPUB
 </a>
     
