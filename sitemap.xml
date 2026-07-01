@@ -14,12 +14,12 @@
 </url>
 <url>
   <loc>https://jasmineolivas.com/book/</loc>
-  <lastmod>2025-06-10T02:55:23+00:00</lastmod>
+<lastmod>2026-07-01T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://jasmineolivas.com/about/</loc>
-  <lastmod>2025-06-10T02:55:23+00:00</lastmod>
+<lastmod>2026-07-01T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
@@ -61,6 +61,17 @@
   <loc>https://jasmineolivas.com/index.html</loc>
   <lastmod>2025-06-10T02:55:23+00:00</lastmod>
   <priority>0.64</priority>
+</url>
+      <url>
+  <loc>https://jasmineolivas.com/works/</loc>
+  <lastmod>2026-07-01T00:00:00+00:00</lastmod>
+  <priority>0.90</priority>
+</url>
+
+<url>
+  <loc>https://jasmineolivas.com/washafterreading/</loc>
+  <lastmod>2026-07-01T00:00:00+00:00</lastmod>
+  <priority>0.90</priority>
 </url>
 
 
