@@ -436,7 +436,10 @@ nav a#cart.has-items::after {
 }
 
 
-
+.author-note {
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+}
 
     
 .site-footer {
@@ -728,11 +731,11 @@ As she becomes increasingly isolated, Laura clings to the systems that have kept
 
 
 </section>
-
+</section>
 <section class="author-section">
 
     
-<section class="header-container">
+<div class="author-note">
 
   <p class="book-summary">
 This novella is part of my own journey with contamination OCD and touches on my experience of being pregnant during the pandemic. It's an experimental project and very close to my heart, but it's by no means intended for a wide audience. As such, I've chosen to make it available for free on my website in the hope that it finds its way into the hands of the small number of readers who connect with the story.
@@ -763,7 +766,7 @@ This novella is part of my own journey with contamination OCD and touches on my 
     <p class="setup-link">
       New to EPUB files?
       <a href="#" onclick="openReaderHelp(); return false;">
-        Click here for setup instructions. <br>
+        Click here for setup instructions.
       </a>
     </p>
 
@@ -819,10 +822,38 @@ This download is provided in standard EPUB format and works with most modern e-r
 </div>
 
 
+<!-- ✅ CLOSE AUTHOR SECTION PROPERLY -->
+</div> <!-- closes author-note -->
+</section> <!-- closes author-section -->
 
+
+<section class="reader-responses">
+
+  <!-- CTA (placed BEFORE responses intentionally) -->
+  <div style="text-align:center; margin-top:2rem;">
+    <p>Enjoyed the story?</p>
+    <a class="button" href="YOUR_GOOGLE_FORM_LINK">
+      Send me your thoughts →
+    </a>
   </div>
 
+  <h2>Reader Responses</h2>
 
+  <blockquote>
+    Add a short reader quote here.
+  </blockquote>
+  <div class="response-author">— Reader</div>
+
+  <blockquote>
+    Add another reader reaction here.
+  </blockquote>
+  <div class="response-author">— Reader</div>
+
+</section>
+
+
+
+  
 </section>
 
   
@@ -842,6 +873,8 @@ This download is provided in standard EPUB format and works with most modern e-r
   </div>
 </footer>
 
+
+  
   <script>
 
 
