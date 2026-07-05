@@ -364,19 +364,64 @@ nav a#cart.has-items::after {
 
 
 
-    .hero-section {
+ .hero-section {
   background-color: var(--text-dark);
   color: var(--background);
   padding: 3rem 1rem;
+  text-align: center;
 }
+
+
+/* Headings inside dark section */
 .hero-section h1,
 .hero-section h2,
 .hero-section h3 {
   color: var(--background);
+  font-family: 'Cinzel', serif;
+  margin-top: 0;
 }
-    .hero-section p {
+
+/* Paragraph text inside dark section */
+.hero-section p {
+  color: var(--background);
+  opacity: 0.9;
+}
+
+/* Links inside dark section (your setup-link style override) */
+.hero-section .setup-link a {
   color: var(--background);
 }
+
+/* Blockquotes inside dark section (reader responses) */
+.hero-section blockquote {
+  color: var(--background);
+  border-left: 3px solid var(--background);
+  opacity: 0.9;
+  margin: 2rem auto 0.5rem;
+  padding-left: 1rem;
+  max-width: 600px;
+  text-align: left;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Author text under quotes */
+.hero-section .response-author {
+  color: var(--background);
+  opacity: 0.7;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto 1rem;
+}
+
+/* CTA spacing (the "Enjoyed the story?" block) */
+.hero-section .setup-link {
+  margin: 0 auto 2.5rem;
+}
+
+
+
+
     
 
 .amazon-section {
@@ -833,14 +878,19 @@ This download is provided in standard EPUB format and works with most modern e-r
 </section> <!-- closes author-section -->
 
 
-<section class="reader-responses">
+<!-- ========================= -->
+<!-- DARK CTA + READER SECTION -->
+<!-- ========================= -->
 
-  <!-- CTA (placed BEFORE responses intentionally) -->
+<section class="hero-section">
 
-  <p class="setup-link" style="margin-top: 2rem;">
+  
+<p class="setup-link" style="margin-top: 2rem;">
   Enjoyed the story?
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb84ncdBG5jWceyRwJWQ-Z70DGNS8RXDMIeknZVEcO-0a_LA/viewform?usp=header">
-    Send me your thoughts →
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb84ncdBG5jWceyRwJWQ-Z70DGNS8RXDMIeknZVEcO-0a_LA/viewform?usp=header"
+     target="_blank"
+     rel="noopener noreferrer">
+    Send me your thoughts!
   </a>
 </p>
 
@@ -859,27 +909,11 @@ This download is provided in standard EPUB format and works with most modern e-r
 </section>
 
 
+<!-- ========================= -->
+<!-- FOOTER -->
+<!-- ========================= -->
 
-  
-</section>
-
-  
 <footer class="site-footer">
-  <div class="footer-columns">
-    <div class="footer-column">
-      <h3>Shipping</h3>
-      <p>Free shipping within the US via USPS. International shipping calculated at checkout. Large or bulk orders may be processed into separate shipments. Books are printed in the USA and packaged by hand.</p>
-    </div>
-    <div class="footer-column">
-      <h3>Returns</h3>
-      <p>Refunds or exchanges are accepted if the item is damaged or defective, or if the item recieved differs from the one ordered. Please contact me if any of these issues arise.</p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2026 Jasmine Olivas. All rights reserved.</p>
-  </div>
-</footer>
-
 
   
   <script>
