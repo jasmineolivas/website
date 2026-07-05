@@ -180,7 +180,7 @@ nav a#cart.has-items::after {
 
 .book-summary {
   max-width: 800px;
-  margin: 1rem auto 2rem auto;
+  margin: 1rem auto 1rem auto;
   padding: 0 1rem;
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
@@ -364,15 +364,14 @@ nav a#cart.has-items::after {
 
 
 
- .hero-section {
+.hero-section {
   background-color: var(--text-dark);
   color: var(--background);
   padding: 3rem 1rem;
   text-align: center;
 }
 
-
-/* Headings inside dark section */
+/* Headings */
 .hero-section h1,
 .hero-section h2,
 .hero-section h3 {
@@ -381,18 +380,28 @@ nav a#cart.has-items::after {
   margin-top: 0;
 }
 
-/* Paragraph text inside dark section */
+/* Paragraphs */
 .hero-section p {
   color: var(--background);
   opacity: 0.9;
 }
 
-/* Links inside dark section (your setup-link style override) */
-.hero-section .setup-link a {
-  color: var(--background);
+/* Setup link container spacing */
+.hero-section .setup-link {
+  margin: 0 auto 2.5rem;
 }
 
-/* Blockquotes inside dark section (reader responses) */
+/* IMPORTANT: link color override (must be after base rules) */
+.hero-section .setup-link a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.hero-section .setup-link a:hover {
+  text-decoration: underline;
+}
+
+/* Reader quotes */
 .hero-section blockquote {
   color: var(--background);
   border-left: 3px solid var(--background);
@@ -405,7 +414,7 @@ nav a#cart.has-items::after {
   line-height: 1.6;
 }
 
-/* Author text under quotes */
+/* Quote author */
 .hero-section .response-author {
   color: var(--background);
   opacity: 0.7;
@@ -413,13 +422,6 @@ nav a#cart.has-items::after {
   max-width: 600px;
   margin: 0 auto 1rem;
 }
-
-/* CTA spacing (the "Enjoyed the story?" block) */
-.hero-section .setup-link {
-  margin: 0 auto 2.5rem;
-}
-
-
 
 
     
@@ -466,8 +468,12 @@ nav a#cart.has-items::after {
   background: white;
   color: var(--text-dark);
   padding: 3rem 1rem;
+  margin-bottom: 0;
 }
 
+.amazon-section {
+  margin-top: 1rem;
+}
 
 
     
@@ -838,12 +844,11 @@ This download is provided in standard EPUB format and works with most modern e-r
 
     <h3>Kindle Users</h3>
 
-    <ol>
-      <li>Download the EPUB file.</li>
-      <li>Open Amazon's Send to Kindle service.</li>
-      <li>Upload the EPUB file.</li>
-      <li>The book will automatically appear in your Kindle library after Amazon converts it.</li>
-    </ol>
+1. Download the EPUB file.<br>
+2. Open Amazon's Send to Kindle service.<br>
+3. Upload the EPUB file.<br>
+4. The book will automatically appear in your Kindle library after Amazon converts it.<br>
+
 
     <p>
       <a href="https://www.amazon.com/sendtokindle"
@@ -854,20 +859,17 @@ This download is provided in standard EPUB format and works with most modern e-r
 <br>
     <h3>Kobo, Nook, PocketBook, and Other E-Readers</h3>
 
-    <ol>
-      <li>Download the EPUB file.</li>
-      <li>Transfer it to your device using a USB cable, cloud storage, or your device's import feature.</li>
-      <li>Open the file from your library and start reading.</li>
-    </ol>
+1. Download the EPUB file.<br>
+2. Transfer it to your device using a USB cable, cloud storage, or your device's import feature.<br>
+3. Open the file from your library and start reading.<br>
+
 <br>
 <h3>Reading on a Phone or Tablet</h3>
 
-<ol>
-  <li>Download the EPUB file.</li>
-  <li>Open the file from your downloads folder.</li>
-  <li>Choose an EPUB-compatible reading app on your device.</li>
-  <li>The book will open in your reading app and be available in your library.</li>
-</ol>
+1. Download the EPUB file.<br>
+2. Open the file from your downloads folder.<br>
+3. Choose an EPUB-compatible reading app on your device.<br>
+4. The book will open in your reading app and be available in your library.<br>
 
   </div>
 </div>
