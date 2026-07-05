@@ -433,11 +433,10 @@ nav a#cart.has-items::after {
   box-sizing: border-box;
   text-align: center;
 }
-
-
     .amazon-section h3 {
       font-family: 'Cinzel', serif;
     }
+
 
     
 
@@ -468,13 +467,17 @@ nav a#cart.has-items::after {
   background: white;
   color: var(--text-dark);
   padding: 2rem 1rem;
-  margin-bottom: 0;
+}
+
+.author-note {
+  max-width: 800px;
+  margin: 0 auto 1.5rem auto;
 }
 
 .amazon-section {
-  margin-top: 1rem;
+  max-width: 100%;
+  text-align: center;
 }
-
 
     
 .reader-responses blockquote {
@@ -791,51 +794,56 @@ As she becomes increasingly isolated, Laura clings to the systems that have kept
 
 </section>
 </section>
+
+  
 <section class="author-section">
 
-    
-<div class="author-note">
-
-  <p class="book-summary">
+  <div class="author-note">
+    <p class="book-summary">
 This novella is part of my own journey with contamination OCD and touches on my experience of being pregnant during the pandemic. It's an experimental project and very close to my heart, but it's by no means intended for a wide audience. As such, I've chosen to make it available for free on my website in the hope that it finds its way into the hands of the small number of readers who connect with the story.
-</p>
-</section>
-    
-  
+   </p>
+  </div>
+
   <div class="amazon-section">
     <h3>Available on your favorite reading device.</h3>
     <p>Choose your format below:</p>
 
-<a href="https://www.amazon.com/dp/B0H793TRWS"
-   target="_blank"
-   class="button"
-   onclick="gtag('event', 'kindle_click');">
- Buy on Kindle
-</a>
-<a href="/downloads/Wash-After-Reading.epub"
-   download
-   class="button"
-   onclick="gtag('event', 'epub_download');">
-   Download free EPUB
-</a>
+    <a href="https://www.amazon.com/dp/B0H793TRWS"
+       target="_blank"
+       class="button"
+       onclick="gtag('event', 'kindle_click');">
+      Buy on Kindle
+    </a>
+
+    <a href="/downloads/Wash-After-Reading.epub"
+       download
+       class="button"
+       onclick="gtag('event', 'epub_download');">
+      Download free EPUB
+    </a>
 
   </div>
+
+  <p class="setup-link">
+    New to EPUB files?
+    <a href="#" onclick="openReaderHelp(); return false;">
+      Click here for setup instructions. <br>
+      <br>
+    </a>
+  </p>
+
+</section>
 
   
-    <p class="setup-link">
-      New to EPUB files?
-      <a href="#" onclick="openReaderHelp(); return false;">
-        Click here for setup instructions.<br>
-      </a>
-    </p>
+<div id="readerHelpModal"
+     class="reader-help-modal"
+     onclick="closeReaderHelp()">
 
-  </div>
-</div>
+  <div class="reader-help-content"
+       onclick="event.stopPropagation()">
 
-<div id="readerHelpModal" class="reader-help-modal" onclick="closeReaderHelp()">
-  <div class="reader-help-content" onclick="event.stopPropagation()">
-
-    <span class="close-reader-help" onclick="closeReaderHelp()">
+    <span class="close-reader-help"
+          onclick="closeReaderHelp()">
       &times;
     </span>
     
