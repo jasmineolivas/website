@@ -392,24 +392,43 @@ nav a#cart.has-items::after {
       font-family: 'Cinzel', serif;
     }
 
-    .amazon-section a {
-      display: inline-block;
-      background-color: var(--accent);
-      color: white;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      margin: 0.5rem;
-    }
     
 
-
-
-
-.reader-responses {
-  max-width: 800px;
-  margin: 3rem auto 0;
+.response-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  display: inline-block;
+  margin-top: 0.5rem;
 }
 
+.response-link:hover {
+  text-decoration: underline;
+}
+
+
+.reader-responses h2 {
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.reader-responses {
+  max-width: 800px;
+  margin: 5rem auto 4rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.reader-responses blockquote {
+  text-align: left;
+  margin: 2rem auto 0.5rem;
+}
+
+.reader-responses {
+  padding-bottom: 3rem;
+}
+
+    
 
 .author-section {
   background: white;
@@ -832,9 +851,9 @@ This download is provided in standard EPUB format and works with most modern e-r
   <!-- CTA (placed BEFORE responses intentionally) -->
   <div style="text-align:center; margin-top:2rem;">
     <p>Enjoyed the story?</p>
-    <a class="button" href="YOUR_GOOGLE_FORM_LINK">
-      Send me your thoughts →
-    </a>
+  <a class="response-link" href="YOUR_GOOGLE_FORM_LINK">
+  Send me your thoughts →
+</a>
   </div>
 
   <h2>Reader Responses</h2>
