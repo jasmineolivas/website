@@ -4,36 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jasmine Olivas | Wash After Reading</title>
-
 <meta name="description" content="Discover the latest novella by Jasmine Olivas. Available in multiple formats.">
 <meta name="keywords" content="Jasmine Olivas, fantasy books, novella, kindle, original art, author shop">
 <meta name="author" content="Jasmine Olivas">
-
 <meta property="og:title" content="Jasmine Olivas | Wash After Reading" />
 <meta property="og:description" content="Original psychological horror novella by Jasmine Olivas." />
 <meta property="og:image" content="https://jasmineolivas.com/images/coverartwar.jpg" />
 <meta property="og:url" content="https://jasmineolivas.com/washafterreading/" />
 <meta name="twitter:card" content="summary_large_image" />
-
-<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Roboto&display=swap" rel="stylesheet">
-
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3XK6XP43ZS"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'G-3XK6XP43ZS');
 </script>
+  
+  <style>
+    :root {
+      --accent: #D98F59;
+      --background: #F1E2BB;
+      --text-dark: #171516;
+    }
 
-<style>
-:root {
-  --accent: #D98F59;
-  --background: #F1E2BB;
-  --text-dark: #171516;
+    .site-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 200px; /* optional: keep it compact */
+  object-fit: cover;
 }
-
-.banner-container {
+    .banner-container {
   position: relative;
   text-align: center;
   color: #F1E2BB;
@@ -47,6 +52,8 @@
   object-fit: cover;
   max-height: 200px;
 }
+
+    
 
 .banner-text {
   position: absolute;
@@ -79,17 +86,22 @@
 
 @media (max-width: 900px) {
   .banner-text h1 {
-    font-size: 1rem;
+    font-size: 1rem; /* Was 0.9rem */
   }
+
   .banner-text p {
-    font-size: 0.85rem;
-    white-space: nowrap;
+    font-size: 0.85rem; /* Was 0.6rem — now closer to navbar size */
+      white-space: nowrap;
   }
+
   .banner-line {
     display: none;
   }
+}
+
+@media (max-width: 900px) {
   .banner-text {
-    padding: 0.5rem 0;
+    padding: 0.5rem 0; /* or less */
   }
 }
 
@@ -103,11 +115,11 @@
   opacity: 0.9;
 }
 
-h1 {
-  font-family: 'Cinzel', serif;
-  text-align: center;
-  margin-top: 1rem;
-}
+    h1 {
+      font-family: 'Cinzel', serif;
+      text-align: center;
+      margin-top: 1rem;
+    }
 
 nav {
   background-color: var(--text-dark);
@@ -116,18 +128,20 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 3.5rem;
+  min-height: 3.5rem; /* ✅ use this instead of height */
   overflow: hidden;
   position: relative;
   z-index: 10;
 }
 
-nav a {
-  color: var(--background);
-  margin: 0 1.5rem;
-  text-decoration: none;
-  position: relative;
-}
+
+    nav a {
+      color: var(--background);
+      margin: 0 1.5rem;
+      text-decoration: none;
+      position: relative;
+    }
+
 
 nav a#cart.has-items::after {
   content: '';
@@ -140,14 +154,17 @@ nav a#cart.has-items::after {
   right: -12px;
 }
 
+
 @media (max-width: 600px) {
   nav {
     min-height: 2rem;
   }
+
   nav a {
     font-size: 0.8rem;
     margin: 0 0.6rem;
   }
+
   nav a#cart.has-items::after {
     top: 2px;
     right: -10px;
@@ -156,7 +173,7 @@ nav a#cart.has-items::after {
 
 .book-summary {
   max-width: 800px;
-  margin: 1rem auto 0.75rem;
+  margin: 1rem auto 0.75rem auto;
   padding: 0 1rem;
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
@@ -164,42 +181,80 @@ nav a#cart.has-items::after {
   text-align: center;
 }
 
+
+
+
+    
 .header-container {
   margin-top: 4rem;
 }
 
 .header-container h1 {
-  font-family: 'Cinzel', serif;
+    font-family: 'Cinzel', serif;
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
-.product-layout {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 1rem;
-  gap: 2rem;
-  justify-content: center;
+
+
+
+
+    
+    .product-layout {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .product-image {
+      flex: 1 1 400px;
+      text-align: right;
+    }
+
+    .product-image img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+    }
+    
+
+    .product-info {
+      flex: 1 1 400px;
+      text-align: left;
+    }
+.book-price {
+  font-size: 1.25rem;
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-dark);
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+.edition-selector .version-btn {
+  border: 2px solid var(--accent);
+  background-color: white;
+  color: var(--accent);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0.25rem;
 }
 
-.product-image {
-  flex: 1 1 400px;
-  text-align: right;
+.edition-selector .version-btn.active {
+  background-color: var(--accent);
+  color: white;
 }
 
-.product-image img {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-}
 
-.product-info {
-  flex: 1 1 400px;
-  text-align: left;
-}
 
+
+    
 .button {
   background-color: var(--accent);
   color: white;
@@ -207,7 +262,9 @@ nav a#cart.has-items::after {
   padding: 0.6rem 1.2rem;
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
+  font-weight: normal;
   text-align: center;
+  text-decoration: none;
   cursor: pointer;
   display: inline-block;
   border-radius: 2px;
@@ -221,20 +278,26 @@ nav a#cart.has-items::after {
   background-color: #c57e4e;
 }
 
+.button.outline {
+  background-color: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
 .button.secondary {
   background-color: #555;
 }
 
-@media (max-width: 768px) {
-  .product-layout {
-    flex-direction: column;
-    align-items: center;
-  }
-  .product-image,
-  .product-info {
-    text-align: center;
-  }
+.edition-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  max-width: 100%;
+  box-sizing: border-box;
 }
+
+
 
 @media (max-width: 600px) {
   .button, .version-btn {
@@ -244,13 +307,16 @@ nav a#cart.has-items::after {
     display: block;
   }
 
+
+
+  
   .edition-selector {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
   }
 
   .add-to-cart {
-    margin-top: 1rem;
+    width: 100%;
   }
 
   .product-info {
@@ -258,13 +324,46 @@ nav a#cart.has-items::after {
   }
 }
 
+@media (max-width: 600px) {
+  .edition-selector {
+    flex-direction: column;
+    align-items: center;
+  }
+
+.add-to-cart {
+  margin-top: 1rem;
+}
+
+
+  .product-info {
+    text-align: center;
+  }
+}
+
+
+
+    @media (max-width: 768px) {
+      .product-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .product-image,
+      .product-info {
+        text-align: center;
+      }
+    }
+
+
+
 .hero-section {
   background-color: var(--text-dark);
   color: var(--background);
-  padding: 2rem 1rem 3rem;
+  padding: 2rem 1rem 3rem 1rem;
   text-align: center;
 }
 
+/* Headings */
 .hero-section h1,
 .hero-section h2,
 .hero-section h3 {
@@ -273,11 +372,18 @@ nav a#cart.has-items::after {
   margin-top: 0;
 }
 
+/* Paragraphs */
 .hero-section p {
   color: var(--background);
   opacity: 0.9;
 }
 
+/* Setup link container spacing */
+.hero-section .setup-link {
+  margin: 0 auto 2.5rem;
+}
+
+/* IMPORTANT: link color override (must be after base rules) */
 .hero-section .setup-link a {
   color: var(--accent);
   text-decoration: none;
@@ -287,6 +393,7 @@ nav a#cart.has-items::after {
   text-decoration: underline;
 }
 
+/* Reader quotes */
 .hero-section blockquote {
   color: var(--background);
   border-left: 3px solid var(--background);
@@ -299,6 +406,7 @@ nav a#cart.has-items::after {
   line-height: 1.6;
 }
 
+/* Quote author */
 .hero-section .response-author {
   color: var(--background);
   opacity: 0.7;
@@ -307,47 +415,47 @@ nav a#cart.has-items::after {
   margin: 0 auto 1rem;
 }
 
+    .hero-section.book-page {
+  padding-top: 0;
+}
+
+
+    
+
 .amazon-section {
   max-width: 100%;
   overflow-x: hidden;
   padding: 1rem;
+  box-sizing: border-box;
   text-align: center;
 }
+    .amazon-section h3 {
+      font-family: 'Cinzel', serif;
+    }
 
-.amazon-section h3 {
+
+    
+
+.reader-responses h2 {
   font-family: 'Cinzel', serif;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
-
 .reader-responses {
   max-width: 800px;
   margin: 5rem auto 4rem;
   padding: 0 1rem 3rem;
   text-align: center;
 }
+    
 
-.reader-responses h2 {
-  font-family: 'Cinzel', serif;
-  margin-bottom: 1.5rem;
+.author-section {
+  background: white;
+  color: var(--text-dark);
+  padding: 2rem 1rem;
 }
 
-.response-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-  .response-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.response-card {
-  text-align: left;
-}
-
+   
 .reader-responses blockquote {
   margin: 2rem 0 0.5rem;
   padding-left: 1rem;
@@ -363,25 +471,72 @@ nav a#cart.has-items::after {
   opacity: 0.8;
 }
 
-.author-section {
-  background: white;
-  color: var(--text-dark);
-  padding: 2rem 1rem;
-}
-
-.author-note {
-  max-width: 800px;
+    .response-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-img, button, input, select, textarea {
+.response-card {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .response-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.author-note {
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+    margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+    
+.site-footer {
+  background-color: var(--text-dark);
+  color: var(--background);
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  flex: 1 1 300px;
+}
+
+.footer-column h3 {
+  font-family: 'Cinzel', serif;
+  margin-bottom: 0.5rem;
+  color: var(--background);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+    img, button, input, select, textarea {
   max-width: 100%;
   height: auto;
   box-sizing: border-box;
 }
 
-.sample-modal,
-.reader-help-modal {
+.sample-modal {
   display: none;
   position: fixed;
   inset: 0;
@@ -391,8 +546,19 @@ img, button, input, select, textarea {
   z-index: 1000;
 }
 
-.sample-content,
-.reader-help-content {
+.sample-content h2,
+.sample-content h3,
+.reader-help-content h2,
+.reader-help-content h3 {
+  font-family: 'Cinzel', serif;
+    color: var(--text-dark);
+  text-align: center;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+    
+.sample-content {
   background: white;
   width: 90%;
   max-width: 700px;
@@ -403,18 +569,6 @@ img, button, input, select, textarea {
   border-radius: 8px;
   text-align: left;
   line-height: 1.6;
-  color: var(--text-dark);
-}
-
-.sample-content h2,
-.sample-content h3,
-.reader-help-content h2,
-.reader-help-content h3 {
-  font-family: 'Cinzel', serif;
-  text-align: center;
-  font-weight: 400;
-  margin-top: 0;
-  margin-bottom: 1rem;
 }
 
 .sample-content p,
@@ -422,17 +576,19 @@ img, button, input, select, textarea {
 .reader-help-content p,
 .reader-help-content li {
   color: var(--text-dark);
-  margin-bottom: 1rem;
 }
 
-.close-sample,
-.close-reader-help {
+.close-sample {
   position: absolute;
   top: 10px;
   right: 15px;
   font-size: 2rem;
   cursor: pointer;
 }
+
+
+
+       
 
 .setup-link {
   text-align: center;
@@ -448,6 +604,45 @@ img, button, input, select, textarea {
   text-decoration: underline;
 }
 
+.reader-help-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.reader-help-content {
+  background: white;
+  width: 90%;
+  max-width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+  border-radius: 8px;
+  text-align: left;
+    color: var(--text-dark);
+  line-height: 1.6;
+}
+
+
+.reader-help-content p,
+.reader-help-content li {
+  margin-bottom: 1rem;
+}
+
+.close-reader-help {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+
 html, body {
   margin: 0;
   padding: 0;
@@ -456,7 +651,15 @@ html, body {
   font-family: 'Roboto', sans-serif;
   color: var(--background);
 }
-</style>
+
+/* FORCE MODAL TEXT TO ALWAYS BE DARK */
+.reader-help-content,
+.sample-content {
+  color: var(--text-dark) !important;
+}
+
+  </style>
+
 </head>
   
 <body>
