@@ -648,8 +648,14 @@ html, body {
   padding: 0;
   overflow-x: hidden;
   background-color: var(--text-dark);
-  color: var(--background);
   font-family: 'Roboto', sans-serif;
+  color: var(--background);
+}
+
+/* FORCE MODAL TEXT TO ALWAYS BE DARK */
+.reader-help-content,
+.sample-content {
+  color: var(--text-dark) !important;
 }
 
   </style>
